@@ -24,7 +24,7 @@ I think the statement above sums it up. It would be best if you didn't ask for a
 
 ### Prefer OAuth over traditional email-password
 
-When a user signs up using traditional email-password, he has to memorize the password for your specific application or even worse in some cases he might re-use a password(unless he uses a password management/generator app).
+When a user signs up using traditional email-password, he has to memorize the password for your specific application or even worse in some cases he might re-use a password (unless he uses a password management/generator app).
 
 Some users tend to re-use or create weak passwords for most applications they use, to avoid laborious work of memorizing or saving in a password manager. 
 
@@ -42,7 +42,7 @@ Given that Facebook and Google are the providers with the most users, I'll compa
 
 Google and Facebook allow you to get almost the same information for a given user, but using one or the other might have different user experience implications to your application.
 
-Usually, the flow is the same/close, and you click to register or sign-in then you get redirected to a page where you can either accept, declined or accept but customize(I can only s see this feature on Facebook) what information the app can get from your account.
+Usually, the flow is the same/close, and you click to register or sign-in then you get redirected to a page where you can either accept, declined or accept but customize(I can only see this feature on Facebook) what information the app can get from your account.
 
 On mobile most specifically Android, when you sign in or sign up with Facebook, it usually opens a web browser tab which can be expensive for the user. 
 

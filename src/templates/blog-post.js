@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Disqus from 'gatsby-plugin-disqus'
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -36,7 +37,7 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <Bio />
-
+        <Disqus/>
         <ul
           style={{
             display: `flex`,

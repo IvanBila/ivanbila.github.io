@@ -2,6 +2,7 @@
 title: "How developers can improve ux"
 date: "2019-04-27"
 description: ""
+id: 1
 ---
 
 
@@ -9,7 +10,6 @@ description: ""
 There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.
 
 However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application's user experience significantly.
-
 
 ### Prove the value of your app
 
@@ -26,11 +26,11 @@ I think the statement above sums it up. It would be best if you didn't ask for a
 
 When a user signs up using traditional email-password, he has to memorize the password for your specific application or even worse in some cases he might re-use a password (unless he uses a password management/generator app).
 
-Some users tend to re-use or create weak passwords for most applications they use, to avoid laborious work of memorizing or saving in a password manager. 
+Some users tend to re-use or create weak passwords for most applications they use, to avoid laborious work of memorizing or saving in a password manager.
 
 Having to memorize things is a pain, laborious and time consuming, usually users have many things to keep track of (tasks, family names, phone numbers), so it’s improbable that they’ll memorize your apps’ password, they have zillions of apps, you want to make your app easy to use without the hassle of remembering passwords and emails. To prevent this, you can use OAuth.
 
-With OAuth, the user doesn’t need to memorize a password or username(in short it allows passwordless sign-in/up), signing-in or signing-up is only a “tap/click away,” meaning he only has to allow your application to access his/her data. 
+With OAuth, the user doesn’t need to memorize a password or username(in short it allows passwordless sign-in/up), signing-in or signing-up is only a “tap/click away,” meaning he only has to allow your application to access his/her data.
 
 This flow tends to be less laborious for the user because he/she doesn't have to memorize a password and then verify if the email was filled correctly. Using the OAuth flow implies that you don’t have to implement the logic for resetting the password(unless you have users signed-in in using email-password) that the user is likely to forget over and over again until he/she stops using your service.
 
@@ -44,7 +44,7 @@ Google and Facebook allow you to get almost the same information for a given use
 
 Usually, the flow is the same/close, and you click to register or sign-in then you get redirected to a page where you can either accept, declined or accept but customize(I can only see this feature on Facebook) what information the app can get from your account.
 
-On mobile most specifically Android, when you sign in or sign up with Facebook, it usually opens a web browser tab which can be expensive for the user. 
+On mobile most specifically Android, when you sign in or sign up with Facebook, it usually opens a web browser tab which can be expensive for the user.
 
 Opening the browser or external apps uses RAM and processing power, which is not what you want your app to do, because most devices have low RAM, and processing power is scarce, even if they have good processing power it’s very likely that they opened dozen other apps besides yours.
 

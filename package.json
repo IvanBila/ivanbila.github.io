@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
-  "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "name": "ivanbila.github.io",
+  "private": false,
+  "description": "Personal blog for sharing mussings",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Ivan Bila <ivanbilag@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/ivanbila/ivanbila.github.io/issues"
   },
   "dependencies": {
     "gatsby": "^2.3.16",
@@ -41,15 +41,18 @@
   "devDependencies": {
     "prettier": "^1.17.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
-    "gatsby"
+    "User experience",
+    "Kotlin",
+    "Javascript",
+    "PHP",
+    "Linux"
   ],
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/ivanbila/ivanbila.github.io.git"
   },
   "scripts": {
     "build": "gatsby build",
@@ -58,6 +61,6 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -b master",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo no tests setup"
   }
 }

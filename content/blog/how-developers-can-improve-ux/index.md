@@ -90,7 +90,7 @@ Here are couple of examples of bad language use that resulted in confusion, misi
 
 | ![cancel a download](./cancel.jpeg) |
 |:--:|
-| *Confusing modal* |
+| *Confusing modal due to bad language* |
 
 
 There are a lot more other things you can do to improve user experience but I decided to focus only on these which I think when overlooked can damage your application user experience.

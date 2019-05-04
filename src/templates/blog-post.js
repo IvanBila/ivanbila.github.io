@@ -36,8 +36,6 @@ class BlogPostTemplate extends React.Component {
             marginBottom: rhythm(1),
           }}
         />
-        <Bio />
-        <Disqus/>
         <ul
           style={{
             display: `flex`,
@@ -62,6 +60,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+        <Disqus/>
       </Layout>
     )
   }

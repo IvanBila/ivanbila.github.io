@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>RSS for Node</generator><lastBuildDate>Mon, 13 May 2019 18:48:44 GMT</lastBuildDate><item><title><![CDATA[What the heck is npx]]></title><description><![CDATA[Problem definition and setting the why]]></description><link>https://ivanbila.github.io/what-the-heck-is-npx/</link><guid isPermaLink="false">https://ivanbila.github.io/what-the-heck-is-npx/</guid><pubDate>Invalid Date</pubDate><content:encoded>&lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;</content:encoded></item><item><title><![CDATA[PHP Multi-byte strings]]></title><description><![CDATA[Problem definition and setting the why Do you know why these two results are different? Have you heard of multi-byte functions? How to…]]></description><link>https://ivanbila.github.io/php-multibyte/</link><guid isPermaLink="false">https://ivanbila.github.io/php-multibyte/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>RSS for Node</generator><lastBuildDate>Thu, 23 May 2019 17:53:44 GMT</lastBuildDate><item><title><![CDATA[Node please execute]]></title><description><![CDATA[npx available starting npm version 5.2.x Problem definition and setting the why Installing packages globally Adding aliases Using npm…]]></description><link>https://ivanbila.github.io/what-the-heck-is-npx/</link><guid isPermaLink="false">https://ivanbila.github.io/what-the-heck-is-npx/</guid><pubDate>Invalid Date</pubDate><content:encoded>&lt;p&gt;npx available starting npm version 5.2.x&lt;/p&gt;
+&lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Installing packages globally&lt;/li&gt;
+&lt;li&gt;Adding aliases&lt;/li&gt;
+&lt;li&gt;Using npm scripts&lt;/li&gt;
+&lt;li&gt;Using absolute path&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Table of contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use npx to run locally installed node modules&lt;/li&gt;
+&lt;li&gt;Use npx to temporarly install and invoke a package from npm&lt;/li&gt;
+&lt;li&gt;Use npx to rest different versions of node modules&lt;/li&gt;
+&lt;li&gt;Use npx to run commands with different versions of Node.js&lt;/li&gt;
+&lt;li&gt;Execute npx commands with npm env variables&lt;/li&gt;
+&lt;li&gt;Use npx to execute a code from a branch&lt;/li&gt;
+&lt;li&gt;Use npx to execute a code from a github gist&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;NOTES&lt;/h2&gt;
+&lt;p&gt;npx allows you to play arround with a new package from npm registry without having to install it&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; eslint --dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; i eslint -D&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;when we run eslint —init, it doesn’t find it, because it is looking for a global install, one would be to use
+the projects absolute path &lt;code class=&quot;language-text&quot;&gt;./node_module/bin/eslint&lt;/code&gt; which works, but we can go ahead and simplify it more
+and add it to our list of aliases so we can use it in every project&lt;/p&gt;
+&lt;p&gt;aliases file&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;alias&lt;/span&gt; eslint&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;./node_modules/bin/eslint&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can optmize this flow by promoting it and adding it to our scripts in the &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file&lt;/p&gt;
+&lt;p&gt;“eslint”: “eslint”&lt;/p&gt;
+&lt;p&gt;finds the locally installed eslint
+$(npm bin)/eslint&lt;/p&gt;
+&lt;p&gt;but all of this could be better, this is where npx comes to play&lt;/p&gt;
+&lt;p&gt;One of the many things npx can do, is to allow you to invoke locally installed
+node modules from the terminal
+if we feel good about any of the commands we can promote it to be an npm script&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm run&lt;/code&gt; shows a list of scripts that can be run&lt;/p&gt;
+&lt;p&gt;npm ls create-react-app —global -&gt; check if a dependendecy is intalled globally or not
+we can use npx to temporarly install a package a execute it&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx create-react-app todo-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;node_modules can use quite a lot of space, using some dependencies this way can be handy if you’d rather
+{image of black hole} not install programs globally, or you use them frequently that’d rather use the latest
+version when you need them, also can be handy if you want to play with some tools before commiting to them&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx devpun -t react&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx devpun -t react &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; npx cowsay -f vader &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; npx lolcatjs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;using npx we’re able to play around and experience node modules without having to install them&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; v create-react-app versions&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; v create-react-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx create-react-app@next todo-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; view eslint&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx eslint@next ./&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;if eslint@next requires some extra packages we can use npx to specify those:
+-c -&gt; execute a command
+-p -&gt; specifiy a dependency&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx -p eslint@next -p eslint-config-google -c &lt;span class=&quot;token string&quot;&gt;&quot;eslint ./&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;npx will install next version of eslint along with config google&lt;/p&gt;
+&lt;h3&gt;Using npx to run different versions of node&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx -p node@8.2.1 -- node index.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Execute npx commands with npm enviroment variables&lt;/h2&gt;
+&lt;p&gt;show npm env variables that are available when we run npm scripts&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run &lt;span class=&quot;token function&quot;&gt;env&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;npm run env | grep npm_&lt;/p&gt;
+&lt;p&gt;how to leverage those variables using npx?&lt;/p&gt;
+&lt;p&gt;first install babel using bash brace expansion&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; babel&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;-cli,-preset-env,-plugin-transform-object-rest-spread&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; -D -s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;npx babel index.js -d lib/
+npx babel index.js -d lib/$npm&lt;em&gt;package&lt;/em&gt;version&lt;/p&gt;
+&lt;p&gt;npx -c ‘babel index.js -d lib/$npm&lt;em&gt;package&lt;/em&gt;version’&lt;/p&gt;
+&lt;p&gt;-c -&gt; executes our command in an npm scripts like env, meaning that it will have access to all
+env variables in npm run env&lt;/p&gt;
+&lt;h2&gt;Execute code from a remote branch&lt;/h2&gt;
+&lt;p&gt;npm repo -&gt; navigates to the dependencies’ github repo…&lt;/p&gt;
+&lt;p&gt;npx user/library-repo#branch&lt;/p&gt;
+&lt;p&gt;will temporarly download the branch and run it locally&lt;/p&gt;
+&lt;h2&gt;Execute code that is on a github gist&lt;/h2&gt;
+&lt;p&gt;gist&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;#&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;usr&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;bin&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;env node
+
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;something comes here&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;package.json&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;some project&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;version: &quot;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.2&lt;/span&gt;.&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&quot;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;bin&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./index.js&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;npx gist-url&lt;/p&gt;
+&lt;p&gt;trust the source of your gist urls&lt;/p&gt;</content:encoded></item><item><title><![CDATA[PHP Multi-byte strings]]></title><description><![CDATA[Problem definition and setting the why Do you know why these two results are different? Have you heard of multi-byte functions? How to…]]></description><link>https://ivanbila.github.io/php-multibyte/</link><guid isPermaLink="false">https://ivanbila.github.io/php-multibyte/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
 &lt;p&gt;Do you know why these two results are different? Have you heard of multi-byte functions?&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;strlen&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;mb_strlen&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -294,7 +380,10 @@ phpenmod -v 7.1 &lt;modulename&gt;&lt;/p&gt;
 &lt;/table&gt;
 &lt;p&gt;There are a lot more other things you can do to improve user experience but I decided to focus only on these which I think when overlooked can damage your application user experience.&lt;/p&gt;
 &lt;p&gt;I hope you found something that can either be applied in your current project or upcoming projects and that you learned as much as I did writing this post, may your next/current project have the best user experience possible.&lt;/p&gt;
-&lt;p&gt;Thanks, and see you next time.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Como desenvolvedores podem melhorar a UX]]></title><description><![CDATA[Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
+&lt;p&gt;Thanks, and see you next time.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning to learn and learning to unlearn]]></title><description><![CDATA[Tornar a mente permeavel, mudar sempre que dever I’m frequently trying to benchmark opinions i have against alternatives to see if they…]]></description><link>https://ivanbila.github.io/learning-to-learn-and-learning-to-unlearn/</link><guid isPermaLink="false">https://ivanbila.github.io/learning-to-learn-and-learning-to-unlearn/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Tornar a mente permeavel, mudar sempre que dever&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I’m frequently trying to benchmark opinions i have against alternatives to see if they still hold. this is particularly so for technology, but applies broadly as well. It’s exhilarating to try to invalidade your current operating theses, because if you can, there’s a leap to make. I’ve made many such leaps. DHH&lt;/p&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[Como desenvolvedores podem melhorar a UX]]></title><description><![CDATA[Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
 ele/ela pode não…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/index.pt/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/index.pt/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
 ele/ela pode não precisar fazer um curso de experiência de utilizador para aprender.&lt;/p&gt;
 &lt;p&gt;No entanto, quando passadas despercebidas, podem danificar a experiência da aplicação, por outro lado, se voce passar

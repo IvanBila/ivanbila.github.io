@@ -7,7 +7,6 @@ draft: false
 ---
 
 
-
 There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.
 
 However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application's user experience significantly.

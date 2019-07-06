@@ -17,7 +17,7 @@ npx available starting npm version 5.2.x
 ## Table of contents
 
 - Use npx to run locally installed node modules
-- Use npx to temporarly install and invoke a package from npm
+- Use npx to temporarily install and invoke a package from npm
 - Use npx to rest different versions of node modules
 - Use npx to run commands with different versions of Node.js
 - Execute npx commands with npm env variables
@@ -26,7 +26,7 @@ npx available starting npm version 5.2.x
 
 ## NOTES
 
-npx allows you to play arround with a new package from npm registry without having to install it
+npx allows you to play around with a new package from npm registry without having to install it
 
 ```shell
 npm install eslint --dev
@@ -38,7 +38,7 @@ or
 npm i eslint -D
 ```
 
-when we run eslint --init, it doesn't find it, because it is looking for a global install, one would be to use
+when we run eslint --init, it doesnt find it, because it is looking for a global install, one would be to use
 the projects absolute path `./node_module/bin/eslint` which works, but we can go ahead and simplify it more
 and add it to our list of aliases so we can use it in every project
 
@@ -47,7 +47,7 @@ aliases file
 alias eslint='./node_modules/bin/eslint'
 ```
 
-We can optmize this flow by promoting it and adding it to our scripts in the `package.json` file
+We can optimize this flow by promoting it and adding it to our scripts in the `package.json` file
 
 "eslint": "eslint"
 
@@ -62,8 +62,8 @@ if we feel good about any of the commands we can promote it to be an npm script
 
 `npm run` shows a list of scripts that can be run
 
-npm ls create-react-app --global -> check if a dependendecy is intalled globally or not
-we can use npx to temporarly install a package a execute it
+npm ls create-react-app --global -> check if a dependency is installed globally or not
+we can use npx to temporarily install a package a execute it
 
 ```shell
 npx create-react-app todo-app
@@ -105,7 +105,7 @@ npx eslint@next ./
 
 if eslint@next requires some extra packages we can use npx to specify those:
 -c -> execute a command
--p -> specifiy a dependency
+-p -> specify a dependency
 
 ```shell
 npx -p eslint@next -p eslint-config-google -c "eslint ./"
@@ -152,7 +152,7 @@ npm repo -> navigates to the dependencies' github repo...
 
 npx user/library-repo#branch
 
-will temporarly download the branch and run it locally
+will temporarily download the branch and run it locally
 
 ## Execute code that is on a github gist
 
@@ -169,7 +169,7 @@ package.json
 ```json
 {
     "name": "some project",
-    "version: "1.2.1",
+    "version": "1.2.1",
     "bin": "./index.js"
 }
 ```

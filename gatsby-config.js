@@ -94,6 +94,15 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
-    'gatsby-plugin-offline'
+    'gatsby-plugin-offline',
+    {
+    resolve: `gatsby-plugin-nprogress`,
+    options: {
+      // Setting a color is optional.
+      color: `tomato`,
+      // Disable the loading spinner.
+      showSpinner: true,
+    },
+  },
   ],
 }

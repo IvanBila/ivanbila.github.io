@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>RSS for Node</generator><lastBuildDate>Thu, 23 May 2019 17:53:44 GMT</lastBuildDate><item><title><![CDATA[Node please execute]]></title><description><![CDATA[npx available starting npm version 5.2.x Problem definition and setting the why Installing packages globally Adding aliases Using npm…]]></description><link>https://ivanbila.github.io/what-the-heck-is-npx/</link><guid isPermaLink="false">https://ivanbila.github.io/what-the-heck-is-npx/</guid><pubDate>Invalid Date</pubDate><content:encoded>&lt;p&gt;npx available starting npm version 5.2.x&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>RSS for Node</generator><lastBuildDate>Sat, 20 Jul 2019 18:18:05 GMT</lastBuildDate><item><title><![CDATA[Node please execute]]></title><description><![CDATA[npx available starting npm version 5.2.x Problem definition and setting the why Installing packages globally Adding aliases Using npm…]]></description><link>https://ivanbila.github.io/what-the-heck-is-npx/</link><guid isPermaLink="false">https://ivanbila.github.io/what-the-heck-is-npx/</guid><pubDate>Invalid Date</pubDate><content:encoded>&lt;p&gt;npx available starting npm version 5.2.x&lt;/p&gt;
 &lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Installing packages globally&lt;/li&gt;
@@ -9,7 +9,7 @@
 &lt;h2&gt;Table of contents&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Use npx to run locally installed node modules&lt;/li&gt;
-&lt;li&gt;Use npx to temporarly install and invoke a package from npm&lt;/li&gt;
+&lt;li&gt;Use npx to temporarily install and invoke a package from npm&lt;/li&gt;
 &lt;li&gt;Use npx to rest different versions of node modules&lt;/li&gt;
 &lt;li&gt;Use npx to run commands with different versions of Node.js&lt;/li&gt;
 &lt;li&gt;Execute npx commands with npm env variables&lt;/li&gt;
@@ -17,16 +17,16 @@
 &lt;li&gt;Use npx to execute a code from a github gist&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;NOTES&lt;/h2&gt;
-&lt;p&gt;npx allows you to play arround with a new package from npm registry without having to install it&lt;/p&gt;
+&lt;p&gt;npx allows you to play around with a new package from npm registry without having to install it&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; eslint --dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;or&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; i eslint -D&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;when we run eslint —init, it doesn’t find it, because it is looking for a global install, one would be to use
+&lt;p&gt;when we run eslint —init, it doesnt find it, because it is looking for a global install, one would be to use
 the projects absolute path &lt;code class=&quot;language-text&quot;&gt;./node_module/bin/eslint&lt;/code&gt; which works, but we can go ahead and simplify it more
 and add it to our list of aliases so we can use it in every project&lt;/p&gt;
 &lt;p&gt;aliases file&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;alias&lt;/span&gt; eslint&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;./node_modules/bin/eslint&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We can optmize this flow by promoting it and adding it to our scripts in the &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file&lt;/p&gt;
+&lt;p&gt;We can optimize this flow by promoting it and adding it to our scripts in the &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file&lt;/p&gt;
 &lt;p&gt;“eslint”: “eslint”&lt;/p&gt;
 &lt;p&gt;finds the locally installed eslint
 $(npm bin)/eslint&lt;/p&gt;
@@ -35,8 +35,8 @@ $(npm bin)/eslint&lt;/p&gt;
 node modules from the terminal
 if we feel good about any of the commands we can promote it to be an npm script&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm run&lt;/code&gt; shows a list of scripts that can be run&lt;/p&gt;
-&lt;p&gt;npm ls create-react-app —global -&gt; check if a dependendecy is intalled globally or not
-we can use npx to temporarly install a package a execute it&lt;/p&gt;
+&lt;p&gt;npm ls create-react-app —global -&gt; check if a dependency is installed globally or not
+we can use npx to temporarily install a package a execute it&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx create-react-app todo-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;node_modules can use quite a lot of space, using some dependencies this way can be handy if you’d rather
 {image of black hole} not install programs globally, or you use them frequently that’d rather use the latest
@@ -51,7 +51,7 @@ version when you need them, also can be handy if you want to play with some tool
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx eslint@next ./&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;if eslint@next requires some extra packages we can use npx to specify those:
 -c -&gt; execute a command
--p -&gt; specifiy a dependency&lt;/p&gt;
+-p -&gt; specify a dependency&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx -p eslint@next -p eslint-config-google -c &lt;span class=&quot;token string&quot;&gt;&quot;eslint ./&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;npx will install next version of eslint along with config google&lt;/p&gt;
 &lt;h3&gt;Using npx to run different versions of node&lt;/h3&gt;
@@ -71,7 +71,7 @@ env variables in npm run env&lt;/p&gt;
 &lt;h2&gt;Execute code from a remote branch&lt;/h2&gt;
 &lt;p&gt;npm repo -&gt; navigates to the dependencies’ github repo…&lt;/p&gt;
 &lt;p&gt;npx user/library-repo#branch&lt;/p&gt;
-&lt;p&gt;will temporarly download the branch and run it locally&lt;/p&gt;
+&lt;p&gt;will temporarily download the branch and run it locally&lt;/p&gt;
 &lt;h2&gt;Execute code that is on a github gist&lt;/h2&gt;
 &lt;p&gt;gist&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;#&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;usr&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;bin&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;env node
@@ -80,11 +80,31 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;p&gt;package.json&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;some project&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;token string&quot;&gt;&quot;version: &quot;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.2&lt;/span&gt;.&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&quot;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token property&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.2.1&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;token property&quot;&gt;&quot;bin&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./index.js&quot;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;npx gist-url&lt;/p&gt;
-&lt;p&gt;trust the source of your gist urls&lt;/p&gt;</content:encoded></item><item><title><![CDATA[PHP Multi-byte strings]]></title><description><![CDATA[Problem definition and setting the why Do you know why these two results are different? Have you heard of multi-byte functions? How to…]]></description><link>https://ivanbila.github.io/php-multibyte/</link><guid isPermaLink="false">https://ivanbila.github.io/php-multibyte/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
+&lt;p&gt;trust the source of your gist urls&lt;/p&gt;</content:encoded></item><item><title><![CDATA[End to end testing using cypress]]></title><link>https://ivanbila.github.io/end-to-end-testing-using-cypress/</link><guid isPermaLink="false">https://ivanbila.github.io/end-to-end-testing-using-cypress/</guid><pubDate>Wed, 10 Jul 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[End to end testing using purpeteer]]></title><link>https://ivanbila.github.io/end-to-end-testing-using-purpetteer/</link><guid isPermaLink="false">https://ivanbila.github.io/end-to-end-testing-using-purpetteer/</guid><pubDate>Wed, 10 Jul 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Icons Strategy]]></title><link>https://ivanbila.github.io/icons-strategy/</link><guid isPermaLink="false">https://ivanbila.github.io/icons-strategy/</guid><pubDate>Wed, 10 Jul 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Nginx for performance a primer]]></title><link>https://ivanbila.github.io/nginx-performance-forperformance-a-primer/</link><guid isPermaLink="false">https://ivanbila.github.io/nginx-performance-forperformance-a-primer/</guid><pubDate>Wed, 10 Jul 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[ssh]]></title><link>https://ivanbila.github.io/ssh/</link><guid isPermaLink="false">https://ivanbila.github.io/ssh/</guid><pubDate>Wed, 10 Jul 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Mysql Query performance]]></title><description><![CDATA[Introducao Recentemente tive de melhorar a performance de uma das paginas do  emprego.co.mz , durante
+esse processo aprendi a fazer…]]></description><link>https://ivanbila.github.io/mysql-query-performance/</link><guid isPermaLink="false">https://ivanbila.github.io/mysql-query-performance/</guid><pubDate>Sat, 06 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Introducao&lt;/h2&gt;
+&lt;p&gt;Recentemente tive de melhorar a performance de uma das paginas do &lt;a href=&quot;https://www.emprego.co.mz&quot;&gt;emprego.co.mz&lt;/a&gt;, durante
+esse processo aprendi a fazer profiling e melhorar a performance das queries do mysql.&lt;/p&gt;
+&lt;p&gt;Neste blog post nao irei falar ou mencionar outras tecnicas usadas para melhorar a performance do mysql como usar memcahed
+ou redis ou um servidor de pesquisa ou qualquer ferramenta externa ao mysql que serve para fazer cache ou indexacao, irei
+adressar somente como fazer o profiling e melhorar as queries usando somente as ferramentas disponiveis no mysql.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Measre twice cut once&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;O primeiro passo antes de procurar melhorar as queries do mysql é analisar realmente se existe uma necessidade de passar
+um tempo analisando as queries para melhorar, isto é profiling. Outro ponto importante a levantar é que melhorar a despende
+tempo que as vezes o resultado desse trabalho todo pode ser 3s ou 2s a menos na nossa query…&lt;/p&gt;
+&lt;p&gt;Profiling é a fase onde verificamos quais as queries que gastam mais recursos ou que levam mais tempo sendo executadas e
+eventualmente enviado o resultado para a aplicacao.&lt;/p&gt;
+&lt;p&gt;Para ligar/activar profiling temos de correr o seguinte comando:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;mysql&quot;&gt;&lt;pre class=&quot;language-mysql&quot;&gt;&lt;code class=&quot;language-mysql&quot;&gt;SET profiling = 1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;é importante firsar que devemos correr a instrucao acima depois de escolher a base de dados na qual vamos executar as queries, para escolher a base de dados
+a ser usada corremos o seguinte comando:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;use &amp;lt;base_de_dados&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Depois de escolher a base de dados e&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How to add brotli compression to nginx]]></title><link>https://ivanbila.github.io/how-to-add-brotli-compression-to-nginx/</link><guid isPermaLink="false">https://ivanbila.github.io/how-to-add-brotli-compression-to-nginx/</guid><pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[JAMSTACK and static sites generators]]></title><link>https://ivanbila.github.io/introduction-to-courotines/</link><guid isPermaLink="false">https://ivanbila.github.io/introduction-to-courotines/</guid><pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[JAMSTACK and static sites generators]]></title><link>https://ivanbila.github.io/jam-stack-and-static-sites-generators/</link><guid isPermaLink="false">https://ivanbila.github.io/jam-stack-and-static-sites-generators/</guid><pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[Performance a Primer]]></title><link>https://ivanbila.github.io/performance-a-primer/</link><guid isPermaLink="false">https://ivanbila.github.io/performance-a-primer/</guid><pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[performance-metrics]]></title><link>https://ivanbila.github.io/performance-metrics/</link><guid isPermaLink="false">https://ivanbila.github.io/performance-metrics/</guid><pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[PHP Multi-byte strings]]></title><description><![CDATA[Problem definition and setting the why Do you know why these two results are different? Have you heard of multi-byte functions? How to…]]></description><link>https://ivanbila.github.io/php-multibyte/</link><guid isPermaLink="false">https://ivanbila.github.io/php-multibyte/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
 &lt;p&gt;Do you know why these two results are different? Have you heard of multi-byte functions?&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;strlen&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;mb_strlen&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -115,7 +135,88 @@ phpenmod -v 7.1 &lt;modulename&gt;&lt;/p&gt;
 &lt;a href=&quot;https://www.interserver.net/tips/kb/what-is-mbstring-and-how-to-enable/&quot;&gt;WHAT IS MBR&lt;/a&gt;
 &lt;a href=&quot;https://www.sitepoint.com/working-with-multibyte-strings/&quot;&gt;WORKING WITH MULTIBYTE STRINGS&lt;/a&gt;
 &lt;a href=&quot;http://www.alejandro.codina.nom.br/php-manual-br/ref.mbstring.html&quot;&gt;REF MULTIBYTE&lt;/a&gt;
-&lt;a href=&quot;https://www.slideshare.net/Daniel_Rhodes/multibyte-string-handling-in-php&quot;&gt;MULTIBYTE STRING HANDLING&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.&lt;/p&gt;
+&lt;a href=&quot;https://www.slideshare.net/Daniel_Rhodes/multibyte-string-handling-in-php&quot;&gt;MULTIBYTE STRING HANDLING&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Como desenvolvedores podem melhorar a UX]]></title><description><![CDATA[Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
+ele/ela pode não…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/index.pt/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/index.pt/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
+ele/ela pode não precisar fazer um curso de experiência de utilizador para aprender.&lt;/p&gt;
+&lt;p&gt;No entanto, quando passadas despercebidas, podem danificar a experiência da aplicação, por outro lado, se voce passar
+algum tempo e corrigi-los, pode melhorar significativamente a experiência do utilizador no aplicativo.&lt;/p&gt;
+&lt;h3&gt;Prove o valor do seu aplicativo&lt;/h3&gt;
+&lt;p&gt;Imagine ser solicitado a sua cópia de identidade / cartão de crédito antes de entrar em uma loja? Como você se sentiria?
+É assim que os utilizadores se sentem quando você pede seus dados antes mesmo de usar seu aplicativo, o que estou dizendo
+é que devemos deixar o utilizador fazer algo em nossa aplicativos sem exigir que ele se inscreva. Não é suficiente colocar
+uma tela inicial ou um breve tutorial sobre como o aplicativo funciona para determinar se seu aplicativo vale a pena ou não.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Se você me pedir meus dados antes de oferecer qualquer valor, isso significa que você está mais preocupado com
+meus dados do que com a solução meu problema. ” utilizador apressado&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Eu acho que a afirmação acima resume tudo. Seria melhor se você não solicitasse que um utilizador fizesse login ou
+fornecesse dados (dele) antes mesmo de mostrar a ele por que seu aplicativo merece (atenção) ou dados.
+Eu sei que alguns aplicativos precisam saber sobre o utilizador antes dele usá-lo, mas acho que você sempre pode dar
+um jeito de dar valor antes de pedir.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Valorize seus utilizadores antes de solicitar.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Prefira o OAuth sobre a senha tradicional de e-mail&lt;/h3&gt;
+&lt;p&gt;Quando um utilizador se cadastra usando o tradicional senha e e-mail, ele tem que memorizar a senha para seu aplicativo
+específico ou, pior ainda, em alguns casos ele pode reutilizar uma senha (a menos que ele use um aplicativo gerador / gerenciador de senhas).&lt;/p&gt;
+&lt;p&gt;Alguns utilizadores tendem a reutilizar ou criar senhas fracas para a maioria dos aplicativos que usam, para evitar
+trabalhos difíceis de memorizar ou salvar em um gerenciador de senhas.&lt;/p&gt;
+&lt;p&gt;Ter que memorizar as coisas é trabalhoso, exaustivo e demorado, geralmente os utilizadores têm muitas coisas para
+acompanhar (tarefas, nomes de família, números de telefone), então é improvável que eles memorizem a senha da sua app,
+eles têm zilhões de apps , você quer tornar seu aplicativo fácil de usar sem o incômodo de lembrar senhas e e-mails.
+Para evitar isso, você pode usar o OAuth.&lt;/p&gt;
+&lt;p&gt;Com o OAuth, o utilizador não precisa memorizar uma senha ou nome de utilizador
+(em suma, ele permite login / logout sem senha), o login ou a inscrição é apenas um “clique / toque”, o que significa
+que ele só precisa permitir que seu aplicativo acesse seus dados.&lt;/p&gt;
+&lt;p&gt;Esse fluxo tende a ser menos trabalhoso/exaustivo para o utilizador porque ele não precisa memorizar uma senha e verificar
+se o email foi preenchido corretamente. Usar o fluxo OAuth significa que você não precisa implementar a lógica para
+redefinir a senha (a menos que você tenha utilizadores usando a senha de e-mail) que o utilizador provavelmente esquecerá
+várias vezes até parar de usar seu serviço.&lt;/p&gt;
+&lt;p&gt;Ao usar o OAuth, além de ter a conveniência de fazer login do utilizador sem exigir uma senha, você também terá acesso
+à informação (nome, sobrenome, idade e mais) que o utilizador já preencheu em sua conta.&lt;/p&gt;
+&lt;p&gt;Se você deve usar o Google, o Twitter, o Facebook, o Linkedin ou o provedor GitHub OAuth pode depender de suas necessidades,
+no entanto, na maioria das vezes, você usará mais de um provedor OAuth.&lt;/p&gt;
+&lt;p&gt;Como o Facebook e o Google são os provedores com mais utilizadores, vou comparar os dois e no fim concluir o por que de
+usar um ao inves do outro.&lt;/p&gt;
+&lt;p&gt;O Google e o Facebook permitem que você obtenha quase as mesmas informações para um determinado utilizador, mas o uso
+de um ou outro pode ter implicações diferentes na experiência do utilizador para seu aplicativo.&lt;/p&gt;
+&lt;p&gt;Normalmente, o fluxo é o quase o mesmo e você clica para registrar ou entrar, então você é redirecionado para uma
+página onde você pode aceitar, recusar ou aceitar mas personalizar (eu só posso ver esse recurso no Facebook)
+que informações app pode obter da sua conta.&lt;/p&gt;
+&lt;p&gt;No celular mais especificamente Android, quando você faz login ou se inscreve no Facebook, ele geralmente abre uma
+guia do navegador da Web que pode ser cara para o utilizador.&lt;/p&gt;
+&lt;p&gt;Abrir o navegador ou aplicativos externos usa RAM e capacidade de processamento, o que não é o que você quer que seu
+aplicativo faça, porque a maioria dos dispositivos tem pouca RAM e a capacidade de processamento é escassa, mesmo que
+tenham bom poder de processamento. outros aplicativos além do seu.&lt;/p&gt;
+&lt;p&gt;Outra desvantagem de abrir um navegador / aplicativo para entrar / sair é a perda da atenção do utilizador, porque ele
+é levado para um lugar diferente, onde pode encontrar distrações e quem sabe se ele retornará?&lt;/p&gt;
+&lt;p&gt;O Google disponibilizou alguns recursos interessantes para acelerar o fluxo de sinal usando, para a Web, um chamado
+“registro de toque” ou “auto login”, que permite fluxos de login e inscrição contínuos e ininterruptos com
+um sinal -no ecrã ou inscrever-se.&lt;/p&gt;
+&lt;h3&gt;Não peça que eles convidem seus amigos nem avaliem você&lt;/h3&gt;
+&lt;p&gt;Sério, eu não acho que os utilizadores convidem outras pessoas para usar um aplicativo. Ninguém faz isso. É estranho, se
+eu quiser que meu amigo use este aplicativo X, eu digo a ele para fazer o download e explicar os  benefícios e dizer a
+ele como eu sou legal porque estou usando ou como isso mudou, melhorou ou me ajudou a fazer isso.
+Boca a boca é o tipo de convite ou recomendação que as pessoas querem, não receber uma mensagem ou um e-mail dizendo
+que o utilizador X convidou você para usar este aplicativo, como o aplicativo deve resolver meu problema se já estiver
+criando um novo me enviando por spam. ?&lt;/p&gt;
+&lt;h3&gt;Use a linguagem apropriada&lt;/h3&gt;
+&lt;p&gt;Ao contrário de outros campos extremamente formais como arquitetura e direito, no software, ninguém virá e suspenderá
+seu aplicativo porque a linguagem não está gramaticalmente correta (há alguns casos extremos em que a linguagem tem que
+seguir estritamente as regras da gramática e assim por diante), ou usou palavras que não existem no dicionário.&lt;/p&gt;
+&lt;p&gt;Ao criar seu aplicativo, prefira um idioma fácil de entender e no contexto. (Não precisa ser gramaticalmente correto,
+embora isso não seja um apelo para ignorar totalmente a gramática, há pequenas coisas que você pode fazer ou alterar
+em seu idioma para facilitar o entendimento para seus utilizadores específicos).&lt;/p&gt;
+&lt;p&gt;O uso inadequado da linguagem pode causar dúvida, incerteza, hesitação, ambigüidade, desinformação.&lt;/p&gt;
+&lt;p&gt;Textos longos podem prejudicar a experiência do utilizador, pois ele pode estar usando um dispositivo móvel que
+não possui uma tela grande.&lt;/p&gt;
+&lt;p&gt;Aqui estão alguns exemplos de mau uso da linguagem que resultaram em confusão, desinformação:&lt;/p&gt;
+&lt;p&gt;Há muito mais coisas que você pode fazer para melhorar a experiência do utilizador, mas decidi me concentrar apenas
+naquelas que eu acho que quando ignoradas podem prejudicar a experiência do utilizador no seu aplicativo significativamente.&lt;/p&gt;
+&lt;p&gt;Espero que você tenha encontrado algo que possa ser aplicado no seu projecto actual ou em projetos futuros e que
+tenhas aprendido tanto quanto eu ao escrever este post, que seu próximo / atual projeto tenha a melhor experiência
+possível.&lt;/p&gt;
+&lt;p&gt;Obrigado e até a próxima.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.&lt;/p&gt;
 &lt;p&gt;However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application’s user experience significantly.&lt;/p&gt;
 &lt;h3&gt;Prove the value of your app&lt;/h3&gt;
 &lt;p&gt;Imagine being asked for your ID copy/credit card before entering a shop? How would you feel? That’s how users feel when you ask for their data before they can even use your app, what I’m saying is we should Let the user do something in our apps without requiring him to sign up. It is not enough to put a splash screen or a short tutorial on how the app works to establish whether your application is worth it or not.&lt;/p&gt;
@@ -383,85 +484,4 @@ phpenmod -v 7.1 &lt;modulename&gt;&lt;/p&gt;
 &lt;p&gt;Thanks, and see you next time.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Learning to learn and learning to unlearn]]></title><description><![CDATA[Tornar a mente permeavel, mudar sempre que dever I’m frequently trying to benchmark opinions i have against alternatives to see if they…]]></description><link>https://ivanbila.github.io/learning-to-learn-and-learning-to-unlearn/</link><guid isPermaLink="false">https://ivanbila.github.io/learning-to-learn-and-learning-to-unlearn/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Tornar a mente permeavel, mudar sempre que dever&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;I’m frequently trying to benchmark opinions i have against alternatives to see if they still hold. this is particularly so for technology, but applies broadly as well. It’s exhilarating to try to invalidade your current operating theses, because if you can, there’s a leap to make. I’ve made many such leaps. DHH&lt;/p&gt;
-&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[Como desenvolvedores podem melhorar a UX]]></title><description><![CDATA[Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
-ele/ela pode não…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/index.pt/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/index.pt/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
-ele/ela pode não precisar fazer um curso de experiência de utilizador para aprender.&lt;/p&gt;
-&lt;p&gt;No entanto, quando passadas despercebidas, podem danificar a experiência da aplicação, por outro lado, se voce passar
-algum tempo e corrigi-los, pode melhorar significativamente a experiência do utilizador no aplicativo.&lt;/p&gt;
-&lt;h3&gt;Prove o valor do seu aplicativo&lt;/h3&gt;
-&lt;p&gt;Imagine ser solicitado a sua cópia de identidade / cartão de crédito antes de entrar em uma loja? Como você se sentiria?
-É assim que os utilizadores se sentem quando você pede seus dados antes mesmo de usar seu aplicativo, o que estou dizendo
-é que devemos deixar o utilizador fazer algo em nossa aplicativos sem exigir que ele se inscreva. Não é suficiente colocar
-uma tela inicial ou um breve tutorial sobre como o aplicativo funciona para determinar se seu aplicativo vale a pena ou não.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;“Se você me pedir meus dados antes de oferecer qualquer valor, isso significa que você está mais preocupado com
-meus dados do que com a solução meu problema. ” utilizador apressado&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Eu acho que a afirmação acima resume tudo. Seria melhor se você não solicitasse que um utilizador fizesse login ou
-fornecesse dados (dele) antes mesmo de mostrar a ele por que seu aplicativo merece (atenção) ou dados.
-Eu sei que alguns aplicativos precisam saber sobre o utilizador antes dele usá-lo, mas acho que você sempre pode dar
-um jeito de dar valor antes de pedir.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Valorize seus utilizadores antes de solicitar.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;Prefira o OAuth sobre a senha tradicional de e-mail&lt;/h3&gt;
-&lt;p&gt;Quando um utilizador se cadastra usando o tradicional senha e e-mail, ele tem que memorizar a senha para seu aplicativo
-específico ou, pior ainda, em alguns casos ele pode reutilizar uma senha (a menos que ele use um aplicativo gerador / gerenciador de senhas).&lt;/p&gt;
-&lt;p&gt;Alguns utilizadores tendem a reutilizar ou criar senhas fracas para a maioria dos aplicativos que usam, para evitar
-trabalhos difíceis de memorizar ou salvar em um gerenciador de senhas.&lt;/p&gt;
-&lt;p&gt;Ter que memorizar as coisas é trabalhoso, exaustivo e demorado, geralmente os utilizadores têm muitas coisas para
-acompanhar (tarefas, nomes de família, números de telefone), então é improvável que eles memorizem a senha da sua app,
-eles têm zilhões de apps , você quer tornar seu aplicativo fácil de usar sem o incômodo de lembrar senhas e e-mails.
-Para evitar isso, você pode usar o OAuth.&lt;/p&gt;
-&lt;p&gt;Com o OAuth, o utilizador não precisa memorizar uma senha ou nome de utilizador
-(em suma, ele permite login / logout sem senha), o login ou a inscrição é apenas um “clique / toque”, o que significa
-que ele só precisa permitir que seu aplicativo acesse seus dados.&lt;/p&gt;
-&lt;p&gt;Esse fluxo tende a ser menos trabalhoso/exaustivo para o utilizador porque ele não precisa memorizar uma senha e verificar
-se o email foi preenchido corretamente. Usar o fluxo OAuth significa que você não precisa implementar a lógica para
-redefinir a senha (a menos que você tenha utilizadores usando a senha de e-mail) que o utilizador provavelmente esquecerá
-várias vezes até parar de usar seu serviço.&lt;/p&gt;
-&lt;p&gt;Ao usar o OAuth, além de ter a conveniência de fazer login do utilizador sem exigir uma senha, você também terá acesso
-à informação (nome, sobrenome, idade e mais) que o utilizador já preencheu em sua conta.&lt;/p&gt;
-&lt;p&gt;Se você deve usar o Google, o Twitter, o Facebook, o Linkedin ou o provedor GitHub OAuth pode depender de suas necessidades,
-no entanto, na maioria das vezes, você usará mais de um provedor OAuth.&lt;/p&gt;
-&lt;p&gt;Como o Facebook e o Google são os provedores com mais utilizadores, vou comparar os dois e no fim concluir o por que de
-usar um ao inves do outro.&lt;/p&gt;
-&lt;p&gt;O Google e o Facebook permitem que você obtenha quase as mesmas informações para um determinado utilizador, mas o uso
-de um ou outro pode ter implicações diferentes na experiência do utilizador para seu aplicativo.&lt;/p&gt;
-&lt;p&gt;Normalmente, o fluxo é o quase o mesmo e você clica para registrar ou entrar, então você é redirecionado para uma
-página onde você pode aceitar, recusar ou aceitar mas personalizar (eu só posso ver esse recurso no Facebook)
-que informações app pode obter da sua conta.&lt;/p&gt;
-&lt;p&gt;No celular mais especificamente Android, quando você faz login ou se inscreve no Facebook, ele geralmente abre uma
-guia do navegador da Web que pode ser cara para o utilizador.&lt;/p&gt;
-&lt;p&gt;Abrir o navegador ou aplicativos externos usa RAM e capacidade de processamento, o que não é o que você quer que seu
-aplicativo faça, porque a maioria dos dispositivos tem pouca RAM e a capacidade de processamento é escassa, mesmo que
-tenham bom poder de processamento. outros aplicativos além do seu.&lt;/p&gt;
-&lt;p&gt;Outra desvantagem de abrir um navegador / aplicativo para entrar / sair é a perda da atenção do utilizador, porque ele
-é levado para um lugar diferente, onde pode encontrar distrações e quem sabe se ele retornará?&lt;/p&gt;
-&lt;p&gt;O Google disponibilizou alguns recursos interessantes para acelerar o fluxo de sinal usando, para a Web, um chamado
-“registro de toque” ou “auto login”, que permite fluxos de login e inscrição contínuos e ininterruptos com
-um sinal -no ecrã ou inscrever-se.&lt;/p&gt;
-&lt;h3&gt;Não peça que eles convidem seus amigos nem avaliem você&lt;/h3&gt;
-&lt;p&gt;Sério, eu não acho que os utilizadores convidem outras pessoas para usar um aplicativo. Ninguém faz isso. É estranho, se
-eu quiser que meu amigo use este aplicativo X, eu digo a ele para fazer o download e explicar os  benefícios e dizer a
-ele como eu sou legal porque estou usando ou como isso mudou, melhorou ou me ajudou a fazer isso.
-Boca a boca é o tipo de convite ou recomendação que as pessoas querem, não receber uma mensagem ou um e-mail dizendo
-que o utilizador X convidou você para usar este aplicativo, como o aplicativo deve resolver meu problema se já estiver
-criando um novo me enviando por spam. ?&lt;/p&gt;
-&lt;h3&gt;Use a linguagem apropriada&lt;/h3&gt;
-&lt;p&gt;Ao contrário de outros campos extremamente formais como arquitetura e direito, no software, ninguém virá e suspenderá
-seu aplicativo porque a linguagem não está gramaticalmente correta (há alguns casos extremos em que a linguagem tem que
-seguir estritamente as regras da gramática e assim por diante), ou usou palavras que não existem no dicionário.&lt;/p&gt;
-&lt;p&gt;Ao criar seu aplicativo, prefira um idioma fácil de entender e no contexto. (Não precisa ser gramaticalmente correto,
-embora isso não seja um apelo para ignorar totalmente a gramática, há pequenas coisas que você pode fazer ou alterar
-em seu idioma para facilitar o entendimento para seus utilizadores específicos).&lt;/p&gt;
-&lt;p&gt;O uso inadequado da linguagem pode causar dúvida, incerteza, hesitação, ambigüidade, desinformação.&lt;/p&gt;
-&lt;p&gt;Textos longos podem prejudicar a experiência do utilizador, pois ele pode estar usando um dispositivo móvel que
-não possui uma tela grande.&lt;/p&gt;
-&lt;p&gt;Aqui estão alguns exemplos de mau uso da linguagem que resultaram em confusão, desinformação:&lt;/p&gt;
-&lt;p&gt;Há muito mais coisas que você pode fazer para melhorar a experiência do utilizador, mas decidi me concentrar apenas
-naquelas que eu acho que quando ignoradas podem prejudicar a experiência do utilizador no seu aplicativo significativamente.&lt;/p&gt;
-&lt;p&gt;Espero que você tenha encontrado algo que possa ser aplicado no seu projecto actual ou em projetos futuros e que
-tenhas aprendido tanto quanto eu ao escrever este post, que seu próximo / atual projeto tenha a melhor experiência
-possível.&lt;/p&gt;
-&lt;p&gt;Obrigado e até a próxima.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;/blockquote&gt;</content:encoded></item></channel></rss>

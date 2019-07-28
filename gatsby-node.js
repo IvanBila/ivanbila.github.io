@@ -9,7 +9,7 @@ exports.createPages = ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
-          filter: { fields: { draft: { eq: false } } }
+          filter: { fields: { draft: { eq: ${(process.env.NODE_ENV !== 'production')} } } }
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {

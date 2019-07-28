@@ -5,9 +5,6 @@ description: ""
 draft: true
 ---
 
-
-
-
 ## Use HTTPS
 
 When you use http all data sent from the client to the server and vice-versa is unencrypted that implies that
@@ -29,66 +26,27 @@ Not having access to Service workers means that your app cannot qualify as a PWA
 will label your site as being unsecured.
 
 
-## Taking user input as is
+## Taking user input as is(not sanitizing)
 
 Not sanitizing user input extremely dangerous, if your don't sanitise user input your app might be suggested to SQL or XSS.
-Suppose I have a banking that can allow me to make transfers and I have an input that sends it to the api
+Suppose I have a banking that can allow me to make transfers and I have an input that sends it to the api.
 
+The bank app contains this input
 
+## Don't use deprecated libraries/frameworks with widely knows vulnerabilities
 
+## Inspect frameworks or libraries before deploying to production or using it
 
-## Using deprecated libraries/frameworks with widely knows vulnerabilities
+## Don't send sensitive data using get requests
 
+## Add adding noopener noreferer to external links
 
+## use doctype
 
-## Recklessly adding libraries or framework without proper inspection
+## Force internet explorer to use it's best rendering engine
 
+## Don't sensitive data or apis keys to javascript code
 
+## Prefer http only cookies for sensitive data
 
-NOTES:
-
-- Https
-Give http example with plain text
-send data over a secure origin/https allow access to apis such 
-as web-cam, geolocation, service workers, pwa
-
-
-- Setting Inner HTML risks
-- CSS password sniffing(it allows you to get the value of any attribute in the DOM)
-    How can you steal text from an input element, using the starts with selector
-    write for every possible starting caracter
-
-- Third party javascript and CSS
-- XSS using css
-- IE7 And css Expressions(you have access to them dom and all browser methods)
-internet explorer has something called browser mode latest 3 ie versions shipped with features
-that emulated all the older ie versions of browsers
-you can easily switch between, you can trigger the modes by using http header or a meta tag
-<meta http-equiv="x-ua-compatible" content="IE=edge">
-<meta http-equiv="x-ua-compatible" content="IE=7">
-your document will be rendered in the latest available mode/tells ie to use the best engine
-ie10 ie11
-
-- using doctype html triggers ie to disable css expressions
-
-- Internet explorer 5 javascript in css
-- noopener noreferr
-- outdated or libraries with known vulnerabilities
-- security through obscurity
-- never trust data that comes from the client
-(unexpected that in a string XSS, any thing on the client side can be changed an will be changed)
-
-- http only cookies(not accessible via javascript)
-- calculate the price on the client and on the server side if you own a ecommerce app
-- Don't put non secure api keys on javascript code
-- restrict credit/debit card data in apis
-- Cross Site Request Forgery
-- Forms
-  Put a method on a form, for html defaults to get, get puts the inputs with a name attribute in the url bar
-  which will be on users history, and server logs. don't put name attribute in sensitive fields
-
-
-LINKS:
-- https://github.com/thedaviddias/Front-End-Checklist
-- https://securityheaders.com/
-- https://observatory.mozilla.org/
+## Preferably do business logic on the backend

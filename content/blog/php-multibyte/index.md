@@ -48,8 +48,14 @@ php -m lists the loaded modules
 
 If you have several php versions intalled you can also use this syntax:
 
+```shell
 phpenmod -v 5.6 <modulename>
 phpenmod -v 7.1 <modulename>
+```
+
+```shell
+php7.2enmod pdo_mysql
+```
 
 
 ## Comparision of muti byte functions with normal functions

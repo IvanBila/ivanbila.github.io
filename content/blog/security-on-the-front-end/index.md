@@ -5,9 +5,8 @@ description: ""
 draft: false
 ---
 
-
 It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
-applications one.
+applications make use of exeternal code through packages such as jquery, react, vue and so forth
 
 ## Use HTTPS
 
@@ -29,7 +28,6 @@ https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_r
 Not having access to Service workers and other apis means that your app cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.
 
-
 ## Taking user input as is(not sanitizing)
 
 Not sanitizing user input extremely dangerous, if your don't sanitise user input your app might be suggested to SQL or
@@ -50,12 +48,13 @@ evilScript.src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js"
 
 And the browser will execute the following instructions if the input text is appended using innerHtml method, with that the attack perpetruator
 can:
-- request css
-- request images
-- make calls to your api
-- control the browser
-- open another page
-- open another tab
+
+- Request CSS
+- Request images
+- Make calls to your api
+- Control the browser
+- Open another page
+- Open another tab
 
 It's pretty much game over for you application, the hacker can do as he wishes how he wishes.
 The best thing to do in such situation is to escape the text before appending to the DOM, or even better you can use javascipt's
@@ -63,20 +62,16 @@ built in innerText if you want append what's typed as text.
 
 ## Don't use deprecated libraries/frameworks with widely knows vulnerabilities
 
-Using deprecated libraries with with widely knows vulnerabilities it's almost like asking to be hacked, hoping that hackers
-will not find out that your website's library or framework has known vulnerabilities is not a good strategy.
-Making a habit of inspecting the libary versions and if it has vulnerabilities can be life saving to your application.
+Using deprecated libraries with with widely knows vulnerabilities it's almost like asking to be hacked(seriously don't use jquery 1), hoping that hackers will not find out that your website's library or framework has known vulnerabilities is not a good strategy. Making a habit of inspecting the libary versions(if you're using github you turn on notifications for vulnerabilities in libraries) and if it has vulnerabilities can be life saving to your application and consequently to your business.
 
 ## Inspect frameworks or libraries before deploying to production or using it
 
-Sometimes the libraries might not be deprecated or have know vulnerabilities because no one can understand the code behind it
-but, it always better to be safe than sorry, when house builders look for tools to aid them in their work they don't choose the lastest
-fanciest tool that only a hanful of cratsman use, they always in search for tools that stood the test of time, and that's what I think
-developers should do, use tools that many developers have tried and didn't not find any intersting code, I also think that from time to time
+Sometimes the libraries might not be deprecated or have known vulnerabilities but, it always better to be safe than sorry, when house builders look for tools to aid them in their work they don't choose the lastest fanciest tools that only a hanful of cratsman use, they always in search for tools that stood the test of time, and that's what I think developers should do, use tools that many developers have tried and didn't not find any tricky or malintentioned code, I also think that from time to time
 you should check what code is in your library
 
-
 ## Don't send sensitive data using get requests
+
+One of restful apis guides is that we should not mutate data using GET requests, that's a good rule to follow, because asides making an API restful it can also make it safe.
 Suppose we have the following form for getting users payment credit card number and CVC for issuing a payment to a service
 your application.
 
@@ -105,12 +100,15 @@ with forms that contains sensitive data.
 
 ## Add adding noopener noreferer to external links
 
+When we add external links with target="_blank" attribute the browser allows the opened tab
+
 ## use doctype
 
 ### Force internet explorer to use it's best rendering engine
 
-## Don't sensitive data or apis keys to javascript code
+## Don't keep sapis keys to javascript code
 
+Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can access your site will can use your that api key and if it is linked to any special privileges the user can exploit your application as he wishes.
 
 ## Prefer http only cookies for sensitive data
 
@@ -122,14 +120,9 @@ read your users sensitive cookies and use them for their own interests.
 Doing bussiness logic on the frontend is a mistake, because the data on the frontend is subject to
 changes and checks
 
-
-
 NOTES:
 - TLS SSL
 - cve details
 - XSS
 - owasp top 10
 - .env
-
-
-

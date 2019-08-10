@@ -6,7 +6,7 @@ draft: false
 ---
 
 It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
-applications make use of exeternal code through packages such as jquery, react, vue and so forth
+applications make use of external code through packages such as jquery, react, vue and so forth
 
 ## Use HTTPS
 
@@ -46,7 +46,7 @@ evilScript.src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js"
 `
 ```
 
-And the browser will execute the following instructions if the input text is appended using innerHtml method, with that the attack perpetruator
+And the browser will execute the following instructions if the input text is appended using innerHtml method, with that the attack perpetrator
 can:
 
 - Request CSS
@@ -57,7 +57,7 @@ can:
 - Open another tab
 
 It's pretty much game over for you application, the hacker can do as he wishes how he wishes.
-The best thing to do in such situation is to escape the text before appending to the DOM, or even better you can use javascipt's
+The best thing to do in such situation is to escape the text before appending to the DOM, or even better you can use JavaScript's
 built in innerText if you want append what's typed as text.
 
 ## Don't use deprecated libraries/frameworks with widely knows vulnerabilities
@@ -83,7 +83,7 @@ your application.
 </form>
 ```
 
-Seemingly this form looks okay, but there is a security vulnerability, after submiting a form using a get request the
+Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a get request the
 browser stores the request url and all the input fields containing a name in it will be in the url and hence in
 the users browser's history and url bar here is how it looks like:
 [browser bar image]
@@ -106,9 +106,10 @@ When we add external links with target="_blank" attribute the browser allows the
 
 ### Force internet explorer to use it's best rendering engine
 
-## Don't keep sapis keys to javascript code
+## Don't keep apis keys to javascript code
 
-Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can access your site will can use your that api key and if it is linked to any special privileges the user can exploit your application as he wishes.
+Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can access 
+your site will can use your that api key and if it is linked to any special privileges the user can exploit your application as he wishes.
 
 ## Prefer http only cookies for sensitive data
 
@@ -117,7 +118,7 @@ read your users sensitive cookies and use them for their own interests.
 
 ## Preferably do business logic on the backend
 
-Doing bussiness logic on the frontend is a mistake, because the data on the frontend is subject to
+Doing business logic on the frontend is a mistake, because the data on the frontend is subject to
 changes and checks
 
 NOTES:

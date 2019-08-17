@@ -1,14 +1,13 @@
 ---
 title: Security on the frontend
-date: ""
+date: "08-17-2019"
 description: ""
 draft: false
 ---
 
 It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
-applications make use of external code through packages such as jquery, react, vue and so forth
-and the consequences of a successful hack are horrible, that can include harm to customers, lost of trust and in some
-cases legal liabilities
+applications, and the use of external code through packages such as jquery, react, and vue, the consequences of a 
+successful breach can be fatal, that can include harm to customers, lost of trust and in some cases legal liabilities
 
 
 ## Use HTTPS
@@ -25,7 +24,8 @@ The down side of using let's encrypt is browser support, you can only get the Do
 certificate and you have to renew it every three months.
 
 Having https also allows us to access browser apis that would not be available if the domain origin does not
-have a valid ssl certificate such as Service workers, Push Api, and Location, you can check the [full list](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts)
+have a valid ssl certificate such as Service workers, Push Api, and Location, you can check the 
+[full list](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts)
 
 Not having access to Service workers and other apis means that your app cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.
@@ -41,11 +41,9 @@ The app contains this input
 ```
 If I take the text inputed into that field and append to markup without saniziting the user can fill it with the following:
 ```javascript
-`
 let evilScript = document.body.appendChild(document.createElement("script"));
 evilScript.type = "text/javscript"
 evilScript.src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js"
-`
 ```
 
 And the browser will execute the following instructions if the input text is appended using innerHtml method, with that the attack perpetrator
@@ -58,9 +56,9 @@ can:
 - Open another page
 - Open another tab
 
-It's pretty much game over for you application, the hacker can do as he wishes how he wishes.
-The best thing to do in such situation is to escape the text before appending to the DOM, or even better you can use JavaScript's
-built in innerText if you want append what's typed as text.
+It's pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in 
+such situation is to escape the text before appending to the DOM, or even better you can use JavaScript's built in 
+innerText if you want append what's typed as text.
 
 ## Don't use deprecated libraries/frameworks with widely know vulnerabilities
 
@@ -96,13 +94,15 @@ credit card number and CVC for issuing a payment to a service your application.
 Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a get request the
 browser stores the request url and all the input fields containing a name in it will be in the url and hence in
 the users browser's history and url bar here is how it looks like:
-[./browser-url.png]
+![browser url bar](./browser-url.png)
+
 
 Accordingly the url will the in users history:
-[./history-url.png]
+![history url](./history-url.png)
+
 
 If you have an access log here's what your server log will look like:
-[./server-log.png]
+![server log](./server-log.png)
 
 Given the vulnerabilities pointed above it's important for us developers to always use post requests for sensitive data,
 browsers tend to fallback to get requests if the method is not specified, that means we have to remain vigilant and 
@@ -114,6 +114,10 @@ When we add external links with target="_blank" attribute the browser allows the
 
 ### Use DOCTYPE and force internet explorer to use it's best rendering engine
 
+When your add `<!DOCTYPE html>` to add html file it let's the browser know that this page is using the latest version
+of html, there's nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the 
+engine from previous browsers which also contain errors and security vulnerabilities from previous browsers, one of these
+features is CSS in JS
 
 
 ## Don't keep apis keys to javascript code
@@ -132,9 +136,12 @@ read your users sensitive cookies and use them for their own interests.
 Doing business logic on the frontend is a mistake, because the data on the frontend is subject to
 changes and checks
 
+
+<!--
 NOTES:
 - TLS SSL
 - cve details
 - XSS
 - owasp top 10
 - .env
+-->

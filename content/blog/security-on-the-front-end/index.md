@@ -81,9 +81,9 @@ that from time to time you should check what code is in your library
 
 ## Don't send sensitive data using get requests
 
-One of restful apis guides is that we should not mutate data using GET requests, that's a good rule to follow, because asides making an API restful it can also make it safe.
-Suppose we have the following form for getting users payment credit card number and CVC for issuing a payment to a service
-your application.
+One of restful API guides is that we should not mutate data using GET requests, that's a good rule to follow, because 
+asides making an API restful it can also make it safe. Suppose we have the following form for getting users payment 
+credit card number and CVC for issuing a payment to a service your application.
 
 ```html
 <form method="GET">
@@ -96,30 +96,31 @@ your application.
 Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a get request the
 browser stores the request url and all the input fields containing a name in it will be in the url and hence in
 the users browser's history and url bar here is how it looks like:
-[browser bar image]
+[./browser-url.png]
 
 Accordingly the url will the in users history:
-[history image]
+[./history-url.png]
 
 If you have an access log here's what your server log will look like:
-[server log]
+[./server-log.png]
 
 Given the vulnerabilities pointed above it's important for us developers to always use post requests for sensitive data,
-browsers tend to fallback to get requests if the method is not specified, that means we have to remain vigilant when dealing
-with forms that contains sensitive data.
+browsers tend to fallback to get requests if the method is not specified, that means we have to remain vigilant and 
+add `method="POST"` attribute when dealing with forms that contains sensitive data.
 
 ## Add adding noopener noreferer to external links
 
 When we add external links with target="_blank" attribute the browser allows the opened tab
 
-## use doctype
+### Use DOCTYPE and force internet explorer to use it's best rendering engine
 
-### Force internet explorer to use it's best rendering engine
+
 
 ## Don't keep apis keys to javascript code
 
-Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can access 
-your site will can use your that api key and if it is linked to any special privileges the user can exploit your application as he wishes.
+Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can 
+access your site will can use your that api key and if it is linked to any special privileges the user can exploit your 
+application as he wishes.
 
 ## Prefer http only cookies for sensitive data
 

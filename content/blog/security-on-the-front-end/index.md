@@ -6,7 +6,7 @@ draft: false
 ---
 
 It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
-applications, and the use of external code through packages such as jquery, react, and vue, the consequences of a 
+applications, and the use of external code through packages such as jquery, react, and vue, the consequences of a
 successful breach can be fatal, that can include harm to customers, lost of trust and in some cases legal liabilities
 
 

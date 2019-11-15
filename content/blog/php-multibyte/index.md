@@ -57,6 +57,7 @@ phpenmod -v 7.1 <modulename>
 php7.2enmod pdo_mysql
 ```
 
+## PHP timestamp is in seconds whereas javascript is in miliseconds
 
 ## Comparision of muti byte functions with normal functions
 

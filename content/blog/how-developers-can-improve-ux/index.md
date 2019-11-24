@@ -1,5 +1,5 @@
 ---
-title: "How developers can improve ux"
+title: How developers can improve ux
 date: "2019-04-27"
 description: ""
 draft: false
@@ -50,17 +50,17 @@ Another disadvantage of opening a browser/app for signing-in/up is the loss of t
 
 Google has come out with some exciting features to speed up the sign flow using, for the web they created something called one tap sign-up or auto sign-in which allows seamless sign-in and sign-up flows without interrupting them with a sign-on or sign-up screen.
 
-| ![auto sign in](images/auto-sign-in.png) |
+| ![auto sign in](./images/auto-sign-in.png) |
 |:--:|
 | *Google auto sign in pop up* |
 
-| ![auto sign in](images/auto-sign-up.png) |
+| ![auto sign in](./images/auto-sign-up.png) |
 |:--:|
 | *Google auto sign in processing* |
 
 On Android, Google allows users to sign-in or sign-up without having to leave the application, by showing a modal of the list of accounts that the user setup in that device and wants to use in your application.
 
-| ![android sign in](images/android-sign-in.png) |
+| ![android sign in](./images/android-sign-in.png) |
 |:--:|
 | *Google android sign in: source androidhive.info* |
 
@@ -81,11 +81,11 @@ Long texts can hinder your user’s experience as in he or she might be using a 
 
 Here are couple of examples of bad language use that resulted in confusion, misinformation:
 
-| ![apple](images/apple.JPG) |
+| ![apple](./images/apple.JPG) |
 |:--:|
 | *Use of long text delaying comprehension* |
 
-| ![cancel a download](images/cancel.jpeg) |
+| ![cancel a download](./images/cancel.jpeg) |
 |:--:|
 | *Confusing modal due to bad language* |
 

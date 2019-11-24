@@ -5,10 +5,10 @@ description: ""
 draft: true
 ---
 
-
 ## Problem definition and setting the why
 
 Do you know why these two results are different? Have you heard of multi-byte functions?
+
 ```shell
 strlen('')
 ```
@@ -17,10 +17,10 @@ strlen('')
 mb_strlen()
 ```
 
-
 ## How to install php multi byte extension
 
 Linux
+
 ```shell
 sudo apt-get install php<version>-mbstring
 ```
@@ -37,7 +37,6 @@ brew install php<version>-mbstring
 ;extensions=mbstring
 ;extensions=mbstring
 ```
-
 
 ## Enable using the CLI
 
@@ -62,6 +61,7 @@ php7.2enmod pdo_mysql
 ## Comparision of muti byte functions with normal functions
 
 ### REFERENCES
+
 [PHP Modules](https://tecadmin.net/enable-disable-php-modules-ubuntu/)
 [INSTALLING PHP EXTENSIONS](https://www.sitepoint.com/install-php-extensions-source/)
 [WHY USE MULTIBYTE FUNCTIONS](https://stackoverflow.com/questions/6722277/why-use-multibyte-string-functions-in-php)

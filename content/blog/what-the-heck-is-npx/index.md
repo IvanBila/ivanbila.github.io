@@ -1,6 +1,6 @@
 ---
 title: Node please execute
-date: "2019-13-05"
+date: "2019-10-05"
 description: ""
 draft: true
 ---
@@ -43,6 +43,7 @@ the projects absolute path `./node_module/bin/eslint` which works, but we can go
 and add it to our list of aliases so we can use it in every project
 
 aliases file
+
 ```shell
 alias eslint='./node_modules/bin/eslint'
 ```
@@ -52,7 +53,7 @@ We can optimize this flow by promoting it and adding it to our scripts in the `p
 "eslint": "eslint"
 
 finds the locally installed eslint
-$(npm bin)/eslint
+\$(npm bin)/eslint
 
 but all of this could be better, this is where npx comes to play
 
@@ -113,7 +114,6 @@ npx -p eslint@next -p eslint-config-google -c "eslint ./"
 
 npx will install next version of eslint along with config google
 
-
 ### Using npx to run different versions of node
 
 ```shell
@@ -128,7 +128,7 @@ show npm env variables that are available when we run npm scripts
 npm run env
 ```
 
-npm run env | grep npm_
+npm run env | grep npm\_
 
 how to leverage those variables using npx?
 
@@ -139,9 +139,9 @@ npm install babel{-cli,-preset-env,-plugin-transform-object-rest-spread} -D -s
 ```
 
 npx babel index.js -d lib/
-npx babel index.js -d lib/$npm_package_version
+npx babel index.js -d lib/\$npm_package_version
 
-npx -c 'babel index.js -d lib/$npm_package_version'
+npx -c 'babel index.js -d lib/\$npm_package_version'
 
 -c -> executes our command in an npm scripts like env, meaning that it will have access to all
 env variables in npm run env
@@ -168,9 +168,9 @@ package.json
 
 ```json
 {
-    "name": "some project",
-    "version": "1.2.1",
-    "bin": "./index.js"
+  "name": "some project",
+  "version": "1.2.1",
+  "bin": "./index.js"
 }
 ```
 

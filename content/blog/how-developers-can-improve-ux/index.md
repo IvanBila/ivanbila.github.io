@@ -21,7 +21,6 @@ I think the statement above sums it up. It would be best if you didn't ask for a
 
 > Give value to your users before you ask for it.
 
-
 ### Prefer OAuth over traditional email-password
 
 When a user signs up using traditional email-password, he has to memorize the password for your specific application or even worse in some cases he might re-use a password (unless he uses a password management/generator app).
@@ -73,7 +72,7 @@ Seriously, I don’t think users invite other people to use an app. No one does 
 
 ### Use appropriate language
 
-Unlike other extremely formal fields like architecture and law, in software, no one will come and suspend your app because the language is not grammatically correct(there are some edge cases where the language has to follow  strictly the rules of grammar and so forth), or it used words that do not exist in the dictionary.
+Unlike other extremely formal fields like architecture and law, in software, no one will come and suspend your app because the language is not grammatically correct(there are some edge cases where the language has to follow strictly the rules of grammar and so forth), or it used words that do not exist in the dictionary.
 
 When building your app prefer a language that is easy to grasp and in the context. (It doesn’t have to be grammatically correct, though this is not an appeal to ignore the grammar entirely, there are tiny things you can do or change in your language to make it easier to understand to your specific users).
 

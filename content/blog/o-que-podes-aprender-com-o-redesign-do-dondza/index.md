@@ -23,7 +23,6 @@ A parte da categoria seleccionada, por exemplo “animais” não estava apresen
 Para aceder a versão audio da palavra o utilizador tinha de clicar na imagem, o que não é intuitivo o ideal seria colocar um botão com ícone de volume na parte de baixo da tela, é preciso fazer com que os botões da sua App sejam intuitivos que não levem o utilizador a pensar como diz o guru Steve Krug.
 Mover o botão de share da primeira tela para esta melhoraria a apresentação da sua aplicação.
 
-
 Animações
 As animações de transição estavam mal implementadas, ao clicar no botão de next a aplicação apresentava uma animação de transição que não estava em sintonia com a outra animação ao clicar o botão de back, todas animações de transição fluem para o mesmo lado o que complica o utilizador.
 Seria ideal colocar as animações do next a partir da direita para esquerda e as de back da esquerda.

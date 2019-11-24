@@ -11,7 +11,6 @@ One of the minor downsides of Brotli is that it is not yet officially distribute
 What’s the Status of Brotli Support?
 Brotli isn’t universally supported yet on all browsers, although a good number of popular browsers do currently support it (as of May 2017).
 
-
 ### Measuring the effects of brotli compression
 
 ### Brotli compatibility
@@ -21,7 +20,6 @@ Brotli isn’t universally supported yet on all browsers, although a good number
 ### Brotli compression levels
 
 #### Brotli compression levels vs speed
-
 
 LINKS:
 https://www.howtoforge.com/tutorial/how-to-install-nginx-with-brotli-compression-on-ubuntu-1804/

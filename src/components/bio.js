@@ -31,7 +31,7 @@ function Bio() {
               }}
             />
             <p>
-              Personal blog by <a href={ `https://twitter.com/ivanbila` } target={ `_blank` }>Ivan Bila</a> <br></br>
+              Personal blog by <a href={ `https://twitter.com/ivanbila` } target={ `_blank` } rel="noopener noreferrer">Ivan Bila</a> <br></br>
               Musings and personal findings
               {` `}
             </p>

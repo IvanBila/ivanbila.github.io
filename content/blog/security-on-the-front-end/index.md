@@ -7,32 +7,32 @@ draft: false
 
 It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
 applications, and the use of external code through packages such as jquery, react, and vue, the consequences of a
-successful breach can be fatal, that can include harm to customers, lost of trust and in some cases legal liabilities
+successful breach can be fatal, that can include harm to customers, lost of trust and in some cases legal liabilities.
 
 ## Use HTTPS
 
-When you use http all data sent from the client to the server and vice-versa is unencrypted that implies that
+When you use HTTP all data sent from the client to the server and vice-versa is unencrypted that implies that
 your users sensitive information such as credit cards number and CVC (if your site supports payment) is exposed
 to anyone connected to the network(it gets even more dangerous if the network is public) and sniffing packages
 and might get the sensitive data and use it for personal gain at the expense of your users.
 
-Currently there's two options for installing https or getting the ssl certificate, you can either buy from a
-vendor/provider such as Digi-cert or get the free ssl certificate with let's encrypt.
+The remendy for this is to use HTTPS, currently, there's two options for installing HTTPS or getting the SSL certificate,
+you can either buy from a vendor/provider such as Digi-cert or get the free SSL certificate with let's encrypt.
 
-The down side of using let's encrypt is browser support, you can only get the Domain Validation ssl
-certificate and you have to renew it every three months.
+The down side of using let's encrypt is browser support, and you can only get the Domain Validation SSL
+certificate on top of that you have to renew it every three months.
 
-Having https also allows us to access browser apis that would not be available if the domain origin does not
-have a valid ssl certificate such as Service workers, Push Api, and Location, you can check the
+Having HTTPS also allows us to access browser APIS that would not be available if the domain origin does not
+have a valid SSL certificate such as Service workers, Push Api, and Location, you can check the
 [full list](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts)
 
-Not having access to Service workers and other apis means that your app cannot qualify as a PWA, and the worst thing
+Not having access to Service workers and other APIS means that your application cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.
 
 ## Taking user input as is(not sanitizing)
 
 Not sanitizing user input extremely dangerous, if your don't sanitise user input your app might be suggested to SQL or
-XSS. Suppose I'm building an app that allows you to share about development meets.
+XSS. Suppose I'm building an app that allows you to share about development meetups.
 
 The app contains this input
 
@@ -51,12 +51,12 @@ evilScript.src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js"
 And the browser will execute the following instructions if the input text is appended using innerHtml method, with that the attack perpetrator
 can:
 
-- Request CSS
-- Request images
-- Make calls to your api
-- Control the browser
-- Open another page
-- Open another tab
+  - Request CSS
+  - Request images
+  - Make calls to your api
+  - Control the browser
+  - Open another page
+  - Open another tab
 
 It's pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
 such situation is to escape the text before appending to the DOM, or even better you can use JavaScript's built in
@@ -77,9 +77,9 @@ Sometimes the libraries might not be deprecated or have known vulnerabilities bu
 when house builders look for tools to aid them in their work they don't choose the latest fanciest tools that only a
 handful of craftsman use, they always in search for tools that stood the test of time, and that's what I think developers
 should do, use tools that many developers have tried and did not find any tricky or mal-intentioned code, I also think
-that from time to time you should check what code is in your library
+that from time to time you should check what code is in your library.
 
-## Don't send sensitive data using get requests
+## Don't send sensitive data using GET requests
 
 One of restful API guides is that we should not mutate data using GET requests, that's a good rule to follow, because
 asides making an API restful it can also make it safe. Suppose we have the following form for getting users payment
@@ -114,22 +114,26 @@ add `method="POST"` attribute when dealing with forms that contains sensitive da
 
 ## Add adding noopener noreferer to external links
 
-When we add external links with target="\_blank" attribute the browser allows the opened tab
+When we add external links with `target="_blank"` attribute the browser allows the opened tab to run in the same process
+as the opener website, which means that if the newly opened tab has performance issues that might affect the opener page,
+moreover a critical security vulnerability would be the fact that the newly opened tab can access the previous page's properties
+via `window.opener` with that change, update the DOM.
 
 ### Use DOCTYPE and force internet explorer to use it's best rendering engine
 
 When your add `<!DOCTYPE html>` to add html file it let's the browser know that this page is using the latest version
 of html, there's nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
 engine from previous browsers which also contain errors and security vulnerabilities from previous browsers, one of these
-features is CSS in JS
+features is CSS in JS which allows you to write JS in CSS and have the browser execute it, this could be a source for a
+XSS in you application.
 
-## Don't keep apis keys to javascript code
+## Don't keep API keys to JavaScript code
 
 Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can
 access your site will can use your that api key and if it is linked to any special privileges the user can exploit your
 application as he wishes.
 
-## Prefer http only cookies for sensitive data
+## Prefer HTTP only cookies for sensitive data
 
 Http only cookies are like the name itself, are only accessible via http, that way evil scripts cannot
 read your users sensitive cookies and use them for their own interests.

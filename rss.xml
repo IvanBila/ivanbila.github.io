@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 25 Nov 2019 22:43:24 GMT</lastBuildDate><item><title><![CDATA[Node please execute]]></title><description><![CDATA[npx available starting npm version 5.2.x Problem definition and setting the why Installing packages globally Adding aliases Using npm…]]></description><link>https://ivanbila.github.io/what-the-heck-is-npx/</link><guid isPermaLink="false">https://ivanbila.github.io/what-the-heck-is-npx/</guid><pubDate>Sat, 05 Oct 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;npx available starting npm version 5.2.x&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 25 Nov 2019 22:53:02 GMT</lastBuildDate><item><title><![CDATA[Node please execute]]></title><description><![CDATA[npx available starting npm version 5.2.x Problem definition and setting the why Installing packages globally Adding aliases Using npm…]]></description><link>https://ivanbila.github.io/what-the-heck-is-npx/</link><guid isPermaLink="false">https://ivanbila.github.io/what-the-heck-is-npx/</guid><pubDate>Sat, 05 Oct 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;npx available starting npm version 5.2.x&lt;/p&gt;
 &lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Installing packages globally&lt;/li&gt;
@@ -21,13 +21,13 @@
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; eslint --dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;or&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; i eslint -D&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;when we run eslint —init, it doesnt find it, because it is looking for a global install, one would be to use
+&lt;p&gt;when we run eslint --init, it doesnt find it, because it is looking for a global install, one would be to use
 the projects absolute path &lt;code class=&quot;language-text&quot;&gt;./node_module/bin/eslint&lt;/code&gt; which works, but we can go ahead and simplify it more
 and add it to our list of aliases so we can use it in every project&lt;/p&gt;
 &lt;p&gt;aliases file&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;eslint&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;./node_modules/bin/eslint&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We can optimize this flow by promoting it and adding it to our scripts in the &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file&lt;/p&gt;
-&lt;p&gt;“eslint”: “eslint”&lt;/p&gt;
+&lt;p&gt;&quot;eslint&quot;: &quot;eslint&quot;&lt;/p&gt;
 &lt;p&gt;finds the locally installed eslint
 $(npm bin)/eslint&lt;/p&gt;
 &lt;p&gt;but all of this could be better, this is where npx comes to play&lt;/p&gt;
@@ -35,15 +35,15 @@ $(npm bin)/eslint&lt;/p&gt;
 node modules from the terminal
 if we feel good about any of the commands we can promote it to be an npm script&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm run&lt;/code&gt; shows a list of scripts that can be run&lt;/p&gt;
-&lt;p&gt;npm ls create-react-app —global -&gt; check if a dependency is installed globally or not
+&lt;p&gt;npm ls create-react-app --global -&gt; check if a dependency is installed globally or not
 we can use npx to temporarily install a package a execute it&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx create-react-app todo-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;node_modules can use quite a lot of space, using some dependencies this way can be handy if you’d rather
-{image of black hole} not install programs globally, or you use them frequently that’d rather use the latest
+&lt;p&gt;node_modules can use quite a lot of space, using some dependencies this way can be handy if you&apos;d rather
+{image of black hole} not install programs globally, or you use them frequently that&apos;d rather use the latest
 version when you need them, also can be handy if you want to play with some tools before commiting to them&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx devpun -t react&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx devpun -t react &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; npx cowsay -f vader &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; npx lolcatjs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;using npx we’re able to play around and experience node modules without having to install them&lt;/p&gt;
+&lt;p&gt;using npx we&apos;re able to play around and experience node modules without having to install them&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;v&lt;/span&gt; create-react-app versions&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;v&lt;/span&gt; create-react-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx create-react-app@next todo-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -65,11 +65,11 @@ version when you need them, also can be handy if you want to play with some tool
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; babel&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;-cli,-preset-env,-plugin-transform-object-rest-spread&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; -D -s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;npx babel index.js -d lib/
 npx babel index.js -d lib/$npm&lt;em&gt;package&lt;/em&gt;version&lt;/p&gt;
-&lt;p&gt;npx -c ‘babel index.js -d lib/$npm&lt;em&gt;package&lt;/em&gt;version’&lt;/p&gt;
+&lt;p&gt;npx -c &apos;babel index.js -d lib/$npm&lt;em&gt;package&lt;/em&gt;version&apos;&lt;/p&gt;
 &lt;p&gt;-c -&gt; executes our command in an npm scripts like env, meaning that it will have access to all
 env variables in npm run env&lt;/p&gt;
 &lt;h2&gt;Execute code from a remote branch&lt;/h2&gt;
-&lt;p&gt;npm repo -&gt; navigates to the dependencies’ github repo…&lt;/p&gt;
+&lt;p&gt;npm repo -&gt; navigates to the dependencies&apos; github repo...&lt;/p&gt;
 &lt;p&gt;npx user/library-repo#branch&lt;/p&gt;
 &lt;p&gt;will temporarily download the branch and run it locally&lt;/p&gt;
 &lt;h2&gt;Execute code that is on a github gist&lt;/h2&gt;
@@ -84,8 +84,8 @@ console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
   &lt;span class=&quot;token property&quot;&gt;&quot;bin&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./index.js&quot;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;npx gist-url&lt;/p&gt;
-&lt;p&gt;trust the source of your gist urls&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It’s getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
-applications, and the…]]></description><link>https://ivanbila.github.io/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.github.io/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It’s getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
+&lt;p&gt;trust the source of your gist urls&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
+applications, and the…]]></description><link>https://ivanbila.github.io/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.github.io/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It&apos;s getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
 applications, and the use of external code through packages such as jquery, react, and vue, the consequences of a
 successful breach can be fatal, that can include harm to customers, lost of trust and in some cases legal liabilities.&lt;/p&gt;
 &lt;h2&gt;Use HTTPS&lt;/h2&gt;
@@ -93,9 +93,9 @@ successful breach can be fatal, that can include harm to customers, lost of trus
 your users sensitive information such as credit cards number and CVC (if your site supports payment) is exposed
 to anyone connected to the network(it gets even more dangerous if the network is public) and sniffing packages
 and might get the sensitive data and use it for personal gain at the expense of your users.&lt;/p&gt;
-&lt;p&gt;The remendy for this is to use HTTPS, currently, there’s two options for installing HTTPS or getting the SSL certificate,
-you can either buy from a vendor/provider such as Digi-cert or get the free SSL certificate with let’s encrypt.&lt;/p&gt;
-&lt;p&gt;The down side of using let’s encrypt is browser support, and you can only get the Domain Validation SSL
+&lt;p&gt;The remendy for this is to use HTTPS, currently, there&apos;s two options for installing HTTPS or getting the SSL certificate,
+you can either buy from a vendor/provider such as Digi-cert or get the free SSL certificate with let&apos;s encrypt.&lt;/p&gt;
+&lt;p&gt;The down side of using let&apos;s encrypt is browser support, and you can only get the Domain Validation SSL
 certificate on top of that you have to renew it every three months.&lt;/p&gt;
 &lt;p&gt;Having HTTPS also allows us to access browser APIS that would not be available if the domain origin does not
 have a valid SSL certificate such as Service workers, Push Api, and Location, you can check the
@@ -103,8 +103,8 @@ have a valid SSL certificate such as Service workers, Push Api, and Location, yo
 &lt;p&gt;Not having access to Service workers and other APIS means that your application cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.&lt;/p&gt;
 &lt;h2&gt;Taking user input as is(not sanitizing)&lt;/h2&gt;
-&lt;p&gt;Not sanitizing user input extremely dangerous, if your don’t sanitise user input your app might be suggested to SQL or
-XSS. Suppose I’m building an app that allows you to share about development meetups.&lt;/p&gt;
+&lt;p&gt;Not sanitizing user input extremely dangerous, if your don&apos;t sanitise user input your app might be suggested to SQL or
+XSS. Suppose I&apos;m building an app that allows you to share about development meetups.&lt;/p&gt;
 &lt;p&gt;The app contains this input&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;share_input&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Thought&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;If I take the text inputed into that field and append to markup without saniziting the user can fill it with the following:&lt;/p&gt;
@@ -121,24 +121,24 @@ can:&lt;/p&gt;
 &lt;li&gt;Open another page&lt;/li&gt;
 &lt;li&gt;Open another tab&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;It’s pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
-such situation is to escape the text before appending to the DOM, or even better you can use JavaScript’s built in
-innerText if you want append what’s typed as text.&lt;/p&gt;
-&lt;h2&gt;Don’t use deprecated libraries/frameworks with widely know vulnerabilities&lt;/h2&gt;
-&lt;p&gt;Using deprecated libraries with with widely knows vulnerabilities it’s almost like asking to be
-hacked(seriously don’t use jquery 1), hoping that hackers will not find out that your website’s
+&lt;p&gt;It&apos;s pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
+such situation is to escape the text before appending to the DOM, or even better you can use JavaScript&apos;s built in
+innerText if you want append what&apos;s typed as text.&lt;/p&gt;
+&lt;h2&gt;Don&apos;t use deprecated libraries/frameworks with widely know vulnerabilities&lt;/h2&gt;
+&lt;p&gt;Using deprecated libraries with with widely knows vulnerabilities it&apos;s almost like asking to be
+hacked(seriously don&apos;t use jquery 1), hoping that hackers will not find out that your website&apos;s
 library or framework has known vulnerabilities is not a good strategy. Making a habit of inspecting
-the libraries’ versions, if you’re using github you can turn on notifications for vulnerabilities
+the libraries&apos; versions, if you&apos;re using github you can turn on notifications for vulnerabilities
 in libraries or you can use &lt;a href=&quot;&quot;&gt;https://snyk.io/&lt;/a&gt; which has a web and cli app that checks vulnerabilities in
-all dependencies in project’s your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
+all dependencies in project&apos;s your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;Inspect frameworks or libraries before deploying to production or using it&lt;/h2&gt;
 &lt;p&gt;Sometimes the libraries might not be deprecated or have known vulnerabilities but, it always better to be safe than sorry,
-when house builders look for tools to aid them in their work they don’t choose the latest fanciest tools that only a
-handful of craftsman use, they always in search for tools that stood the test of time, and that’s what I think developers
+when house builders look for tools to aid them in their work they don&apos;t choose the latest fanciest tools that only a
+handful of craftsman use, they always in search for tools that stood the test of time, and that&apos;s what I think developers
 should do, use tools that many developers have tried and did not find any tricky or mal-intentioned code, I also think
 that from time to time you should check what code is in your library.&lt;/p&gt;
-&lt;h2&gt;Don’t send sensitive data using GET requests&lt;/h2&gt;
-&lt;p&gt;One of restful API guides is that we should not mutate data using GET requests, that’s a good rule to follow, because
+&lt;h2&gt;Don&apos;t send sensitive data using GET requests&lt;/h2&gt;
+&lt;p&gt;One of restful API guides is that we should not mutate data using GET requests, that&apos;s a good rule to follow, because
 asides making an API restful it can also make it safe. Suppose we have the following form for getting users payment
 credit card number and CVC for issuing a payment to a service your application.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;form&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;GET&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
@@ -152,131 +152,27 @@ credit card number and CVC for issuing a payment to a service your application.&
 &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;form&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a get request the
 browser stores the request url and all the input fields containing a name in it will be in the url and hence in
-the users browser’s history and url bar here is how it looks like:
-
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/6047f145f46c4d6afe885f5b26a167bf/4eacd/browser-url.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 2.5677603423680457%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAIElEQVQI12N48vzF/6cvXv5/BsIvX/1/9+Hj/3cfyccA7idLxWFWhXAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;browser url bar&quot;
-        title=&quot;&quot;
-        src=&quot;/static/6047f145f46c4d6afe885f5b26a167bf/b9e4f/browser-url.png&quot;
-        srcset=&quot;/static/6047f145f46c4d6afe885f5b26a167bf/cf440/browser-url.png 148w,
-/static/6047f145f46c4d6afe885f5b26a167bf/d2d38/browser-url.png 295w,
-/static/6047f145f46c4d6afe885f5b26a167bf/b9e4f/browser-url.png 590w,
-/static/6047f145f46c4d6afe885f5b26a167bf/f9b6a/browser-url.png 885w,
-/static/6047f145f46c4d6afe885f5b26a167bf/2d849/browser-url.png 1180w,
-/static/6047f145f46c4d6afe885f5b26a167bf/4eacd/browser-url.png 1402w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
-  &lt;/a&gt;
-    &lt;/p&gt;
+the users browser&apos;s history and url bar here is how it looks like:
+&lt;img src=&quot;./images/browser-url.png&quot; alt=&quot;browser url bar&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Accordingly the url will the in users history:
-
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/908243f40e93dbc8d49302f945f0c760/55436/history-url.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 3.3834586466165413%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAMklEQVQI12P4srrvP1a8qvf/lw1T/n/dNheI5/z/un0uhL0VyN4yC0jPhuBtc5HwnP8AKXFAsOllp2QAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;history url&quot;
-        title=&quot;&quot;
-        src=&quot;/static/908243f40e93dbc8d49302f945f0c760/b9e4f/history-url.png&quot;
-        srcset=&quot;/static/908243f40e93dbc8d49302f945f0c760/cf440/history-url.png 148w,
-/static/908243f40e93dbc8d49302f945f0c760/d2d38/history-url.png 295w,
-/static/908243f40e93dbc8d49302f945f0c760/b9e4f/history-url.png 590w,
-/static/908243f40e93dbc8d49302f945f0c760/f9b6a/history-url.png 885w,
-/static/908243f40e93dbc8d49302f945f0c760/55436/history-url.png 1064w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
-  &lt;/a&gt;
-    &lt;/p&gt;
-&lt;p&gt;If you have an access log here’s what your server log will look like:
-
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/ee3cb9f5bb051c887d96dcc8638e3d8a/67bc9/server-log.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 5.6726094003241485%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAS0lEQVQI1yXKfw5AIABAYYdBIbVuoJnSD5m5/1meTf++73WhVPaY8fki1QdXAsJrRNIMt0KcGukNIrY2Xor+XZqlFXkY5s3+z+QsH1tHIX/KdO8iAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;server log&quot;
-        title=&quot;&quot;
-        src=&quot;/static/ee3cb9f5bb051c887d96dcc8638e3d8a/b9e4f/server-log.png&quot;
-        srcset=&quot;/static/ee3cb9f5bb051c887d96dcc8638e3d8a/cf440/server-log.png 148w,
-/static/ee3cb9f5bb051c887d96dcc8638e3d8a/d2d38/server-log.png 295w,
-/static/ee3cb9f5bb051c887d96dcc8638e3d8a/b9e4f/server-log.png 590w,
-/static/ee3cb9f5bb051c887d96dcc8638e3d8a/f9b6a/server-log.png 885w,
-/static/ee3cb9f5bb051c887d96dcc8638e3d8a/2d849/server-log.png 1180w,
-/static/ee3cb9f5bb051c887d96dcc8638e3d8a/67bc9/server-log.png 1234w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
-  &lt;/a&gt;
-    &lt;/p&gt;
-&lt;p&gt;Given the vulnerabilities pointed above it’s important for us developers to always use post requests for sensitive data,
+&lt;img src=&quot;./images/history-url.png&quot; alt=&quot;history url&quot;&gt;&lt;/p&gt;
+&lt;p&gt;If you have an access log here&apos;s what your server log will look like:
+&lt;img src=&quot;./images/server-log.png&quot; alt=&quot;server log&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Given the vulnerabilities pointed above it&apos;s important for us developers to always use post requests for sensitive data,
 browsers tend to fallback to get requests if the method is not specified, that means we have to remain vigilant and
 add &lt;code class=&quot;language-text&quot;&gt;method=&amp;quot;POST&amp;quot;&lt;/code&gt; attribute when dealing with forms that contains sensitive data.&lt;/p&gt;
 &lt;h2&gt;Add adding noopener noreferer to external links&lt;/h2&gt;
 &lt;p&gt;When we add external links with &lt;code class=&quot;language-text&quot;&gt;target=&amp;quot;_blank&amp;quot;&lt;/code&gt; attribute the browser allows the opened tab to run in the same process
 as the opener website, which means that if the newly opened tab has performance issues that might affect the opener page,
-moreover a critical security vulnerability would be the fact that the newly opened tab can access the previous page’s properties
+moreover a critical security vulnerability would be the fact that the newly opened tab can access the previous page&apos;s properties
 via &lt;code class=&quot;language-text&quot;&gt;window.opener&lt;/code&gt; with that change, update the DOM.&lt;/p&gt;
-&lt;h3&gt;Use DOCTYPE and force internet explorer to use it’s best rendering engine&lt;/h3&gt;
-&lt;p&gt;When your add &lt;code class=&quot;language-text&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; to add html file it let’s the browser know that this page is using the latest version
-of html, there’s nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
+&lt;h3&gt;Use DOCTYPE and force internet explorer to use it&apos;s best rendering engine&lt;/h3&gt;
+&lt;p&gt;When your add &lt;code class=&quot;language-text&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; to add html file it let&apos;s the browser know that this page is using the latest version
+of html, there&apos;s nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
 engine from previous browsers which also contain errors and security vulnerabilities from previous browsers, one of these
 features is CSS in JS which allows you to write JS in CSS and have the browser execute it, this could be a source for a
 XSS in you application.&lt;/p&gt;
-&lt;h2&gt;Don’t keep API keys to JavaScript code&lt;/h2&gt;
+&lt;h2&gt;Don&apos;t keep API keys to JavaScript code&lt;/h2&gt;
 &lt;p&gt;Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can
 access your site will can use your that api key and if it is linked to any special privileges the user can exploit your
 application as he wishes.&lt;/p&gt;
@@ -305,7 +201,7 @@ adressar somente como fazer o profiling e melhorar as queries usando somente as 
 &lt;/blockquote&gt;
 &lt;p&gt;O primeiro passo antes de procurar melhorar as queries do mysql é analisar realmente se existe uma necessidade de passar
 um tempo analisando as queries para melhorar, isto é profiling. Outro ponto importante a levantar é que melhorar a despende
-tempo que as vezes o resultado desse trabalho todo pode ser 3s ou 2s a menos na nossa query…&lt;/p&gt;
+tempo que as vezes o resultado desse trabalho todo pode ser 3s ou 2s a menos na nossa query...&lt;/p&gt;
 &lt;p&gt;Profiling é a fase onde verificamos quais as queries que gastam mais recursos ou que levam mais tempo sendo executadas e
 eventualmente enviado o resultado para a aplicacao.&lt;/p&gt;
 &lt;p&gt;Para ligar/activar profiling temos de correr o seguinte comando:&lt;/p&gt;
@@ -375,13 +271,13 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;a href=&quot;https://www.sitepoint.com/working-with-multibyte-strings/&quot;&gt;WORKING WITH MULTIBYTE STRINGS&lt;/a&gt;
 &lt;a href=&quot;http://www.alejandro.codina.nom.br/php-manual-br/ref.mbstring.html&quot;&gt;REF MULTIBYTE&lt;/a&gt;
 &lt;a href=&quot;https://www.slideshare.net/Daniel_Rhodes/multibyte-string-handling-in-php&quot;&gt;MULTIBYTE STRING HANDLING&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.&lt;/p&gt;
-&lt;p&gt;However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application’s user experience significantly.&lt;/p&gt;
+&lt;p&gt;However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application&apos;s user experience significantly.&lt;/p&gt;
 &lt;h3&gt;Prove the value of your app&lt;/h3&gt;
-&lt;p&gt;Imagine being asked for your ID copy/credit card before entering a shop? How would you feel? That’s how users feel when you ask for their data before they can even use your app, what I’m saying is we should Let the user do something in our apps without requiring him to sign up. It is not enough to put a splash screen or a short tutorial on how the app works to establish whether your application is worth it or not.&lt;/p&gt;
+&lt;p&gt;Imagine being asked for your ID copy/credit card before entering a shop? How would you feel? That’s how users feel when you ask for their data before they can even use your app, what I&apos;m saying is we should Let the user do something in our apps without requiring him to sign up. It is not enough to put a splash screen or a short tutorial on how the app works to establish whether your application is worth it or not.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“If you ask me for my data before offering any value, that means you’re more concerned with my data than with solving my problem.” Rushing User&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I think the statement above sums it up. It would be best if you didn’t ask for a user to sign-in or give in (his) data before even showing him why your app deserves (his) attention or data. I know some apps need to know about the user before him using it, but I think you can always figure a way to give value before you ask for it.&lt;/p&gt;
+&lt;p&gt;I think the statement above sums it up. It would be best if you didn&apos;t ask for a user to sign-in or give in (his) data before even showing him why your app deserves (his) attention or data. I know some apps need to know about the user before him using it, but I think you can always figure a way to give value before you ask for it.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Give value to your users before you ask for it.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -390,53 +286,20 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;p&gt;Some users tend to re-use or create weak passwords for most applications they use, to avoid laborious work of memorizing or saving in a password manager.&lt;/p&gt;
 &lt;p&gt;Having to memorize things is a pain, laborious and time consuming, usually users have many things to keep track of (tasks, family names, phone numbers), so it’s improbable that they’ll memorize your apps’ password, they have zillions of apps, you want to make your app easy to use without the hassle of remembering passwords and emails. To prevent this, you can use OAuth.&lt;/p&gt;
 &lt;p&gt;With OAuth, the user doesn’t need to memorize a password or username(in short it allows passwordless sign-in/up), signing-in or signing-up is only a “tap/click away,” meaning he only has to allow your application to access his/her data.&lt;/p&gt;
-&lt;p&gt;This flow tends to be less laborious for the user because he/she doesn’t have to memorize a password and then verify if the email was filled correctly. Using the OAuth flow implies that you don’t have to implement the logic for resetting the password(unless you have users signed-in in using email-password) that the user is likely to forget over and over again until he/she stops using your service.&lt;/p&gt;
+&lt;p&gt;This flow tends to be less laborious for the user because he/she doesn&apos;t have to memorize a password and then verify if the email was filled correctly. Using the OAuth flow implies that you don’t have to implement the logic for resetting the password(unless you have users signed-in in using email-password) that the user is likely to forget over and over again until he/she stops using your service.&lt;/p&gt;
 &lt;p&gt;By using OAuth not only you have the convenience of signing in the user in without requiring a password you also have access to the information(first name, last name, age and more) that the user has already filled in his/her account.&lt;/p&gt;
-&lt;p&gt;Whether you should use Google, Twitter, Facebook, Linkedin or GitHub OAuth provider can depend based on your needs, however, more often than not, you’ll use more than one OAuth provider.&lt;/p&gt;
-&lt;p&gt;Given that Facebook and Google are the providers with the most users, I’ll compare both and say why and when I’d use one over the other.&lt;/p&gt;
+&lt;p&gt;Whether you should use Google, Twitter, Facebook, Linkedin or GitHub OAuth provider can depend based on your needs, however, more often than not, you&apos;ll use more than one OAuth provider.&lt;/p&gt;
+&lt;p&gt;Given that Facebook and Google are the providers with the most users, I&apos;ll compare both and say why and when I&apos;d use one over the other.&lt;/p&gt;
 &lt;p&gt;Google and Facebook allow you to get almost the same information for a given user, but using one or the other might have different user experience implications to your application.&lt;/p&gt;
 &lt;p&gt;Usually, the flow is the same/close, and you click to register or sign-in then you get redirected to a page where you can either accept, declined or accept but customize(I can only see this feature on Facebook) what information the app can get from your account.&lt;/p&gt;
 &lt;p&gt;On mobile most specifically Android, when you sign in or sign up with Facebook, it usually opens a web browser tab which can be expensive for the user.&lt;/p&gt;
 &lt;p&gt;Opening the browser or external apps uses RAM and processing power, which is not what you want your app to do, because most devices have low RAM, and processing power is scarce, even if they have good processing power it’s very likely that they opened dozen other apps besides yours.&lt;/p&gt;
-&lt;p&gt;Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is taken to a different place where he might find distractions, and who knows whether he’ll return?&lt;/p&gt;
+&lt;p&gt;Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is taken to a different place where he might find distractions, and who knows whether he&apos;ll return?&lt;/p&gt;
 &lt;p&gt;Google has come out with some exciting features to speed up the sign flow using, for the web they created something called one tap sign-up or auto sign-in which allows seamless sign-in and sign-up flows without interrupting them with a sign-on or sign-up screen.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/377cdfea2aef6bacdff9bec166b0ac3a/4f3bc/auto-sign-in.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACMUlEQVQoz22RzU4TURTHRySx063gylV1o2/QNOm09OsJTFwZiibKdCoCz2BMTEQWoKig0SdwgUhCauLS+IGYztDEIEjCRrFj7UznDjP3/r33dhrGxJP7n3PuOWd+90tRuKmqmtJ1nfiuA+J5jPg+CCHo9XrwPE9KzIMgQBiGcVFuMAzD4YwLysASajJV0ydJt+fA9XzmdLsS4rquhArf6XQkkDEGARFeAAVYABOJxDFQVRMpvWYQn3g4PGgxDsXXnV3sfNvD7t4+eh7BUUARUoYg7EvM+aDg1gfGdpgUQL1GAD46LQb46Pzch/3jO/78OoDvHALUwX9MAmvyyLEdnhhOpqbqk2R9K8SdVcbm1nzMvQ6wsBFg5W2IR28CLG4cYanhY36d4O4qwb1XBLdfErrG/5m5ZThDwzGgMpRMTd/UyXLDwaX7bTbxsI0rC21cf2xj9oWNGa6pZ9w//40bT2yML9qoPrBxeb5NlxsuZqcNRzn5zx0m5StHx2ByxBSEEPfVj7kPo5hXacA/9brhnIo/yujomVS1Ok42v1homhYzTRPNZpPLxLZl4v1mEx8+m2jJ2MS7TyYsS+Qs+nFrG9euTjinR0aOgWNjY+c0TfNymoZsNssiiRg8j3K5hHKpJGNNy0oN+vo5rZvP5y/GgWdzuRzlEkUqwFGMYrGIEocVCgXp5SJRjfdRDhK9hPvzEpbJZKTnyZWoKMBsABS5SqUiJWItWizqGQCfCkY6nVb+Ahh1GXTjkF3dAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;auto sign in&quot;
-        title=&quot;&quot;
-        src=&quot;/static/377cdfea2aef6bacdff9bec166b0ac3a/b9e4f/auto-sign-in.png&quot;
-        srcset=&quot;/static/377cdfea2aef6bacdff9bec166b0ac3a/cf440/auto-sign-in.png 148w,
-/static/377cdfea2aef6bacdff9bec166b0ac3a/d2d38/auto-sign-in.png 295w,
-/static/377cdfea2aef6bacdff9bec166b0ac3a/b9e4f/auto-sign-in.png 590w,
-/static/377cdfea2aef6bacdff9bec166b0ac3a/4f3bc/auto-sign-in.png 688w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
-  &lt;/a&gt;
-    &lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/auto-sign-in.png&quot; alt=&quot;auto sign in&quot;&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -448,40 +311,7 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/5ae9c3a373c4688216468522483c81f4/4f3bc/auto-sign-up.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAAB00lEQVQoz42R3W7aQBCFqdQK8G1pr3pFe9O+AUJizV94jabJjRGJ+hx9h/Yp2ofoX2iDTS5AQil14oALjbDxYrx7OmublFRB6krHczQz+nbGm8nQ0TStaBgGR3Ik/v8I9el0Ol4ul3ue2Zw8AdvtNlck23Hl5WSGc/sK9qWLq+kMP+wJxhfTVBO4s2tcOK7q3QHM52Mg9xaYz6/lr9kcC8/HMuAI+Ar+MrglvlohoBrVb4DE+HdCgy+5T0uspE/gKIp27imljLW98i3gvfta8fVxmw8ciTfvQ6kmGw4HGAyHGI1G8H0fYRjegLZ098oPslrxqGNw53eED91QqnVs+yfG4zEcx4HrTuHR1EIoCDFIUSSUv3tCLX2UXa+8pkwoEh+sgWWYeL6GCOjPHB91vGx2a8LCo8fF/f2XvHvax2nPkpZpotfrkUxYlolPJyY+d02c9VW08PHEQp/8l2+W+Pr9DIcHr7yHhcJfYK1We8oYC3TGwCoVWUkEJcpjb68ZS3nGKtBZXJPkZZJji2q1+mIb+ETXdUFSRaHAqUej0UCz2US9Xo9jfElaoz5BINXLKT6LYeVyOY6UfJsWFVhugCrXarViKc/Sy9KeDfCdYpRKpcwfnF0sonZR6rwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;auto sign in&quot;
-        title=&quot;&quot;
-        src=&quot;/static/5ae9c3a373c4688216468522483c81f4/b9e4f/auto-sign-up.png&quot;
-        srcset=&quot;/static/5ae9c3a373c4688216468522483c81f4/cf440/auto-sign-up.png 148w,
-/static/5ae9c3a373c4688216468522483c81f4/d2d38/auto-sign-up.png 295w,
-/static/5ae9c3a373c4688216468522483c81f4/b9e4f/auto-sign-up.png 590w,
-/static/5ae9c3a373c4688216468522483c81f4/4f3bc/auto-sign-up.png 688w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
-  &lt;/a&gt;
-    &lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/auto-sign-up.png&quot; alt=&quot;auto sign in&quot;&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -494,40 +324,7 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/349c66ef26150f2f4cc37127aafaccf2/6da3e/android-sign-in.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 97.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsSAAALEgHS3X78AAACXUlEQVQ4y2P4DwN//vwBkosWrzS3dHd09tfVt1ZRM1bTMFVSMbSy8XDzCNHVt92z5yBY5V+IFga45t+/QZqnzljFKWAup+IuIu0sLAVFghKOIlLO3MI2m7bg0AyxecOGrS5uAWHhiUHBcYHBsf6B0QFBMUEhcUDk7RN+7NhJoJq/f3Fo3rN7V0hwYHxcbFxsTFxcTGRkeFRURHx8LJCdEB937tw5fJq3bNlSUlK6fPnyBQsWzAeDefPmAcnFi5cUFRefPInX5jVr1ixevPjz50/37t179+7dixcv3r558+XLF6DUlClTDh8+TEDzokWLPn3+9Pz583///v0GBuOfP0ASKDVp0qQjR44Q0rx48e61a65dvPTt+/f37979+vULogCombDNCxctev7g7otnz759+/b582eItURpXrt27YIFi1avnn/p0rmvX7+9efPm58+fENVE2Qz088MHd589e/r9+4+vX78CNQM9D5SaPHkyYZuBEQNkvH377sOHD0APQ4INKDJx4kQCAbZ9+/bU1NSWlpYGMKgHAyCjqakpPT399OnT+DTv2rUrPDw8ISEhDhXEA1NZbOzZs2cJaI6Ojs7MzExDBUBrExMTCWjesWNHREREcnJyEhgAnQAkE8EAaP+ZM2ewa4aESl9fHwMDg6ioKAcHBysrq4iICDMzMw8Pj6CgIFB83bp1cGtAmn/BwI8fP4D8U6dOdXV1AZNxb29vd3f3hAkTenp6gDE8bdo0oMiNGzeAaoCRB9HC8AEJvH///vv370BpYNoCcoGR/OnTJyAJtwooDlQDVw8AmaJ17mPM9zwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;android sign in&quot;
-        title=&quot;&quot;
-        src=&quot;/static/349c66ef26150f2f4cc37127aafaccf2/b9e4f/android-sign-in.png&quot;
-        srcset=&quot;/static/349c66ef26150f2f4cc37127aafaccf2/cf440/android-sign-in.png 148w,
-/static/349c66ef26150f2f4cc37127aafaccf2/d2d38/android-sign-in.png 295w,
-/static/349c66ef26150f2f4cc37127aafaccf2/b9e4f/android-sign-in.png 590w,
-/static/349c66ef26150f2f4cc37127aafaccf2/6da3e/android-sign-in.png 720w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
-  &lt;/a&gt;
-    &lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/android-sign-in.png&quot; alt=&quot;android sign in&quot;&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -536,7 +333,7 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3&gt;Don’t ask them to invite their friends nor rate you&lt;/h3&gt;
+&lt;h3&gt;Don&apos;t ask them to invite their friends nor rate you&lt;/h3&gt;
 &lt;p&gt;Seriously, I don’t think users invite other people to use an app. No one does that. It’s odd and weird. If I want my friend to use this X app, I tell him to download and explain the benefits and tell him how cool I’m because I’m using it or how it has changed, improved or helped me doing Y thing. Word of mouth is the kind of invitation or recommendation that people want, not receiving a message or an email saying user X invited you to use this app, how is the app supposed to solve my problem if it’s already creating a new one by spamming me?&lt;/p&gt;
 &lt;h3&gt;Use appropriate language&lt;/h3&gt;
 &lt;p&gt;Unlike other extremely formal fields like architecture and law, in software, no one will come and suspend your app because the language is not grammatically correct(there are some edge cases where the language has to follow strictly the rules of grammar and so forth), or it used words that do not exist in the dictionary.&lt;/p&gt;
@@ -547,42 +344,7 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/62e2f43dfbc544ac94876d8877a292b4/8179c/apple.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 36.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAduiUL//xAAWEAEBAQAAAAAAAAAAAAAAAAAAEQH/2gAIAQEAAQUC1Kj/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAZEAACAwEAAAAAAAAAAAAAAAAAEQEhQVH/2gAIAQEAAT8hppCGxun/2gAMAwEAAgADAAAAEH/P/8QAFhEBAQEAAAAAAAAAAAAAAAAAERAh/9oACAEDAQE/EHSf/8QAFhEBAQEAAAAAAAAAAAAAAAAAERAh/9oACAECAQE/EDGf/8QAGBABAQEBAQAAAAAAAAAAAAAAAQARIdH/2gAIAQEAAT8QD2rIBCxIL1t//9k=&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;apple&quot;
-        title=&quot;&quot;
-        src=&quot;/static/62e2f43dfbc544ac94876d8877a292b4/c739e/apple.jpg&quot;
-        srcset=&quot;/static/62e2f43dfbc544ac94876d8877a292b4/8ee9c/apple.jpg 148w,
-/static/62e2f43dfbc544ac94876d8877a292b4/ebbe7/apple.jpg 295w,
-/static/62e2f43dfbc544ac94876d8877a292b4/c739e/apple.jpg 590w,
-/static/62e2f43dfbc544ac94876d8877a292b4/5413e/apple.jpg 885w,
-/static/62e2f43dfbc544ac94876d8877a292b4/4efde/apple.jpg 1180w,
-/static/62e2f43dfbc544ac94876d8877a292b4/8179c/apple.jpg 1600w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
-  &lt;/a&gt;
-    &lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/apple.JPG&quot; alt=&quot;apple&quot;&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -594,41 +356,7 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;
-  &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/d6312f0da6a39251e127a0d5743ebdbe/840f5/cancel.jpg&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-  
-  &lt;span
-    class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
-  &gt;
-    &lt;span
-      class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 56.74470457079153%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAevq0IP/xAAWEAADAAAAAAAAAAAAAAAAAAABIEH/2gAIAQEAAQUCoX//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAVEAEBAAAAAAAAAAAAAAAAAAAgQf/aAAgBAQAGPwKr/8QAGhAAAgIDAAAAAAAAAAAAAAAAAREAECFhcf/aAAgBAQABPyEuLA5Z6a3f/9oADAMBAAIAAwAAABDjz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EAB0QAAICAQUAAAAAAAAAAAAAAAERACFBEDFRkbH/2gAIAQEAAT8QeQGVJLyAZSOQV1ogDyMZm1Cf/9k=&apos;); background-size: cover; display: block;&quot;
-    &gt;
-      &lt;img
-        class=&quot;gatsby-resp-image-image&quot;
-        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;cancel a download&quot;
-        title=&quot;&quot;
-        src=&quot;/static/d6312f0da6a39251e127a0d5743ebdbe/c739e/cancel.jpg&quot;
-        srcset=&quot;/static/d6312f0da6a39251e127a0d5743ebdbe/8ee9c/cancel.jpg 148w,
-/static/d6312f0da6a39251e127a0d5743ebdbe/ebbe7/cancel.jpg 295w,
-/static/d6312f0da6a39251e127a0d5743ebdbe/c739e/cancel.jpg 590w,
-/static/d6312f0da6a39251e127a0d5743ebdbe/5413e/cancel.jpg 885w,
-/static/d6312f0da6a39251e127a0d5743ebdbe/840f5/cancel.jpg 897w&quot;
-        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
-      /&gt;
-    &lt;/span&gt;
-  &lt;/span&gt;
-  
-  &lt;/a&gt;
-    &lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/cancel.jpeg&quot; alt=&quot;cancel a download&quot;&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -650,7 +378,7 @@ algum tempo e corrigi-los, pode melhorar significativamente a experiência do ut
 é que devemos deixar o utilizador fazer algo em nossa aplicativos sem exigir que ele se inscreva. Não é suficiente colocar
 uma tela inicial ou um breve tutorial sobre como o aplicativo funciona para determinar se seu aplicativo vale a pena ou não.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;“Se você me pedir meus dados antes de oferecer qualquer valor, isso significa que você está mais preocupado com
+&lt;p&gt;&quot;Se você me pedir meus dados antes de oferecer qualquer valor, isso significa que você está mais preocupado com
 meus dados do que com a solução meu problema. ” utilizador apressado&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Eu acho que a afirmação acima resume tudo. Seria melhor se você não solicitasse que um utilizador fizesse login ou
@@ -695,7 +423,7 @@ tenham bom poder de processamento. outros aplicativos além do seu.&lt;/p&gt;
 &lt;p&gt;Outra desvantagem de abrir um navegador / aplicativo para entrar / sair é a perda da atenção do utilizador, porque ele
 é levado para um lugar diferente, onde pode encontrar distrações e quem sabe se ele retornará?&lt;/p&gt;
 &lt;p&gt;O Google disponibilizou alguns recursos interessantes para acelerar o fluxo de sinal usando, para a Web, um chamado
-“registro de toque” ou “auto login”, que permite fluxos de login e inscrição contínuos e ininterruptos com
+&quot;registro de toque&quot; ou &quot;auto login&quot;, que permite fluxos de login e inscrição contínuos e ininterruptos com
 um sinal -no ecrã ou inscrever-se.&lt;/p&gt;
 &lt;h3&gt;Não peça que eles convidem seus amigos nem avaliem você&lt;/h3&gt;
 &lt;p&gt;Sério, eu não acho que os utilizadores convidem outras pessoas para usar um aplicativo. Ninguém faz isso. É estranho, se

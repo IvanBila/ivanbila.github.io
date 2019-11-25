@@ -48,7 +48,14 @@ const typography = new Typography({
       fontFamily: fonts.bold,
       fontStyle: 'bold',
     },
-  }),
+    pre: {
+      'min-width': '100%',
+    },
+    code: {
+      overflow: 'initial',
+      fontSize: '14pt',
+    }
+  })
 })
 
 // Hot reload typography in development.

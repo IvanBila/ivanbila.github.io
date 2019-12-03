@@ -1,90 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 25 Nov 2019 22:58:56 GMT</lastBuildDate><item><title><![CDATA[Node please execute]]></title><description><![CDATA[npx available starting npm version 5.2.x Problem definition and setting the why Installing packages globally Adding aliases Using npm…]]></description><link>https://ivanbila.github.io/what-the-heck-is-npx/</link><guid isPermaLink="false">https://ivanbila.github.io/what-the-heck-is-npx/</guid><pubDate>Sat, 05 Oct 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;npx available starting npm version 5.2.x&lt;/p&gt;
-&lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;Installing packages globally&lt;/li&gt;
-&lt;li&gt;Adding aliases&lt;/li&gt;
-&lt;li&gt;Using npm scripts&lt;/li&gt;
-&lt;li&gt;Using absolute path&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;Table of contents&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Use npx to run locally installed node modules&lt;/li&gt;
-&lt;li&gt;Use npx to temporarily install and invoke a package from npm&lt;/li&gt;
-&lt;li&gt;Use npx to rest different versions of node modules&lt;/li&gt;
-&lt;li&gt;Use npx to run commands with different versions of Node.js&lt;/li&gt;
-&lt;li&gt;Execute npx commands with npm env variables&lt;/li&gt;
-&lt;li&gt;Use npx to execute a code from a branch&lt;/li&gt;
-&lt;li&gt;Use npx to execute a code from a github gist&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;NOTES&lt;/h2&gt;
-&lt;p&gt;npx allows you to play around with a new package from npm registry without having to install it&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; eslint --dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;or&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; i eslint -D&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;when we run eslint --init, it doesnt find it, because it is looking for a global install, one would be to use
-the projects absolute path &lt;code class=&quot;language-text&quot;&gt;./node_module/bin/eslint&lt;/code&gt; which works, but we can go ahead and simplify it more
-and add it to our list of aliases so we can use it in every project&lt;/p&gt;
-&lt;p&gt;aliases file&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;eslint&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;./node_modules/bin/eslint&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We can optimize this flow by promoting it and adding it to our scripts in the &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; file&lt;/p&gt;
-&lt;p&gt;&quot;eslint&quot;: &quot;eslint&quot;&lt;/p&gt;
-&lt;p&gt;finds the locally installed eslint
-$(npm bin)/eslint&lt;/p&gt;
-&lt;p&gt;but all of this could be better, this is where npx comes to play&lt;/p&gt;
-&lt;p&gt;One of the many things npx can do, is to allow you to invoke locally installed
-node modules from the terminal
-if we feel good about any of the commands we can promote it to be an npm script&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;npm run&lt;/code&gt; shows a list of scripts that can be run&lt;/p&gt;
-&lt;p&gt;npm ls create-react-app --global -&gt; check if a dependency is installed globally or not
-we can use npx to temporarily install a package a execute it&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx create-react-app todo-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;node_modules can use quite a lot of space, using some dependencies this way can be handy if you&apos;d rather
-{image of black hole} not install programs globally, or you use them frequently that&apos;d rather use the latest
-version when you need them, also can be handy if you want to play with some tools before commiting to them&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx devpun -t react&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx devpun -t react &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; npx cowsay -f vader &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; npx lolcatjs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;using npx we&apos;re able to play around and experience node modules without having to install them&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;v&lt;/span&gt; create-react-app versions&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;v&lt;/span&gt; create-react-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx create-react-app@next todo-app&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; view eslint&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx eslint@next ./&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;if eslint@next requires some extra packages we can use npx to specify those:
--c -&gt; execute a command
--p -&gt; specify a dependency&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx -p eslint@next -p eslint-config-google -c &lt;span class=&quot;token string&quot;&gt;&quot;eslint ./&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;npx will install next version of eslint along with config google&lt;/p&gt;
-&lt;h3&gt;Using npx to run different versions of node&lt;/h3&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;npx -p node@8.2.1 -- node index.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Execute npx commands with npm enviroment variables&lt;/h2&gt;
-&lt;p&gt;show npm env variables that are available when we run npm scripts&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run &lt;span class=&quot;token function&quot;&gt;env&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;npm run env | grep npm_&lt;/p&gt;
-&lt;p&gt;how to leverage those variables using npx?&lt;/p&gt;
-&lt;p&gt;first install babel using bash brace expansion&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; babel&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;-cli,-preset-env,-plugin-transform-object-rest-spread&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; -D -s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;npx babel index.js -d lib/
-npx babel index.js -d lib/$npm&lt;em&gt;package&lt;/em&gt;version&lt;/p&gt;
-&lt;p&gt;npx -c &apos;babel index.js -d lib/$npm&lt;em&gt;package&lt;/em&gt;version&apos;&lt;/p&gt;
-&lt;p&gt;-c -&gt; executes our command in an npm scripts like env, meaning that it will have access to all
-env variables in npm run env&lt;/p&gt;
-&lt;h2&gt;Execute code from a remote branch&lt;/h2&gt;
-&lt;p&gt;npm repo -&gt; navigates to the dependencies&apos; github repo...&lt;/p&gt;
-&lt;p&gt;npx user/library-repo#branch&lt;/p&gt;
-&lt;p&gt;will temporarily download the branch and run it locally&lt;/p&gt;
-&lt;h2&gt;Execute code that is on a github gist&lt;/h2&gt;
-&lt;p&gt;gist&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;#&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;usr&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;bin&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;env node
-
-console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;something comes here&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;package.json&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;token property&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;some project&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token property&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1.2.1&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;token property&quot;&gt;&quot;bin&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;./index.js&quot;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;npx gist-url&lt;/p&gt;
-&lt;p&gt;trust the source of your gist urls&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 03 Dec 2019 18:44:16 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
 applications, and the…]]></description><link>https://ivanbila.github.io/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.github.io/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It&apos;s getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
 applications, and the use of external code through packages such as jquery, react, and vue, the consequences of a
 successful breach can be fatal, that can include harm to customers, lost of trust and in some cases legal liabilities.&lt;/p&gt;
@@ -152,12 +66,12 @@ credit card number and CVC for issuing a payment to a service your application.&
 &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;form&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a get request the
 browser stores the request url and all the input fields containing a name in it will be in the url and hence in
-the users browser&apos;s history and url bar here is how it looks like:
-&lt;img src=&quot;./images/browser-url.png&quot; alt=&quot;browser url bar&quot;&gt;&lt;/p&gt;
+the users browser&apos;s history and url bar here is how it looks like:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./browser-url.png&quot; alt=&quot;browser url bar&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Accordingly the url will the in users history:
-&lt;img src=&quot;./images/history-url.png&quot; alt=&quot;history url&quot;&gt;&lt;/p&gt;
+&lt;img src=&quot;./history-url.png&quot; alt=&quot;history url&quot;&gt;&lt;/p&gt;
 &lt;p&gt;If you have an access log here&apos;s what your server log will look like:
-&lt;img src=&quot;./images/server-log.png&quot; alt=&quot;server log&quot;&gt;&lt;/p&gt;
+&lt;img src=&quot;./server-log.png&quot; alt=&quot;server log&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Given the vulnerabilities pointed above it&apos;s important for us developers to always use post requests for sensitive data,
 browsers tend to fallback to get requests if the method is not specified, that means we have to remain vigilant and
 add &lt;code class=&quot;language-text&quot;&gt;method=&amp;quot;POST&amp;quot;&lt;/code&gt; attribute when dealing with forms that contains sensitive data.&lt;/p&gt;
@@ -189,88 +103,7 @@ NOTES:
 - XSS
 - owasp top 10
 - .env
---&gt;</content:encoded></item><item><title><![CDATA[Mysql Query performance]]></title><description><![CDATA[Introducao Recentemente tive de melhorar a performance de uma das paginas do emprego.co.mz, durante
-esse processo aprendi a fazer profiling…]]></description><link>https://ivanbila.github.io/mysql-query-performance/</link><guid isPermaLink="false">https://ivanbila.github.io/mysql-query-performance/</guid><pubDate>Sat, 06 Jul 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Introducao&lt;/h2&gt;
-&lt;p&gt;Recentemente tive de melhorar a performance de uma das paginas do &lt;a href=&quot;https://www.emprego.co.mz&quot;&gt;emprego.co.mz&lt;/a&gt;, durante
-esse processo aprendi a fazer profiling e melhorar a performance das queries do mysql.&lt;/p&gt;
-&lt;p&gt;Neste blog post nao irei falar ou mencionar outras tecnicas usadas para melhorar a performance do mysql como usar memcahed
-ou redis ou um servidor de pesquisa ou qualquer ferramenta externa ao mysql que serve para fazer cache ou indexacao, irei
-adressar somente como fazer o profiling e melhorar as queries usando somente as ferramentas disponiveis no mysql.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Measre twice cut once&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;O primeiro passo antes de procurar melhorar as queries do mysql é analisar realmente se existe uma necessidade de passar
-um tempo analisando as queries para melhorar, isto é profiling. Outro ponto importante a levantar é que melhorar a despende
-tempo que as vezes o resultado desse trabalho todo pode ser 3s ou 2s a menos na nossa query...&lt;/p&gt;
-&lt;p&gt;Profiling é a fase onde verificamos quais as queries que gastam mais recursos ou que levam mais tempo sendo executadas e
-eventualmente enviado o resultado para a aplicacao.&lt;/p&gt;
-&lt;p&gt;Para ligar/activar profiling temos de correr o seguinte comando:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;mysql&quot;&gt;&lt;pre class=&quot;language-mysql&quot;&gt;&lt;code class=&quot;language-mysql&quot;&gt;SET profiling = 1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;é importante firsar que devemos correr a instrucao acima depois de escolher a base de dados na qual vamos executar as queries, para escolher a base de dados
-a ser usada corremos o seguinte comando:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;use &amp;lt;base_de_dados&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Depois de escolher a base de dados e&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How to add brotli compression to nginx]]></title><description><![CDATA[Named after a Swiss bakery product, Brotli is a relatively new compression algorithm released by Google back in 2015.
-One of the minor…]]></description><link>https://ivanbila.github.io/how-to-add-brotli-compression-to-nginx/</link><guid isPermaLink="false">https://ivanbila.github.io/how-to-add-brotli-compression-to-nginx/</guid><pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Named after a Swiss bakery product, Brotli is a relatively new compression algorithm released by Google back in 2015.
-One of the minor downsides of Brotli is that it is not yet officially distributed on any popular web servers. This means that if you want Brotli enabled on your server today, you’ll need to do a bit of your own configuration work.
-What’s the Status of Brotli Support?
-Brotli isn’t universally supported yet on all browsers, although a good number of popular browsers do currently support it (as of May 2017).&lt;/p&gt;
-&lt;h3&gt;Measuring the effects of brotli compression&lt;/h3&gt;
-&lt;h3&gt;Brotli compatibility&lt;/h3&gt;
-&lt;h3&gt;Brotli tool for estimating compression&lt;/h3&gt;
-&lt;h3&gt;Brotli compression levels&lt;/h3&gt;
-&lt;h4&gt;Brotli compression levels vs speed&lt;/h4&gt;
-&lt;p&gt;LINKS:
-&lt;a href=&quot;https://www.howtoforge.com/tutorial/how-to-install-nginx-with-brotli-compression-on-ubuntu-1804/&quot;&gt;https://www.howtoforge.com/tutorial/how-to-install-nginx-with-brotli-compression-on-ubuntu-1804/&lt;/a&gt;
-&lt;a href=&quot;https://www.vultr.com/docs/add-brotli-support-to-nginx-on-ubuntu-18-04&quot;&gt;https://www.vultr.com/docs/add-brotli-support-to-nginx-on-ubuntu-18-04&lt;/a&gt;
-&lt;a href=&quot;https://web.dev/codelab-text-compression-brotli&quot;&gt;https://web.dev/codelab-text-compression-brotli&lt;/a&gt;
-&lt;a href=&quot;https://www.maxcdn.com/one/visual-glossary/brotli/&quot;&gt;https://www.maxcdn.com/one/visual-glossary/brotli/&lt;/a&gt;
-&lt;a href=&quot;https://github.com/fholzer/docker-nginx-brotli&quot;&gt;https://github.com/fholzer/docker-nginx-brotli&lt;/a&gt;
-&lt;a href=&quot;https://github.com/google/ngx_brotli&quot;&gt;https://github.com/google/ngx_brotli&lt;/a&gt;
-&lt;a href=&quot;https://github.com/eustas/ngx_brotli&quot;&gt;https://github.com/eustas/ngx_brotli&lt;/a&gt;
-&lt;a href=&quot;https://css-tricks.com/brotli-static-compression/&quot;&gt;https://css-tricks.com/brotli-static-compression/&lt;/a&gt;
-&lt;a href=&quot;https://www.smashingmagazine.com/2019/01/front-end-performance-checklist-2019-pdf-pages/&quot;&gt;https://www.smashingmagazine.com/2019/01/front-end-performance-checklist-2019-pdf-pages/&lt;/a&gt;
-&lt;a href=&quot;https://mozilla.github.io/meao/2018/08/17/snippets-brotli/&quot;&gt;https://mozilla.github.io/meao/2018/08/17/snippets-brotli/&lt;/a&gt;
-&lt;a href=&quot;https://hacks.mozilla.org/2015/11/better-than-gzip-compression-with-brotli/&quot;&gt;https://hacks.mozilla.org/2015/11/better-than-gzip-compression-with-brotli/&lt;/a&gt;
-&lt;a href=&quot;https://developers.google.com/web/tools/lighthouse/audits/text-compression&quot;&gt;https://developers.google.com/web/tools/lighthouse/audits/text-compression&lt;/a&gt;
-&lt;a href=&quot;https://computingforgeeks.com/how-to-enable-gzip-brotli-compression-for-nginx-on-linux/&quot;&gt;https://computingforgeeks.com/how-to-enable-gzip-brotli-compression-for-nginx-on-linux/&lt;/a&gt;
-&lt;a href=&quot;https://www.howtoforge.com/tutorial/how-to-build-nginx-from-source-on-ubuntu-1804-lts/&quot;&gt;https://www.howtoforge.com/tutorial/how-to-build-nginx-from-source-on-ubuntu-1804-lts/&lt;/a&gt;
-&lt;a href=&quot;https://www.vultr.com/docs/how-to-compile-nginx-from-source-on-ubuntu-16-04&quot;&gt;https://www.vultr.com/docs/how-to-compile-nginx-from-source-on-ubuntu-16-04&lt;/a&gt;
-&lt;a href=&quot;https://jee-appy.blogspot.com/2016/05/add-module-to-nginx.html&quot;&gt;https://jee-appy.blogspot.com/2016/05/add-module-to-nginx.html&lt;/a&gt;
-&lt;a href=&quot;https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/&quot;&gt;https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/&lt;/a&gt;
-&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/how-to-compile-nginx-from-source-on-a-centos-6-4-x64-vps&quot;&gt;https://www.digitalocean.com/community/tutorials/how-to-compile-nginx-from-source-on-a-centos-6-4-x64-vps&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[performance-metrics]]></title><description><![CDATA[Just so graphql is happy]]></description><link>https://ivanbila.github.io/performance-metrics/</link><guid isPermaLink="false">https://ivanbila.github.io/performance-metrics/</guid><pubDate>Fri, 28 Jun 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Just so graphql is happy&lt;/p&gt;</content:encoded></item><item><title><![CDATA[PHP Multi-byte strings]]></title><description><![CDATA[Problem definition and setting the why Do you know why these two results are different? Have you heard of multi-byte functions? How to…]]></description><link>https://ivanbila.github.io/php-multibyte/</link><guid isPermaLink="false">https://ivanbila.github.io/php-multibyte/</guid><pubDate>Sat, 04 May 2019 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Problem definition and setting the why&lt;/h2&gt;
-&lt;p&gt;Do you know why these two results are different? Have you heard of multi-byte functions?&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;strlen&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;mb_strlen&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;How to install php multi byte extension&lt;/h2&gt;
-&lt;p&gt;Linux&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; php&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;-mbstring&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Mac&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;brew &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; php&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;-mbstring&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Enable Multibytestring on extensions&lt;/h2&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token assign-left variable&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;mbstring
-&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token assign-left variable&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;mbstring&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Enable using the CLI&lt;/h2&gt;
-&lt;p&gt;NOTE:
-phpenmod moduleName enables a module to php7 (restart apache after that sudo service apache2 restart)
-phpdismod moduleName disables a module to php7 (restart apache after that sudo service apache2 restart)
-php -m lists the loaded modules&lt;/p&gt;
-&lt;p&gt;If you have several php versions intalled you can also use this syntax:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;phpenmod -v &lt;span class=&quot;token number&quot;&gt;5.6&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;modulename&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;modulename&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;shell&quot;&gt;&lt;pre class=&quot;language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;php7.2enmod pdo_mysql&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;PHP timestamp is in seconds whereas javascript is in miliseconds&lt;/h2&gt;
-&lt;h2&gt;Comparision of muti byte functions with normal functions&lt;/h2&gt;
-&lt;h3&gt;REFERENCES&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://tecadmin.net/enable-disable-php-modules-ubuntu/&quot;&gt;PHP Modules&lt;/a&gt;
-&lt;a href=&quot;https://www.sitepoint.com/install-php-extensions-source/&quot;&gt;INSTALLING PHP EXTENSIONS&lt;/a&gt;
-&lt;a href=&quot;https://stackoverflow.com/questions/6722277/why-use-multibyte-string-functions-in-php&quot;&gt;WHY USE MULTIBYTE FUNCTIONS&lt;/a&gt;
-&lt;a href=&quot;http://kunststube.net/encoding/&quot;&gt;ENCONDING&lt;/a&gt;
-&lt;a href=&quot;https://deliciousbrains.com/how-unicode-works/&quot;&gt;ASCII&lt;/a&gt;
-&lt;a href=&quot;https://www.baeldung.com/java-char-encoding&quot;&gt;CHAR ENCONDING&lt;/a&gt;
-&lt;a href=&quot;https://www.interserver.net/tips/kb/what-is-mbstring-and-how-to-enable/&quot;&gt;WHAT IS MBR&lt;/a&gt;
-&lt;a href=&quot;https://www.sitepoint.com/working-with-multibyte-strings/&quot;&gt;WORKING WITH MULTIBYTE STRINGS&lt;/a&gt;
-&lt;a href=&quot;http://www.alejandro.codina.nom.br/php-manual-br/ref.mbstring.html&quot;&gt;REF MULTIBYTE&lt;/a&gt;
-&lt;a href=&quot;https://www.slideshare.net/Daniel_Rhodes/multibyte-string-handling-in-php&quot;&gt;MULTIBYTE STRING HANDLING&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.&lt;/p&gt;
+--&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.&lt;/p&gt;
 &lt;p&gt;However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application&apos;s user experience significantly.&lt;/p&gt;
 &lt;h3&gt;Prove the value of your app&lt;/h3&gt;
 &lt;p&gt;Imagine being asked for your ID copy/credit card before entering a shop? How would you feel? That’s how users feel when you ask for their data before they can even use your app, what I&apos;m saying is we should Let the user do something in our apps without requiring him to sign up. It is not enough to put a splash screen or a short tutorial on how the app works to establish whether your application is worth it or not.&lt;/p&gt;
@@ -296,43 +129,10 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;p&gt;Opening the browser or external apps uses RAM and processing power, which is not what you want your app to do, because most devices have low RAM, and processing power is scarce, even if they have good processing power it’s very likely that they opened dozen other apps besides yours.&lt;/p&gt;
 &lt;p&gt;Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is taken to a different place where he might find distractions, and who knows whether he&apos;ll return?&lt;/p&gt;
 &lt;p&gt;Google has come out with some exciting features to speed up the sign flow using, for the web they created something called one tap sign-up or auto sign-in which allows seamless sign-in and sign-up flows without interrupting them with a sign-on or sign-up screen.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/auto-sign-in.png&quot; alt=&quot;auto sign in&quot;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;em&gt;Google auto sign in pop up&lt;/em&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/auto-sign-up.png&quot; alt=&quot;auto sign in&quot;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;em&gt;Google auto sign in processing&lt;/em&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;img src=&quot;./auto-sign-in.png&quot; alt=&quot;auto sign in&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./auto-sign-up.png&quot; alt=&quot;auto sign in&quot;&gt;&lt;/p&gt;
 &lt;p&gt;On Android, Google allows users to sign-in or sign-up without having to leave the application, by showing a modal of the list of accounts that the user setup in that device and wants to use in your application.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/android-sign-in.png&quot; alt=&quot;android sign in&quot;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;em&gt;Google android sign in: source androidhive.info&lt;/em&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;img src=&quot;./android-sign-in.png&quot; alt=&quot;android sign in&quot;&gt;&lt;/p&gt;
 &lt;h3&gt;Don&apos;t ask them to invite their friends nor rate you&lt;/h3&gt;
 &lt;p&gt;Seriously, I don’t think users invite other people to use an app. No one does that. It’s odd and weird. If I want my friend to use this X app, I tell him to download and explain the benefits and tell him how cool I’m because I’m using it or how it has changed, improved or helped me doing Y thing. Word of mouth is the kind of invitation or recommendation that people want, not receiving a message or an email saying user X invited you to use this app, how is the app supposed to solve my problem if it’s already creating a new one by spamming me?&lt;/p&gt;
 &lt;h3&gt;Use appropriate language&lt;/h3&gt;
@@ -341,132 +141,8 @@ phpenmod -v &lt;span class=&quot;token number&quot;&gt;7.1&lt;/span&gt; &lt;span
 &lt;p&gt;The inadequate use of language can cause doubt, uncertainty, hesitation, ambiguity, misinformation.&lt;/p&gt;
 &lt;p&gt;Long texts can hinder your user’s experience as in he or she might be using a mobile device which does not have a large screen.&lt;/p&gt;
 &lt;p&gt;Here are couple of examples of bad language use that resulted in confusion, misinformation:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/apple.JPG&quot; alt=&quot;apple&quot;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;em&gt;Use of long text delaying comprehension&lt;/em&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;&lt;img src=&quot;./images/cancel.jpeg&quot; alt=&quot;cancel a download&quot;&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;em&gt;Confusing modal due to bad language&lt;/em&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;img src=&quot;./apple.JPG&quot; alt=&quot;apple&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;./cancel.jpeg&quot; alt=&quot;cancel a download&quot;&gt;&lt;/p&gt;
 &lt;p&gt;There are a lot more other things you can do to improve user experience but I decided to focus only on these which I think when overlooked can damage your application user experience.&lt;/p&gt;
 &lt;p&gt;I hope you found something that can either be applied in your current project or upcoming projects and that you learned as much as I did writing this post, may your next/current project have the best user experience possible.&lt;/p&gt;
-&lt;p&gt;Thanks, and see you next time.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Como desenvolvedores podem melhorar a UX]]></title><description><![CDATA[Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
-ele/ela pode não…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/portuguese/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/portuguese/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Existem algumas coisas que os desenvolvedores podem fazer para melhorar a experiência geral do utilizador em um aplicativo;
-ele/ela pode não precisar fazer um curso de experiência de utilizador para aprender.&lt;/p&gt;
-&lt;p&gt;No entanto, quando passadas despercebidas, podem danificar a experiência da aplicação, por outro lado, se voce passar
-algum tempo e corrigi-los, pode melhorar significativamente a experiência do utilizador no aplicativo.&lt;/p&gt;
-&lt;h3&gt;Prove o valor do seu aplicativo&lt;/h3&gt;
-&lt;p&gt;Imagine ser solicitado a sua cópia de identidade / cartão de crédito antes de entrar em uma loja? Como você se sentiria?
-É assim que os utilizadores se sentem quando você pede seus dados antes mesmo de usar seu aplicativo, o que estou dizendo
-é que devemos deixar o utilizador fazer algo em nossa aplicativos sem exigir que ele se inscreva. Não é suficiente colocar
-uma tela inicial ou um breve tutorial sobre como o aplicativo funciona para determinar se seu aplicativo vale a pena ou não.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&quot;Se você me pedir meus dados antes de oferecer qualquer valor, isso significa que você está mais preocupado com
-meus dados do que com a solução meu problema. ” utilizador apressado&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Eu acho que a afirmação acima resume tudo. Seria melhor se você não solicitasse que um utilizador fizesse login ou
-fornecesse dados (dele) antes mesmo de mostrar a ele por que seu aplicativo merece (atenção) ou dados.
-Eu sei que alguns aplicativos precisam saber sobre o utilizador antes dele usá-lo, mas acho que você sempre pode dar
-um jeito de dar valor antes de pedir.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Valorize seus utilizadores antes de solicitar.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;Prefira o OAuth sobre a senha tradicional de e-mail&lt;/h3&gt;
-&lt;p&gt;Quando um utilizador se cadastra usando o tradicional senha e e-mail, ele tem que memorizar a senha para seu aplicativo
-específico ou, pior ainda, em alguns casos ele pode reutilizar uma senha (a menos que ele use um aplicativo gerador / gerenciador de senhas).&lt;/p&gt;
-&lt;p&gt;Alguns utilizadores tendem a reutilizar ou criar senhas fracas para a maioria dos aplicativos que usam, para evitar
-trabalhos difíceis de memorizar ou salvar em um gerenciador de senhas.&lt;/p&gt;
-&lt;p&gt;Ter que memorizar as coisas é trabalhoso, exaustivo e demorado, geralmente os utilizadores têm muitas coisas para
-acompanhar (tarefas, nomes de família, números de telefone), então é improvável que eles memorizem a senha da sua app,
-eles têm zilhões de apps , você quer tornar seu aplicativo fácil de usar sem o incômodo de lembrar senhas e e-mails.
-Para evitar isso, você pode usar o OAuth.&lt;/p&gt;
-&lt;p&gt;Com o OAuth, o utilizador não precisa memorizar uma senha ou nome de utilizador
-(em suma, ele permite login / logout sem senha), o login ou a inscrição é apenas um “clique / toque”, o que significa
-que ele só precisa permitir que seu aplicativo acesse seus dados.&lt;/p&gt;
-&lt;p&gt;Esse fluxo tende a ser menos trabalhoso/exaustivo para o utilizador porque ele não precisa memorizar uma senha e verificar
-se o email foi preenchido corretamente. Usar o fluxo OAuth significa que você não precisa implementar a lógica para
-redefinir a senha (a menos que você tenha utilizadores usando a senha de e-mail) que o utilizador provavelmente esquecerá
-várias vezes até parar de usar seu serviço.&lt;/p&gt;
-&lt;p&gt;Ao usar o OAuth, além de ter a conveniência de fazer login do utilizador sem exigir uma senha, você também terá acesso
-à informação (nome, sobrenome, idade e mais) que o utilizador já preencheu em sua conta.&lt;/p&gt;
-&lt;p&gt;Se você deve usar o Google, o Twitter, o Facebook, o Linkedin ou o provedor GitHub OAuth pode depender de suas necessidades,
-no entanto, na maioria das vezes, você usará mais de um provedor OAuth.&lt;/p&gt;
-&lt;p&gt;Como o Facebook e o Google são os provedores com mais utilizadores, vou comparar os dois e no fim concluir o por que de
-usar um ao inves do outro.&lt;/p&gt;
-&lt;p&gt;O Google e o Facebook permitem que você obtenha quase as mesmas informações para um determinado utilizador, mas o uso
-de um ou outro pode ter implicações diferentes na experiência do utilizador para seu aplicativo.&lt;/p&gt;
-&lt;p&gt;Normalmente, o fluxo é o quase o mesmo e você clica para registrar ou entrar, então você é redirecionado para uma
-página onde você pode aceitar, recusar ou aceitar mas personalizar (eu só posso ver esse recurso no Facebook)
-que informações app pode obter da sua conta.&lt;/p&gt;
-&lt;p&gt;No celular mais especificamente Android, quando você faz login ou se inscreve no Facebook, ele geralmente abre uma
-guia do navegador da Web que pode ser cara para o utilizador.&lt;/p&gt;
-&lt;p&gt;Abrir o navegador ou aplicativos externos usa RAM e capacidade de processamento, o que não é o que você quer que seu
-aplicativo faça, porque a maioria dos dispositivos tem pouca RAM e a capacidade de processamento é escassa, mesmo que
-tenham bom poder de processamento. outros aplicativos além do seu.&lt;/p&gt;
-&lt;p&gt;Outra desvantagem de abrir um navegador / aplicativo para entrar / sair é a perda da atenção do utilizador, porque ele
-é levado para um lugar diferente, onde pode encontrar distrações e quem sabe se ele retornará?&lt;/p&gt;
-&lt;p&gt;O Google disponibilizou alguns recursos interessantes para acelerar o fluxo de sinal usando, para a Web, um chamado
-&quot;registro de toque&quot; ou &quot;auto login&quot;, que permite fluxos de login e inscrição contínuos e ininterruptos com
-um sinal -no ecrã ou inscrever-se.&lt;/p&gt;
-&lt;h3&gt;Não peça que eles convidem seus amigos nem avaliem você&lt;/h3&gt;
-&lt;p&gt;Sério, eu não acho que os utilizadores convidem outras pessoas para usar um aplicativo. Ninguém faz isso. É estranho, se
-eu quiser que meu amigo use este aplicativo X, eu digo a ele para fazer o download e explicar os benefícios e dizer a
-ele como eu sou legal porque estou usando ou como isso mudou, melhorou ou me ajudou a fazer isso.
-Boca a boca é o tipo de convite ou recomendação que as pessoas querem, não receber uma mensagem ou um e-mail dizendo
-que o utilizador X convidou você para usar este aplicativo, como o aplicativo deve resolver meu problema se já estiver
-criando um novo me enviando por spam. ?&lt;/p&gt;
-&lt;h3&gt;Use a linguagem apropriada&lt;/h3&gt;
-&lt;p&gt;Ao contrário de outros campos extremamente formais como arquitetura e direito, no software, ninguém virá e suspenderá
-seu aplicativo porque a linguagem não está gramaticalmente correta (há alguns casos extremos em que a linguagem tem que
-seguir estritamente as regras da gramática e assim por diante), ou usou palavras que não existem no dicionário.&lt;/p&gt;
-&lt;p&gt;Ao criar seu aplicativo, prefira um idioma fácil de entender e no contexto. (Não precisa ser gramaticalmente correto,
-embora isso não seja um apelo para ignorar totalmente a gramática, há pequenas coisas que você pode fazer ou alterar
-em seu idioma para facilitar o entendimento para seus utilizadores específicos).&lt;/p&gt;
-&lt;p&gt;O uso inadequado da linguagem pode causar dúvida, incerteza, hesitação, ambigüidade, desinformação.&lt;/p&gt;
-&lt;p&gt;Textos longos podem prejudicar a experiência do utilizador, pois ele pode estar usando um dispositivo móvel que
-não possui uma tela grande.&lt;/p&gt;
-&lt;p&gt;Aqui estão alguns exemplos de mau uso da linguagem que resultaram em confusão, desinformação:&lt;/p&gt;
-&lt;p&gt;Há muito mais coisas que você pode fazer para melhorar a experiência do utilizador, mas decidi me concentrar apenas
-naquelas que eu acho que quando ignoradas podem prejudicar a experiência do utilizador no seu aplicativo significativamente.&lt;/p&gt;
-&lt;p&gt;Espero que você tenha encontrado algo que possa ser aplicado no seu projecto actual ou em projetos futuros e que
-tenhas aprendido tanto quanto eu ao escrever este post, que seu próximo / atual projeto tenha a melhor experiência
-possível.&lt;/p&gt;
-&lt;p&gt;Obrigado e até a próxima.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O que podes aprender com o Redesign do Dondza]]></title><description><![CDATA[Dondza Changana é um aplicativo que permite aprender algumas palavras em Changana através de imagens ilustrativas, audição da pronúncia das…]]></description><link>https://ivanbila.github.io/o-que-podes-aprender-com-o-redesign-do-dondza/</link><guid isPermaLink="false">https://ivanbila.github.io/o-que-podes-aprender-com-o-redesign-do-dondza/</guid><pubDate>Sun, 25 Sep 2016 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Dondza Changana é um aplicativo que permite aprender algumas palavras em Changana através de imagens ilustrativas, audição da pronúncia das palavras descritas e o significado na língua portuguesa.
-Neste post vou fazer uma analise da App presente e a proposição do Redesign.&lt;/p&gt;
-&lt;h2&gt;Pagina inicial&lt;/h2&gt;
-&lt;p&gt;Uma das coisas que está boa na página inicial do Dondza é a simplicidade, abre logo os serviços da Aplicação, não mostra formulários desnecessários não pede nenhum dado. Neste quesito a equipe do Dondza esta de parabéns. porque eu penso que:&lt;/p&gt;
-&lt;p&gt;“Se a sua Aplicação pede os meus dados na primeira tela bem isso só mostra que estás mais preocupado em ter meus dados do que resolver o meu problema”.&lt;/p&gt;
-&lt;p&gt;Mas existem algumas Excepções a esta regra, mais sobre isso no próximo post. A página do Dondza tinha muitas inconsistências, o texto não estava centralizado as imagens eram inconsistentes com a descrição de um campo.
-Padronizar todas imagens é extremamente importante para que a interface e experiência da sua aplicação não sofra.&lt;/p&gt;
-&lt;h2&gt;Tela das categorias&lt;/h2&gt;
-&lt;p&gt;A parte da categoria seleccionada, por exemplo “animais” não estava apresentável violava as regras do design de aplicações começando pelos botões de navegação que violam o material design “ícones estranhos” , nesta proposta de Redesign os ícones são cinzentos e do material icons e estão no centro da tela assim o utilizador acede a eles facilmente.
-Para aceder a versão audio da palavra o utilizador tinha de clicar na imagem, o que não é intuitivo o ideal seria colocar um botão com ícone de volume na parte de baixo da tela, é preciso fazer com que os botões da sua App sejam intuitivos que não levem o utilizador a pensar como diz o guru Steve Krug.
-Mover o botão de share da primeira tela para esta melhoraria a apresentação da sua aplicação.&lt;/p&gt;
-&lt;p&gt;Animações
-As animações de transição estavam mal implementadas, ao clicar no botão de next a aplicação apresentava uma animação de transição que não estava em sintonia com a outra animação ao clicar o botão de back, todas animações de transição fluem para o mesmo lado o que complica o utilizador.
-Seria ideal colocar as animações do next a partir da direita para esquerda e as de back da esquerda.&lt;/p&gt;
-&lt;h2&gt;Modularidade&lt;/h2&gt;
-&lt;p&gt;Quando estás a criar uma aplicação para android o tamanho pode ser uma das razões que fazem com que o utilizador não baixe a sua App.
-Por isso que eu acho que apps grandes devem ser modulares, neste caso o Dondza devia ser dividido em módulos, isso permite que o utilizador possa baixar a sua App e que possa fazer as actualizações sem dificuldades porque se a sua App tem 23 MB como Dondza fica difícil para o utilizador devido a falta de dados para baixar da PlayStore e de memoria para instalar um APK de 23 MB right away, mas se o APK tem 5 MB e a App esta dividida em 3 módulos ou tem 3 pacotes adicionais que podem ser baixados in App ai o utilizador pode escolher os pacotes que deseja baixar consequentemente poupar memoria e dados.&lt;/p&gt;
-&lt;h2&gt;Overall&lt;/h2&gt;
-&lt;p&gt;Num overall o que pode melhorar a App: Padronizar as animações, usar cartoons/desenhos ou imagens reais, dividir a App em módulos para diminuir o tamanho da aplicação na Store , centralizar o texto na tela inicial e mover os botões de share para a categoria seleccionada.
-Stay tune, o próximo post terá um link para baixar alguns wireframes para que possas usar no desenvolvimento da aplicação.
-O que achas que pode ser melhorado na presente app, qual é a sua opinião sobre o redesign?
-Obrigado, por ter lido o artigo subscreva a publicação para mais artigos de desenvolvimento android.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;Thanks, and see you next time.&lt;/p&gt;</content:encoded></item></channel></rss>

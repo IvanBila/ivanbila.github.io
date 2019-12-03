@@ -2,36 +2,44 @@
 title: Security on the Front-End
 date: "2019-08-17"
 description: ""
-draft: false
 ---
 
-It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
-applications, and the use of external code through packages such as jquery, react, and vue, the consequences of a
-successful breach can be fatal, that can include harm to customers, lost of trust and in some cases legal liabilities.
+It's getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
+the use of external code through libraries or frameworks such as jQuery, ReactJS, and VueJS, Lodash, not setting up 
+HTTPS to encrypt the data exchanged between the server and the client, use of old or deprecated libraries/frameworks.
+The consequences of a breach/exploited vulnerability can be fatal that can include  harm to customers, lost of trust
+and in some cases legal liabilities. In this article I will outline some of the things that when neglected can contribute
+to an insecure Front-End.
 
-## Use HTTPS
+One thing worth mentioning is that there are a lot of ways your Front-End can be attacked or vulnerable, that's why I
+recommend checking the full O-WASP list where you can have a deep insight has to what vulnerabilities plague web applications.
+
+And we're going to start with the most obvious vulnerability that an app can have if not catered for:
+
+## Not Using HTTPS
 
 When you use HTTP all data sent from the client to the server and vice-versa is unencrypted that implies that
-your users sensitive information such as credit cards number and CVC (if your site supports payment) is exposed
-to anyone connected to the network(it gets even more dangerous if the network is public) and sniffing packages
-and might get the sensitive data and use it for personal gain at the expense of your users.
+your users sensitive information such as credit cards number(if your site supports payment), social security number,
+or any other data sent from the server or Front-End is exposed to anyone connected to the network(it gets even more
+dangerous if the network is public) and sniffing packages and might get the sensitive data and use it for personal
+gain at the expense of your users.
 
-The remendy for this is to use HTTPS, currently, there's two options for installing HTTPS or getting the SSL certificate,
+The remedy for this is to use HTTPS, currently, there's two options for installing HTTPS or getting the SSL certificate,
 you can either buy from a vendor/provider such as Digi-cert or get the free SSL certificate with let's encrypt.
 
-The down side of using let's encrypt is browser support, and you can only get the Domain Validation SSL
+The downside of using let's encrypt is the browser support and you can only get the Domain Validation SSL
 certificate on top of that you have to renew it every three months.
 
 Having HTTPS also allows us to access browser APIS that would not be available if the domain origin does not
-have a valid SSL certificate such as Service workers, Push Api, and Location, you can check the
-[full list](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts)
+have a valid SSL certificate(these APIS only work in secure origins) such as Service Workers, Push API, and Location, and others
+you can check the [full list](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts)
 
 Not having access to Service workers and other APIS means that your application cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.
 
 ## Taking user input as is(not sanitizing)
 
-Not sanitizing user input extremely dangerous, if your don't sanitise user input your app might be suggested to SQL or
+Not sanitizing user input extremely dangerous, if you don't sanitise user input your app might be suggested to SQL or
 XSS. Suppose I'm building an app that allows you to share about development meetups.
 
 The app contains this input
@@ -40,7 +48,7 @@ The app contains this input
 <input type="text" name="share_input" placeholder="Thought" />
 ```
 
-If I take the text inputed into that field and append to markup without saniziting the user can fill it with the following:
+If I take the text "inputed" into that field and append to markup without sanitising the user can fill it with the following:
 
 ```javascript
 let evilScript = document.body.appendChild(document.createElement("script"))
@@ -53,23 +61,25 @@ can:
 
   - Request CSS
   - Request images
-  - Make calls to your api
+  - Make calls to your API
   - Control the browser
   - Open another page
   - Open another tab
+  - Read all cookies not marked as HTTP ONLY
 
 It's pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
-such situation is to escape the text before appending to the DOM, or even better you can use JavaScript's built in
-innerText if you want append what's typed as text.
+such situation is to escape the text before appending to the DOM or saving it to the database, or even better you can
+use JavaScript's built in innerText if you want append what's typed as text if the content is not supposed to be processed.
 
 ## Don't use deprecated libraries/frameworks with widely know vulnerabilities
 
-Using deprecated libraries with with widely knows vulnerabilities it's almost like asking to be
+Using deprecated libraries with with widely known vulnerabilities it's almost like asking to be
 hacked(seriously don't use jquery 1), hoping that hackers will not find out that your website's
 library or framework has known vulnerabilities is not a good strategy. Making a habit of inspecting
 the libraries' versions, if you're using github you can turn on notifications for vulnerabilities
-in libraries or you can use [https://snyk.io/]() which has a web and cli app that checks vulnerabilities in
+in libraries or you can use [snyk](https://snyk.io/) which has a web and cli app that checks vulnerabilities in
 all dependencies in project's your `package.json`
+
 
 ## Inspect frameworks or libraries before deploying to production or using it
 
@@ -116,13 +126,13 @@ add `method="POST"` attribute when dealing with forms that contains sensitive da
 ## Add adding noopener noreferer to external links
 
 When we add external links with `target="_blank"` attribute the browser allows the opened tab to run in the same process
-as the opener website, which means that if the newly opened tab has performance issues that might affect the opener page,
-moreover a critical security vulnerability would be the fact that the newly opened tab can access the previous page's properties
-via `window.opener` with that change, update the DOM.
+as the opener website(unless configured with a different behaviour), which means that if the newly opened tab has performance 
+issues that might affect the opener page, moreover a critical security vulnerability would be the fact that the newly opened\
+tab can access the previous page's properties via `window.opener` with that change, update the DOM.
 
-### Use DOCTYPE and force internet explorer to use it's best rendering engine
+### Use DOCTYPE and force Internet Explorer to use it's best rendering engine
 
-When your add `<!DOCTYPE html>` to add html file it let's the browser know that this page is using the latest version
+When your add `<!DOCTYPE html>` to the HEAD of the html file it let's the browser know that this page is using the latest version
 of html, there's nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
 engine from previous browsers which also contain errors and security vulnerabilities from previous browsers, one of these
 features is CSS in JS which allows you to write JS in CSS and have the browser execute it, this could be a source for a
@@ -131,18 +141,20 @@ XSS in you application.
 ## Don't keep API keys to JavaScript code
 
 Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can
-access your site will can use your that api key and if it is linked to any special privileges the user can exploit your
-application as he wishes.
+access your site will and can use you API key and if it is linked to any special privileges the user can exploit your
+application as he/she wishes.
 
 ## Prefer HTTP only cookies for sensitive data
 
-Http only cookies are like the name itself, are only accessible via http, that way evil scripts cannot
+HTTP ONLY cookies are like the name itself, are only accessible via HTTP, that way evil scripts cannot
 read your users sensitive cookies and use them for their own interests.
 
+<!---
 ## Preferably do business logic on the backend
 
-Doing business logic on the frontend is a mistake, because the data on the frontend is subject to
-changes and checks
+Doing business logic on the frontend can be harmful, because the data on the frontend is subject to
+changes and 
+-->
 
 <!--
 NOTES:

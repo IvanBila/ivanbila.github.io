@@ -1,27 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 03 Dec 2019 18:44:16 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It's getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
-applications, and the…]]></description><link>https://ivanbila.github.io/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.github.io/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It&apos;s getting increasingly likely to have security problems on the frontend due to access to all apis akin to native
-applications, and the use of external code through packages such as jquery, react, and vue, the consequences of a
-successful breach can be fatal, that can include harm to customers, lost of trust and in some cases legal liabilities.&lt;/p&gt;
-&lt;h2&gt;Use HTTPS&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 03 Dec 2019 22:43:29 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It's getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
+the use of external…]]></description><link>https://ivanbila.github.io/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.github.io/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It&apos;s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
+the use of external code through libraries or frameworks such as jQuery, ReactJS, and VueJS, Lodash, not setting up
+HTTPS to encrypt the data exchanged between the server and the client, use of old or deprecated libraries/frameworks.
+The consequences of a breach/exploited vulnerability can be fatal that can include  harm to customers, lost of trust
+and in some cases legal liabilities. In this article I will outline some of the things that when neglected can contribute
+to an insecure Front-End.&lt;/p&gt;
+&lt;p&gt;One thing worth mentioning is that there are a lot of ways your Front-End can be attacked or vulnerable, that&apos;s why I
+recommend checking the full O-WASP list where you can have a deep insight has to what vulnerabilities plague web applications.&lt;/p&gt;
+&lt;p&gt;And we&apos;re going to start with the most obvious vulnerability that an app can have if not catered for:&lt;/p&gt;
+&lt;h2&gt;Not Using HTTPS&lt;/h2&gt;
 &lt;p&gt;When you use HTTP all data sent from the client to the server and vice-versa is unencrypted that implies that
-your users sensitive information such as credit cards number and CVC (if your site supports payment) is exposed
-to anyone connected to the network(it gets even more dangerous if the network is public) and sniffing packages
-and might get the sensitive data and use it for personal gain at the expense of your users.&lt;/p&gt;
-&lt;p&gt;The remendy for this is to use HTTPS, currently, there&apos;s two options for installing HTTPS or getting the SSL certificate,
+your users sensitive information such as credit cards number(if your site supports payment), social security number,
+or any other data sent from the server or Front-End is exposed to anyone connected to the network(it gets even more
+dangerous if the network is public) and sniffing packages and might get the sensitive data and use it for personal
+gain at the expense of your users.&lt;/p&gt;
+&lt;p&gt;The remedy for this is to use HTTPS, currently, there&apos;s two options for installing HTTPS or getting the SSL certificate,
 you can either buy from a vendor/provider such as Digi-cert or get the free SSL certificate with let&apos;s encrypt.&lt;/p&gt;
-&lt;p&gt;The down side of using let&apos;s encrypt is browser support, and you can only get the Domain Validation SSL
+&lt;p&gt;The downside of using let&apos;s encrypt is the browser support and you can only get the Domain Validation SSL
 certificate on top of that you have to renew it every three months.&lt;/p&gt;
 &lt;p&gt;Having HTTPS also allows us to access browser APIS that would not be available if the domain origin does not
-have a valid SSL certificate such as Service workers, Push Api, and Location, you can check the
-&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts&quot;&gt;full list&lt;/a&gt;&lt;/p&gt;
+have a valid SSL certificate(these APIS only work in secure origins) such as Service Workers, Push API, and Location, and others
+you can check the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts&quot;&gt;full list&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Not having access to Service workers and other APIS means that your application cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.&lt;/p&gt;
 &lt;h2&gt;Taking user input as is(not sanitizing)&lt;/h2&gt;
-&lt;p&gt;Not sanitizing user input extremely dangerous, if your don&apos;t sanitise user input your app might be suggested to SQL or
+&lt;p&gt;Not sanitizing user input extremely dangerous, if you don&apos;t sanitise user input your app might be suggested to SQL or
 XSS. Suppose I&apos;m building an app that allows you to share about development meetups.&lt;/p&gt;
 &lt;p&gt;The app contains this input&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;share_input&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Thought&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If I take the text inputed into that field and append to markup without saniziting the user can fill it with the following:&lt;/p&gt;
+&lt;p&gt;If I take the text &quot;inputed&quot; into that field and append to markup without sanitising the user can fill it with the following:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; evilScript &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 evilScript&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;text/javscript&quot;&lt;/span&gt;
 evilScript&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;src &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -30,20 +37,21 @@ can:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Request CSS&lt;/li&gt;
 &lt;li&gt;Request images&lt;/li&gt;
-&lt;li&gt;Make calls to your api&lt;/li&gt;
+&lt;li&gt;Make calls to your API&lt;/li&gt;
 &lt;li&gt;Control the browser&lt;/li&gt;
 &lt;li&gt;Open another page&lt;/li&gt;
 &lt;li&gt;Open another tab&lt;/li&gt;
+&lt;li&gt;Read all cookies not marked as HTTP ONLY&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;It&apos;s pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
-such situation is to escape the text before appending to the DOM, or even better you can use JavaScript&apos;s built in
-innerText if you want append what&apos;s typed as text.&lt;/p&gt;
+such situation is to escape the text before appending to the DOM or saving it to the database, or even better you can
+use JavaScript&apos;s built in innerText if you want append what&apos;s typed as text if the content is not supposed to be processed.&lt;/p&gt;
 &lt;h2&gt;Don&apos;t use deprecated libraries/frameworks with widely know vulnerabilities&lt;/h2&gt;
-&lt;p&gt;Using deprecated libraries with with widely knows vulnerabilities it&apos;s almost like asking to be
+&lt;p&gt;Using deprecated libraries with with widely known vulnerabilities it&apos;s almost like asking to be
 hacked(seriously don&apos;t use jquery 1), hoping that hackers will not find out that your website&apos;s
 library or framework has known vulnerabilities is not a good strategy. Making a habit of inspecting
 the libraries&apos; versions, if you&apos;re using github you can turn on notifications for vulnerabilities
-in libraries or you can use &lt;a href=&quot;&quot;&gt;https://snyk.io/&lt;/a&gt; which has a web and cli app that checks vulnerabilities in
+in libraries or you can use &lt;a href=&quot;https://snyk.io/&quot;&gt;snyk&lt;/a&gt; which has a web and cli app that checks vulnerabilities in
 all dependencies in project&apos;s your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;Inspect frameworks or libraries before deploying to production or using it&lt;/h2&gt;
 &lt;p&gt;Sometimes the libraries might not be deprecated or have known vulnerabilities but, it always better to be safe than sorry,
@@ -77,25 +85,28 @@ browsers tend to fallback to get requests if the method is not specified, that m
 add &lt;code class=&quot;language-text&quot;&gt;method=&amp;quot;POST&amp;quot;&lt;/code&gt; attribute when dealing with forms that contains sensitive data.&lt;/p&gt;
 &lt;h2&gt;Add adding noopener noreferer to external links&lt;/h2&gt;
 &lt;p&gt;When we add external links with &lt;code class=&quot;language-text&quot;&gt;target=&amp;quot;_blank&amp;quot;&lt;/code&gt; attribute the browser allows the opened tab to run in the same process
-as the opener website, which means that if the newly opened tab has performance issues that might affect the opener page,
-moreover a critical security vulnerability would be the fact that the newly opened tab can access the previous page&apos;s properties
-via &lt;code class=&quot;language-text&quot;&gt;window.opener&lt;/code&gt; with that change, update the DOM.&lt;/p&gt;
-&lt;h3&gt;Use DOCTYPE and force internet explorer to use it&apos;s best rendering engine&lt;/h3&gt;
-&lt;p&gt;When your add &lt;code class=&quot;language-text&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; to add html file it let&apos;s the browser know that this page is using the latest version
+as the opener website(unless configured with a different behaviour), which means that if the newly opened tab has performance
+issues that might affect the opener page, moreover a critical security vulnerability would be the fact that the newly opened&lt;br&gt;
+tab can access the previous page&apos;s properties via &lt;code class=&quot;language-text&quot;&gt;window.opener&lt;/code&gt; with that change, update the DOM.&lt;/p&gt;
+&lt;h3&gt;Use DOCTYPE and force Internet Explorer to use it&apos;s best rendering engine&lt;/h3&gt;
+&lt;p&gt;When your add &lt;code class=&quot;language-text&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; to the HEAD of the html file it let&apos;s the browser know that this page is using the latest version
 of html, there&apos;s nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
 engine from previous browsers which also contain errors and security vulnerabilities from previous browsers, one of these
 features is CSS in JS which allows you to write JS in CSS and have the browser execute it, this could be a source for a
 XSS in you application.&lt;/p&gt;
 &lt;h2&gt;Don&apos;t keep API keys to JavaScript code&lt;/h2&gt;
 &lt;p&gt;Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can
-access your site will can use your that api key and if it is linked to any special privileges the user can exploit your
-application as he wishes.&lt;/p&gt;
+access your site will and can use you API key and if it is linked to any special privileges the user can exploit your
+application as he/she wishes.&lt;/p&gt;
 &lt;h2&gt;Prefer HTTP only cookies for sensitive data&lt;/h2&gt;
-&lt;p&gt;Http only cookies are like the name itself, are only accessible via http, that way evil scripts cannot
+&lt;p&gt;HTTP ONLY cookies are like the name itself, are only accessible via HTTP, that way evil scripts cannot
 read your users sensitive cookies and use them for their own interests.&lt;/p&gt;
-&lt;h2&gt;Preferably do business logic on the backend&lt;/h2&gt;
-&lt;p&gt;Doing business logic on the frontend is a mistake, because the data on the frontend is subject to
-changes and checks&lt;/p&gt;
+&lt;!---
+## Preferably do business logic on the backend
+
+Doing business logic on the frontend can be harmful, because the data on the frontend is subject to
+changes and 
+--&gt;
 &lt;!--
 NOTES:
 - TLS SSL

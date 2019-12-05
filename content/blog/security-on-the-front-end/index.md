@@ -5,7 +5,7 @@ description: ""
 ---
 
 It's getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
-the use of external code through libraries or frameworks such as jQuery, ReactJS, and VueJS, Lodash, not setting up 
+the use of external code through libraries or frameworks such as jQuery, ReactJS, and VueJS, Lodash, not setting up
 HTTPS to encrypt the data exchanged between the server and the client, use of old or deprecated libraries/frameworks.
 The consequences of a breach/exploited vulnerability can be fatal that can include  harm to customers, lost of trust
 and in some cases legal liabilities. In this article I will outline some of the things that when neglected can contribute
@@ -71,7 +71,7 @@ It's pretty much game over for you application, the hacker can do as he wishes h
 such situation is to escape the text before appending to the DOM or saving it to the database, or even better you can
 use JavaScript's built in innerText if you want append what's typed as text if the content is not supposed to be processed.
 
-## Don't use deprecated libraries/frameworks with widely know vulnerabilities
+## Using deprecated libraries/frameworks with widely know vulnerabilities
 
 Using deprecated libraries with with widely known vulnerabilities it's almost like asking to be
 hacked(seriously don't use jquery 1), hoping that hackers will not find out that your website's
@@ -80,8 +80,7 @@ the libraries' versions, if you're using github you can turn on notifications fo
 in libraries or you can use [snyk](https://snyk.io/) which has a web and cli app that checks vulnerabilities in
 all dependencies in project's your `package.json`
 
-
-## Inspect frameworks or libraries before deploying to production or using it
+## Not frameworks or libraries before deploying to production or using it
 
 Sometimes the libraries might not be deprecated or have known vulnerabilities but, it always better to be safe than sorry,
 when house builders look for tools to aid them in their work they don't choose the latest fanciest tools that only a
@@ -89,7 +88,7 @@ handful of craftsman use, they always in search for tools that stood the test of
 should do, use tools that many developers have tried and did not find any tricky or mal-intentioned code, I also think
 that from time to time you should check what code is in your library.
 
-## Don't send sensitive data using GET requests
+## Sending sensitive data using GET requests
 
 One of restful API guides is that we should not mutate data using GET requests, that's a good rule to follow, because
 asides making an API restful it can also make it safe. Suppose we have the following form for getting users payment
@@ -123,14 +122,14 @@ Given the vulnerabilities pointed above it's important for us developers to alwa
 browsers tend to fallback to get requests if the method is not specified, that means we have to remain vigilant and
 add `method="POST"` attribute when dealing with forms that contains sensitive data.
 
-## Add adding noopener noreferer to external links
+## Not adding noopener noreferer to external links
 
 When we add external links with `target="_blank"` attribute the browser allows the opened tab to run in the same process
-as the opener website(unless configured with a different behaviour), which means that if the newly opened tab has performance 
+as the opener website(unless configured with a different behaviour), which means that if the newly opened tab has performance
 issues that might affect the opener page, moreover a critical security vulnerability would be the fact that the newly opened\
 tab can access the previous page's properties via `window.opener` with that change, update the DOM.
 
-### Use DOCTYPE and force Internet Explorer to use it's best rendering engine
+### Not adding DOCTYPE to force Internet Explorer to use it's best rendering engine
 
 When your add `<!DOCTYPE html>` to the HEAD of the html file it let's the browser know that this page is using the latest version
 of html, there's nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
@@ -138,13 +137,13 @@ engine from previous browsers which also contain errors and security vulnerabili
 features is CSS in JS which allows you to write JS in CSS and have the browser execute it, this could be a source for a
 XSS in you application.
 
-## Don't keep API keys to JavaScript code
+## Keeping API keys in JavaScript code
 
 Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can
 access your site will and can use you API key and if it is linked to any special privileges the user can exploit your
 application as he/she wishes.
 
-## Prefer HTTP only cookies for sensitive data
+## Not prefering HTTP only cookies for sensitive data
 
 HTTP ONLY cookies are like the name itself, are only accessible via HTTP, that way evil scripts cannot
 read your users sensitive cookies and use them for their own interests.
@@ -153,7 +152,7 @@ read your users sensitive cookies and use them for their own interests.
 ## Preferably do business logic on the backend
 
 Doing business logic on the frontend can be harmful, because the data on the frontend is subject to
-changes and 
+changes and
 -->
 
 <!--

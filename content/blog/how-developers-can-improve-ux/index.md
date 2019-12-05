@@ -58,7 +58,6 @@ On Android, Google allows users to sign-in or sign-up without having to leave th
 
 ![android sign in](./android-sign-in.png)
 
-
 ### Don't ask them to invite their friends nor rate you
 
 Seriously, I don’t think users invite other people to use an app. No one does that. It’s odd and weird. If I want my friend to use this X app, I tell him to download and explain the benefits and tell him how cool I’m because I’m using it or how it has changed, improved or helped me doing Y thing. Word of mouth is the kind of invitation or recommendation that people want, not receiving a message or an email saying user X invited you to use this app, how is the app supposed to solve my problem if it’s already creating a new one by spamming me?
@@ -78,7 +77,6 @@ Here are couple of examples of bad language use that resulted in confusion, misi
 ![apple](./apple.JPG)
 
 ![cancel a download](./cancel.jpeg)
-
 
 There are a lot more other things you can do to improve user experience but I decided to focus only on these which I think when overlooked can damage your application user experience.
 

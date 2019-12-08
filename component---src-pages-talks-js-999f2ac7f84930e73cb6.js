@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{"+SGB":function(n,e,t){"use strict";t.r(e);var a=t("q1tI"),r=t.n(a);t("Bl7J"),t("vrFN");e.default=function(){return r.a.createElement("p",null,"Talks")}}}]);
+//# sourceMappingURL=component---src-pages-talks-js-999f2ac7f84930e73cb6.js.map

@@ -80,7 +80,7 @@ the libraries' versions, if you're using github you can turn on notifications fo
 in libraries or you can use [snyk](https://snyk.io/) which has a web and cli app that checks vulnerabilities in
 all dependencies in project's your `package.json`
 
-## Not frameworks or libraries before deploying to production or using it
+## Not inspecting frameworks or libraries before deploying to production or using it
 
 Sometimes the libraries might not be deprecated or have known vulnerabilities but, it always better to be safe than sorry,
 when house builders look for tools to aid them in their work they don't choose the latest fanciest tools that only a

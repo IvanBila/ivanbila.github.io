@@ -8,7 +8,7 @@
     "url": "https://github.com/ivanbila/ivanbila.github.io/issues"
   },
   "dependencies": {
-    "gatsby": "^2.3.16",
+    "gatsby": "^2.18.10",
     "gatsby-image": "^2.0.37",
     "gatsby-plugin-disqus": "^1.0.3",
     "gatsby-plugin-feed": "^2.1.0",

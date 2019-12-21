@@ -21,6 +21,7 @@ const typography = new Typography({
   overrideStyles: ({rhythm}) => ({
     body: {
       fontVariantLigatures: 'none',
+      backgroundColor: '#fafafa'
     },
     h1: {
       color: 'hsla(0,0%,0%,0.75)',

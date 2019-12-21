@@ -1,22 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Musings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 08 Dec 2019 19:31:13 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It's getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
-the use of external…]]></description><link>https://ivanbila.github.io/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.github.io/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It&apos;s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ramblings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.dev</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 21 Dec 2019 18:43:37 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
+the use of external…]]></description><link>https://ivanbila.dev/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.dev/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
 the use of external code through libraries or frameworks such as jQuery, ReactJS, and VueJS, Lodash, not setting up
 HTTPS to encrypt the data exchanged between the server and the client, use of old or deprecated libraries/frameworks.
 The consequences of a breach/exploited vulnerability can be fatal that can include  harm to customers, lost of trust
 and in some cases legal liabilities. In this article I will outline some of the things that when neglected can contribute
 to an insecure Front-End.&lt;/p&gt;
-&lt;p&gt;One thing worth mentioning is that there are a lot of ways your Front-End can be attacked or vulnerable, that&apos;s why I
+&lt;p&gt;One thing worth mentioning is that there are a lot of ways your Front-End can be attacked or vulnerable, that’s why I
 recommend checking the full O-WASP list where you can have a deep insight has to what vulnerabilities plague web applications.&lt;/p&gt;
-&lt;p&gt;And we&apos;re going to start with the most obvious vulnerability that an app can have if not catered for:&lt;/p&gt;
+&lt;p&gt;And we’re going to start with the most obvious vulnerability that an app can have if not catered for:&lt;/p&gt;
 &lt;h2&gt;Not Using HTTPS&lt;/h2&gt;
 &lt;p&gt;When you use HTTP all data sent from the client to the server and vice-versa is unencrypted that implies that
 your users sensitive information such as credit cards number(if your site supports payment), social security number,
 or any other data sent from the server or Front-End is exposed to anyone connected to the network(it gets even more
 dangerous if the network is public) and sniffing packages and might get the sensitive data and use it for personal
 gain at the expense of your users.&lt;/p&gt;
-&lt;p&gt;The remedy for this is to use HTTPS, currently, there&apos;s two options for installing HTTPS or getting the SSL certificate,
-you can either buy from a vendor/provider such as Digi-cert or get the free SSL certificate with let&apos;s encrypt.&lt;/p&gt;
-&lt;p&gt;The downside of using let&apos;s encrypt is the browser support and you can only get the Domain Validation SSL
+&lt;p&gt;The remedy for this is to use HTTPS, currently, there’s two options for installing HTTPS or getting the SSL certificate,
+you can either buy from a vendor/provider such as Digi-cert or get the free SSL certificate with let’s encrypt.&lt;/p&gt;
+&lt;p&gt;The downside of using let’s encrypt is the browser support and you can only get the Domain Validation SSL
 certificate on top of that you have to renew it every three months.&lt;/p&gt;
 &lt;p&gt;Having HTTPS also allows us to access browser APIS that would not be available if the domain origin does not
 have a valid SSL certificate(these APIS only work in secure origins) such as Service Workers, Push API, and Location, and others
@@ -24,14 +24,14 @@ you can check the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/
 &lt;p&gt;Not having access to Service workers and other APIS means that your application cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.&lt;/p&gt;
 &lt;h2&gt;Taking user input as is(not sanitizing)&lt;/h2&gt;
-&lt;p&gt;Not sanitizing user input extremely dangerous, if you don&apos;t sanitise user input your app might be suggested to SQL or
-XSS. Suppose I&apos;m building an app that allows you to share about development meetups.&lt;/p&gt;
+&lt;p&gt;Not sanitizing user input extremely dangerous, if you don’t sanitise user input your app might be suggested to SQL or
+XSS. Suppose I’m building an app that allows you to share about development meetups.&lt;/p&gt;
 &lt;p&gt;The app contains this input&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;share_input&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Thought&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If I take the text &quot;inputed&quot; into that field and append to markup without sanitising the user can fill it with the following:&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; evilScript &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;share_input&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Thought&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If I take the text “inputed” into that field and append to markup without sanitising the user can fill it with the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-javascript line-numbers&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; evilScript &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 evilScript&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;text/javscript&quot;&lt;/span&gt;
-evilScript&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;src &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+evilScript&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;src &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And the browser will execute the following instructions if the input text is appended using innerHtml method, with that the attack perpetrator
 can:&lt;/p&gt;
 &lt;ul&gt;
@@ -43,27 +43,27 @@ can:&lt;/p&gt;
 &lt;li&gt;Open another tab&lt;/li&gt;
 &lt;li&gt;Read all cookies not marked as HTTP ONLY&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;It&apos;s pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
+&lt;p&gt;It’s pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
 such situation is to escape the text before appending to the DOM or saving it to the database, or even better you can
-use JavaScript&apos;s built in innerText if you want append what&apos;s typed as text if the content is not supposed to be processed.&lt;/p&gt;
+use JavaScript’s built in innerText if you want append what’s typed as text if the content is not supposed to be processed.&lt;/p&gt;
 &lt;h2&gt;Using deprecated libraries/frameworks with widely know vulnerabilities&lt;/h2&gt;
-&lt;p&gt;Using deprecated libraries with with widely known vulnerabilities it&apos;s almost like asking to be
-hacked(seriously don&apos;t use jquery 1), hoping that hackers will not find out that your website&apos;s
+&lt;p&gt;Using deprecated libraries with with widely known vulnerabilities it’s almost like asking to be
+hacked(seriously don’t use jquery 1), hoping that hackers will not find out that your website’s
 library or framework has known vulnerabilities is not a good strategy. Making a habit of inspecting
-the libraries&apos; versions, if you&apos;re using github you can turn on notifications for vulnerabilities
+the libraries’ versions, if you’re using github you can turn on notifications for vulnerabilities
 in libraries or you can use &lt;a href=&quot;https://snyk.io/&quot;&gt;snyk&lt;/a&gt; which has a web and cli app that checks vulnerabilities in
-all dependencies in project&apos;s your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
+all dependencies in project’s your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;Not inspecting frameworks or libraries before deploying to production or using it&lt;/h2&gt;
 &lt;p&gt;Sometimes the libraries might not be deprecated or have known vulnerabilities but, it always better to be safe than sorry,
-when house builders look for tools to aid them in their work they don&apos;t choose the latest fanciest tools that only a
-handful of craftsman use, they always in search for tools that stood the test of time, and that&apos;s what I think developers
+when house builders look for tools to aid them in their work they don’t choose the latest fanciest tools that only a
+handful of craftsman use, they always in search for tools that stood the test of time, and that’s what I think developers
 should do, use tools that many developers have tried and did not find any tricky or mal-intentioned code, I also think
 that from time to time you should check what code is in your library.&lt;/p&gt;
 &lt;h2&gt;Sending sensitive data using GET requests&lt;/h2&gt;
-&lt;p&gt;One of restful API guides is that we should not mutate data using GET requests, that&apos;s a good rule to follow, because
+&lt;p&gt;One of restful API guides is that we should not mutate data using GET requests, that’s a good rule to follow, because
 asides making an API restful it can also make it safe. Suppose we have the following form for getting users payment
 credit card number and CVC for issuing a payment to a service your application.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre class=&quot;language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;form&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;GET&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;form&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;GET&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
   &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt;
     &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;number&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
     &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;credit_card_number&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
@@ -71,26 +71,130 @@ credit card number and CVC for issuing a payment to a service your application.&
   &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;
   &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;number&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;credit_card_cvc&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Credit Card CVC&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;
   &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;submit&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;pay&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;form&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;form&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a get request the
 browser stores the request url and all the input fields containing a name in it will be in the url and hence in
-the users browser&apos;s history and url bar here is how it looks like:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;./browser-url.png&quot; alt=&quot;browser url bar&quot;&gt;&lt;/p&gt;
+the users browser’s history and url bar here is how it looks like:&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6047f145f46c4d6afe885f5b26a167bf/b7136/browser-url.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 2.5677603423680457%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAIElEQVQI12N48vzF/6cvXv5/BsIvX/1/9+Hj/3cfyccA7idLxWFWhXAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;browser url bar&quot;
+        title=&quot;&quot;
+        src=&quot;/static/6047f145f46c4d6afe885f5b26a167bf/799d3/browser-url.png&quot;
+        srcset=&quot;/static/6047f145f46c4d6afe885f5b26a167bf/00d96/browser-url.png 148w,
+/static/6047f145f46c4d6afe885f5b26a167bf/0b23c/browser-url.png 295w,
+/static/6047f145f46c4d6afe885f5b26a167bf/799d3/browser-url.png 590w,
+/static/6047f145f46c4d6afe885f5b26a167bf/2a3d6/browser-url.png 885w,
+/static/6047f145f46c4d6afe885f5b26a167bf/ae92f/browser-url.png 1180w,
+/static/6047f145f46c4d6afe885f5b26a167bf/b7136/browser-url.png 1402w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
 &lt;p&gt;Accordingly the url will the in users history:
-&lt;img src=&quot;./history-url.png&quot; alt=&quot;history url&quot;&gt;&lt;/p&gt;
-&lt;p&gt;If you have an access log here&apos;s what your server log will look like:
-&lt;img src=&quot;./server-log.png&quot; alt=&quot;server log&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Given the vulnerabilities pointed above it&apos;s important for us developers to always use post requests for sensitive data,
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/908243f40e93dbc8d49302f945f0c760/79582/history-url.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 3.3834586466165413%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAMklEQVQI12P4srrvP1a8qvf/lw1T/n/dNheI5/z/un0uhL0VyN4yC0jPhuBtc5HwnP8AKXFAsOllp2QAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;history url&quot;
+        title=&quot;&quot;
+        src=&quot;/static/908243f40e93dbc8d49302f945f0c760/799d3/history-url.png&quot;
+        srcset=&quot;/static/908243f40e93dbc8d49302f945f0c760/00d96/history-url.png 148w,
+/static/908243f40e93dbc8d49302f945f0c760/0b23c/history-url.png 295w,
+/static/908243f40e93dbc8d49302f945f0c760/799d3/history-url.png 590w,
+/static/908243f40e93dbc8d49302f945f0c760/2a3d6/history-url.png 885w,
+/static/908243f40e93dbc8d49302f945f0c760/79582/history-url.png 1064w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;If you have an access log here’s what your server log will look like:
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ee3cb9f5bb051c887d96dcc8638e3d8a/d8fbf/server-log.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 5.6726094003241485%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAABCAYAAADeko4lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAS0lEQVQI1yXKfw5AIABAYYdBIbVuoJnSD5m5/1meTf++73WhVPaY8fki1QdXAsJrRNIMt0KcGukNIrY2Xor+XZqlFXkY5s3+z+QsH1tHIX/KdO8iAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;server log&quot;
+        title=&quot;&quot;
+        src=&quot;/static/ee3cb9f5bb051c887d96dcc8638e3d8a/799d3/server-log.png&quot;
+        srcset=&quot;/static/ee3cb9f5bb051c887d96dcc8638e3d8a/00d96/server-log.png 148w,
+/static/ee3cb9f5bb051c887d96dcc8638e3d8a/0b23c/server-log.png 295w,
+/static/ee3cb9f5bb051c887d96dcc8638e3d8a/799d3/server-log.png 590w,
+/static/ee3cb9f5bb051c887d96dcc8638e3d8a/2a3d6/server-log.png 885w,
+/static/ee3cb9f5bb051c887d96dcc8638e3d8a/ae92f/server-log.png 1180w,
+/static/ee3cb9f5bb051c887d96dcc8638e3d8a/d8fbf/server-log.png 1234w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Given the vulnerabilities pointed above it’s important for us developers to always use post requests for sensitive data,
 browsers tend to fallback to get requests if the method is not specified, that means we have to remain vigilant and
 add &lt;code class=&quot;language-text&quot;&gt;method=&amp;quot;POST&amp;quot;&lt;/code&gt; attribute when dealing with forms that contains sensitive data.&lt;/p&gt;
 &lt;h2&gt;Not adding noopener noreferer to external links&lt;/h2&gt;
 &lt;p&gt;When we add external links with &lt;code class=&quot;language-text&quot;&gt;target=&amp;quot;_blank&amp;quot;&lt;/code&gt; attribute the browser allows the opened tab to run in the same process
 as the opener website(unless configured with a different behaviour), which means that if the newly opened tab has performance
 issues that might affect the opener page, moreover a critical security vulnerability would be the fact that the newly opened&lt;br&gt;
-tab can access the previous page&apos;s properties via &lt;code class=&quot;language-text&quot;&gt;window.opener&lt;/code&gt; with that change, update the DOM.&lt;/p&gt;
-&lt;h3&gt;Not adding DOCTYPE to force Internet Explorer to use it&apos;s best rendering engine&lt;/h3&gt;
-&lt;p&gt;When your add &lt;code class=&quot;language-text&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; to the HEAD of the html file it let&apos;s the browser know that this page is using the latest version
-of html, there&apos;s nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
+tab can access the previous page’s properties via &lt;code class=&quot;language-text&quot;&gt;window.opener&lt;/code&gt; with that change, update the DOM.&lt;/p&gt;
+&lt;h3&gt;Not adding DOCTYPE to force Internet Explorer to use it’s best rendering engine&lt;/h3&gt;
+&lt;p&gt;When your add &lt;code class=&quot;language-text&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; to the HEAD of the html file it let’s the browser know that this page is using the latest version
+of html, there’s nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
 engine from previous browsers which also contain errors and security vulnerabilities from previous browsers, one of these
 features is CSS in JS which allows you to write JS in CSS and have the browser execute it, this could be a source for a
 XSS in you application.&lt;/p&gt;
@@ -114,14 +218,14 @@ NOTES:
 - XSS
 - owasp top 10
 - .env
---&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a…]]></description><link>https://ivanbila.github.io/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.github.io/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.&lt;/p&gt;
-&lt;p&gt;However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application&apos;s user experience significantly.&lt;/p&gt;
+--&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a…]]></description><link>https://ivanbila.dev/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.dev/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.&lt;/p&gt;
+&lt;p&gt;However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application’s user experience significantly.&lt;/p&gt;
 &lt;h3&gt;Prove the value of your app&lt;/h3&gt;
-&lt;p&gt;Imagine being asked for your ID copy/credit card before entering a shop? How would you feel? That’s how users feel when you ask for their data before they can even use your app, what I&apos;m saying is we should Let the user do something in our apps without requiring him to sign up. It is not enough to put a splash screen or a short tutorial on how the app works to establish whether your application is worth it or not.&lt;/p&gt;
+&lt;p&gt;Imagine being asked for your ID copy/credit card before entering a shop? How would you feel? That’s how users feel when you ask for their data before they can even use your app, what I’m saying is we should Let the user do something in our apps without requiring him to sign up. It is not enough to put a splash screen or a short tutorial on how the app works to establish whether your application is worth it or not.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“If you ask me for my data before offering any value, that means you’re more concerned with my data than with solving my problem.” Rushing User&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I think the statement above sums it up. It would be best if you didn&apos;t ask for a user to sign-in or give in (his) data before even showing him why your app deserves (his) attention or data. I know some apps need to know about the user before him using it, but I think you can always figure a way to give value before you ask for it.&lt;/p&gt;
+&lt;p&gt;I think the statement above sums it up. It would be best if you didn’t ask for a user to sign-in or give in (his) data before even showing him why your app deserves (his) attention or data. I know some apps need to know about the user before him using it, but I think you can always figure a way to give value before you ask for it.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Give value to your users before you ask for it.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -130,21 +234,120 @@ NOTES:
 &lt;p&gt;Some users tend to re-use or create weak passwords for most applications they use, to avoid laborious work of memorizing or saving in a password manager.&lt;/p&gt;
 &lt;p&gt;Having to memorize things is a pain, laborious and time consuming, usually users have many things to keep track of (tasks, family names, phone numbers), so it’s improbable that they’ll memorize your apps’ password, they have zillions of apps, you want to make your app easy to use without the hassle of remembering passwords and emails. To prevent this, you can use OAuth.&lt;/p&gt;
 &lt;p&gt;With OAuth, the user doesn’t need to memorize a password or username(in short it allows passwordless sign-in/up), signing-in or signing-up is only a “tap/click away,” meaning he only has to allow your application to access his/her data.&lt;/p&gt;
-&lt;p&gt;This flow tends to be less laborious for the user because he/she doesn&apos;t have to memorize a password and then verify if the email was filled correctly. Using the OAuth flow implies that you don’t have to implement the logic for resetting the password(unless you have users signed-in in using email-password) that the user is likely to forget over and over again until he/she stops using your service.&lt;/p&gt;
+&lt;p&gt;This flow tends to be less laborious for the user because he/she doesn’t have to memorize a password and then verify if the email was filled correctly. Using the OAuth flow implies that you don’t have to implement the logic for resetting the password(unless you have users signed-in in using email-password) that the user is likely to forget over and over again until he/she stops using your service.&lt;/p&gt;
 &lt;p&gt;By using OAuth not only you have the convenience of signing in the user in without requiring a password you also have access to the information(first name, last name, age and more) that the user has already filled in his/her account.&lt;/p&gt;
-&lt;p&gt;Whether you should use Google, Twitter, Facebook, Linkedin or GitHub OAuth provider can depend based on your needs, however, more often than not, you&apos;ll use more than one OAuth provider.&lt;/p&gt;
-&lt;p&gt;Given that Facebook and Google are the providers with the most users, I&apos;ll compare both and say why and when I&apos;d use one over the other.&lt;/p&gt;
+&lt;p&gt;Whether you should use Google, Twitter, Facebook, Linkedin or GitHub OAuth provider can depend based on your needs, however, more often than not, you’ll use more than one OAuth provider.&lt;/p&gt;
+&lt;p&gt;Given that Facebook and Google are the providers with the most users, I’ll compare both and say why and when I’d use one over the other.&lt;/p&gt;
 &lt;p&gt;Google and Facebook allow you to get almost the same information for a given user, but using one or the other might have different user experience implications to your application.&lt;/p&gt;
 &lt;p&gt;Usually, the flow is the same/close, and you click to register or sign-in then you get redirected to a page where you can either accept, declined or accept but customize(I can only see this feature on Facebook) what information the app can get from your account.&lt;/p&gt;
 &lt;p&gt;On mobile most specifically Android, when you sign in or sign up with Facebook, it usually opens a web browser tab which can be expensive for the user.&lt;/p&gt;
 &lt;p&gt;Opening the browser or external apps uses RAM and processing power, which is not what you want your app to do, because most devices have low RAM, and processing power is scarce, even if they have good processing power it’s very likely that they opened dozen other apps besides yours.&lt;/p&gt;
-&lt;p&gt;Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is taken to a different place where he might find distractions, and who knows whether he&apos;ll return?&lt;/p&gt;
+&lt;p&gt;Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is taken to a different place where he might find distractions, and who knows whether he’ll return?&lt;/p&gt;
 &lt;p&gt;Google has come out with some exciting features to speed up the sign flow using, for the web they created something called one tap sign-up or auto sign-in which allows seamless sign-in and sign-up flows without interrupting them with a sign-on or sign-up screen.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;./auto-sign-in.png&quot; alt=&quot;auto sign in&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;./auto-sign-up.png&quot; alt=&quot;auto sign in&quot;&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/377cdfea2aef6bacdff9bec166b0ac3a/97387/auto-sign-in.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAACMUlEQVQoz22RzU4TURTHRySx063gylV1o2/QNOm09OsJTFwZiibKdCoCz2BMTEQWoKig0SdwgUhCauLS+IGYztDEIEjCRrFj7UznDjP3/r33dhrGxJP7n3PuOWd+90tRuKmqmtJ1nfiuA+J5jPg+CCHo9XrwPE9KzIMgQBiGcVFuMAzD4YwLysASajJV0ydJt+fA9XzmdLsS4rquhArf6XQkkDEGARFeAAVYABOJxDFQVRMpvWYQn3g4PGgxDsXXnV3sfNvD7t4+eh7BUUARUoYg7EvM+aDg1gfGdpgUQL1GAD46LQb46Pzch/3jO/78OoDvHALUwX9MAmvyyLEdnhhOpqbqk2R9K8SdVcbm1nzMvQ6wsBFg5W2IR28CLG4cYanhY36d4O4qwb1XBLdfErrG/5m5ZThDwzGgMpRMTd/UyXLDwaX7bTbxsI0rC21cf2xj9oWNGa6pZ9w//40bT2yML9qoPrBxeb5NlxsuZqcNRzn5zx0m5StHx2ByxBSEEPfVj7kPo5hXacA/9brhnIo/yujomVS1Ok42v1homhYzTRPNZpPLxLZl4v1mEx8+m2jJ2MS7TyYsS+Qs+nFrG9euTjinR0aOgWNjY+c0TfNymoZsNssiiRg8j3K5hHKpJGNNy0oN+vo5rZvP5y/GgWdzuRzlEkUqwFGMYrGIEocVCgXp5SJRjfdRDhK9hPvzEpbJZKTnyZWoKMBsABS5SqUiJWItWizqGQCfCkY6nVb+Ahh1GXTjkF3dAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;auto sign in&quot;
+        title=&quot;&quot;
+        src=&quot;/static/377cdfea2aef6bacdff9bec166b0ac3a/799d3/auto-sign-in.png&quot;
+        srcset=&quot;/static/377cdfea2aef6bacdff9bec166b0ac3a/00d96/auto-sign-in.png 148w,
+/static/377cdfea2aef6bacdff9bec166b0ac3a/0b23c/auto-sign-in.png 295w,
+/static/377cdfea2aef6bacdff9bec166b0ac3a/799d3/auto-sign-in.png 590w,
+/static/377cdfea2aef6bacdff9bec166b0ac3a/97387/auto-sign-in.png 688w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5ae9c3a373c4688216468522483c81f4/97387/auto-sign-up.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAAB00lEQVQoz42R3W7aQBCFqdQK8G1pr3pFe9O+AUJizV94jabJjRGJ+hx9h/Yp2ofoX2iDTS5AQil14oALjbDxYrx7OmublFRB6krHczQz+nbGm8nQ0TStaBgGR3Ik/v8I9el0Ol4ul3ue2Zw8AdvtNlck23Hl5WSGc/sK9qWLq+kMP+wJxhfTVBO4s2tcOK7q3QHM52Mg9xaYz6/lr9kcC8/HMuAI+Ar+MrglvlohoBrVb4DE+HdCgy+5T0uspE/gKIp27imljLW98i3gvfta8fVxmw8ciTfvQ6kmGw4HGAyHGI1G8H0fYRjegLZ098oPslrxqGNw53eED91QqnVs+yfG4zEcx4HrTuHR1EIoCDFIUSSUv3tCLX2UXa+8pkwoEh+sgWWYeL6GCOjPHB91vGx2a8LCo8fF/f2XvHvax2nPkpZpotfrkUxYlolPJyY+d02c9VW08PHEQp/8l2+W+Pr9DIcHr7yHhcJfYK1We8oYC3TGwCoVWUkEJcpjb68ZS3nGKtBZXJPkZZJji2q1+mIb+ETXdUFSRaHAqUej0UCz2US9Xo9jfElaoz5BINXLKT6LYeVyOY6UfJsWFVhugCrXarViKc/Sy9KeDfCdYpRKpcwfnF0sonZR6rwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;auto sign in&quot;
+        title=&quot;&quot;
+        src=&quot;/static/5ae9c3a373c4688216468522483c81f4/799d3/auto-sign-up.png&quot;
+        srcset=&quot;/static/5ae9c3a373c4688216468522483c81f4/00d96/auto-sign-up.png 148w,
+/static/5ae9c3a373c4688216468522483c81f4/0b23c/auto-sign-up.png 295w,
+/static/5ae9c3a373c4688216468522483c81f4/799d3/auto-sign-up.png 590w,
+/static/5ae9c3a373c4688216468522483c81f4/97387/auto-sign-up.png 688w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
 &lt;p&gt;On Android, Google allows users to sign-in or sign-up without having to leave the application, by showing a modal of the list of accounts that the user setup in that device and wants to use in your application.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;./android-sign-in.png&quot; alt=&quot;android sign in&quot;&gt;&lt;/p&gt;
-&lt;h3&gt;Don&apos;t ask them to invite their friends nor rate you&lt;/h3&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/349c66ef26150f2f4cc37127aafaccf2/91043/android-sign-in.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 97.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsSAAALEgHS3X78AAACXUlEQVQ4y2P4DwN//vwBkosWrzS3dHd09tfVt1ZRM1bTMFVSMbSy8XDzCNHVt92z5yBY5V+IFga45t+/QZqnzljFKWAup+IuIu0sLAVFghKOIlLO3MI2m7bg0AyxecOGrS5uAWHhiUHBcYHBsf6B0QFBMUEhcUDk7RN+7NhJoJq/f3Fo3rN7V0hwYHxcbFxsTFxcTGRkeFRURHx8LJCdEB937tw5fJq3bNlSUlK6fPnyBQsWzAeDefPmAcnFi5cUFRefPInX5jVr1ixevPjz50/37t179+7dixcv3r558+XLF6DUlClTDh8+TEDzokWLPn3+9Pz583///v0GBuOfP0ASKDVp0qQjR44Q0rx48e61a65dvPTt+/f37979+vULogCombDNCxctev7g7otnz759+/b582eItURpXrt27YIFi1avnn/p0rmvX7+9efPm58+fENVE2Qz088MHd589e/r9+4+vX78CNQM9D5SaPHkyYZuBEQNkvH377sOHD0APQ4INKDJx4kQCAbZ9+/bU1NSWlpYGMKgHAyCjqakpPT399OnT+DTv2rUrPDw8ISEhDhXEA1NZbOzZs2cJaI6Ojs7MzExDBUBrExMTCWjesWNHREREcnJyEhgAnQAkE8EAaP+ZM2ewa4aESl9fHwMDg6ioKAcHBysrq4iICDMzMw8Pj6CgIFB83bp1cGtAmn/BwI8fP4D8U6dOdXV1AZNxb29vd3f3hAkTenp6gDE8bdo0oMiNGzeAaoCRB9HC8AEJvH///vv370BpYNoCcoGR/OnTJyAJtwooDlQDVw8AmaJ17mPM9zwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;android sign in&quot;
+        title=&quot;&quot;
+        src=&quot;/static/349c66ef26150f2f4cc37127aafaccf2/799d3/android-sign-in.png&quot;
+        srcset=&quot;/static/349c66ef26150f2f4cc37127aafaccf2/00d96/android-sign-in.png 148w,
+/static/349c66ef26150f2f4cc37127aafaccf2/0b23c/android-sign-in.png 295w,
+/static/349c66ef26150f2f4cc37127aafaccf2/799d3/android-sign-in.png 590w,
+/static/349c66ef26150f2f4cc37127aafaccf2/91043/android-sign-in.png 720w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;h3&gt;Don’t ask them to invite their friends nor rate you&lt;/h3&gt;
 &lt;p&gt;Seriously, I don’t think users invite other people to use an app. No one does that. It’s odd and weird. If I want my friend to use this X app, I tell him to download and explain the benefits and tell him how cool I’m because I’m using it or how it has changed, improved or helped me doing Y thing. Word of mouth is the kind of invitation or recommendation that people want, not receiving a message or an email saying user X invited you to use this app, how is the app supposed to solve my problem if it’s already creating a new one by spamming me?&lt;/p&gt;
 &lt;h3&gt;Use appropriate language&lt;/h3&gt;
 &lt;p&gt;Unlike other extremely formal fields like architecture and law, in software, no one will come and suspend your app because the language is not grammatically correct(there are some edge cases where the language has to follow strictly the rules of grammar and so forth), or it used words that do not exist in the dictionary.&lt;/p&gt;
@@ -152,8 +355,278 @@ NOTES:
 &lt;p&gt;The inadequate use of language can cause doubt, uncertainty, hesitation, ambiguity, misinformation.&lt;/p&gt;
 &lt;p&gt;Long texts can hinder your user’s experience as in he or she might be using a mobile device which does not have a large screen.&lt;/p&gt;
 &lt;p&gt;Here are couple of examples of bad language use that resulted in confusion, misinformation:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;./apple.JPG&quot; alt=&quot;apple&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;./cancel.jpeg&quot; alt=&quot;cancel a download&quot;&gt;&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/62e2f43dfbc544ac94876d8877a292b4/e735c/apple.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 36.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAduiUL//xAAWEAEBAQAAAAAAAAAAAAAAAAAAEQH/2gAIAQEAAQUC1Kj/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAZEAACAwEAAAAAAAAAAAAAAAAAEQEhQVH/2gAIAQEAAT8hppCGxun/2gAMAwEAAgADAAAAEH/P/8QAFhEBAQEAAAAAAAAAAAAAAAAAERAh/9oACAEDAQE/EHSf/8QAFhEBAQEAAAAAAAAAAAAAAAAAERAh/9oACAECAQE/EDGf/8QAGBABAQEBAQAAAAAAAAAAAAAAAQARIdH/2gAIAQEAAT8QD2rIBCxIL1t//9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;apple&quot;
+        title=&quot;&quot;
+        src=&quot;/static/62e2f43dfbc544ac94876d8877a292b4/88218/apple.jpg&quot;
+        srcset=&quot;/static/62e2f43dfbc544ac94876d8877a292b4/7237a/apple.jpg 148w,
+/static/62e2f43dfbc544ac94876d8877a292b4/0cfdf/apple.jpg 295w,
+/static/62e2f43dfbc544ac94876d8877a292b4/88218/apple.jpg 590w,
+/static/62e2f43dfbc544ac94876d8877a292b4/77d57/apple.jpg 885w,
+/static/62e2f43dfbc544ac94876d8877a292b4/5a917/apple.jpg 1180w,
+/static/62e2f43dfbc544ac94876d8877a292b4/e735c/apple.jpg 1600w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d6312f0da6a39251e127a0d5743ebdbe/3e409/cancel.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 56.74470457079153%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAevq0IP/xAAWEAADAAAAAAAAAAAAAAAAAAABIEH/2gAIAQEAAQUCoX//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAVEAEBAAAAAAAAAAAAAAAAAAAgQf/aAAgBAQAGPwKr/8QAGhAAAgIDAAAAAAAAAAAAAAAAAREAECFhcf/aAAgBAQABPyEuLA5Z6a3f/9oADAMBAAIAAwAAABDjz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EAB0QAAICAQUAAAAAAAAAAAAAAAERACFBEDFRkbH/2gAIAQEAAT8QeQGVJLyAZSOQV1ogDyMZm1Cf/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;cancel a download&quot;
+        title=&quot;&quot;
+        src=&quot;/static/d6312f0da6a39251e127a0d5743ebdbe/88218/cancel.jpg&quot;
+        srcset=&quot;/static/d6312f0da6a39251e127a0d5743ebdbe/7237a/cancel.jpg 148w,
+/static/d6312f0da6a39251e127a0d5743ebdbe/0cfdf/cancel.jpg 295w,
+/static/d6312f0da6a39251e127a0d5743ebdbe/88218/cancel.jpg 590w,
+/static/d6312f0da6a39251e127a0d5743ebdbe/77d57/cancel.jpg 885w,
+/static/d6312f0da6a39251e127a0d5743ebdbe/3e409/cancel.jpg 897w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
 &lt;p&gt;There are a lot more other things you can do to improve user experience but I decided to focus only on these which I think when overlooked can damage your application user experience.&lt;/p&gt;
 &lt;p&gt;I hope you found something that can either be applied in your current project or upcoming projects and that you learned as much as I did writing this post, may your next/current project have the best user experience possible.&lt;/p&gt;
-&lt;p&gt;Thanks, and see you next time.&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;Thanks, and see you next time.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O que podes aprender com o Redesign do Dondza]]></title><description><![CDATA[Dondza Changana é um aplicativo que permite aprender algumas palavras em Changana através de imagens ilustrativas, audição da pronúncia das…]]></description><link>https://ivanbila.dev/o-que-podes-aprender-com-o-redesign-do-dondza/</link><guid isPermaLink="false">https://ivanbila.dev/o-que-podes-aprender-com-o-redesign-do-dondza/</guid><pubDate>Sun, 25 Sep 2016 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1501f24b50307cb4a919a6ff8cb0e0b5/72623/splash.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAACxklEQVQ4y4WTy08TURSHpyUgC5bGuHbnwrhwgSYmLjSujPEPINEYdWdiXJmo0ZUmLl2w8pEYo0YDSAXtEwQsfYHQDkwLfUxLaTvTTqdl2kEROj9PZ6a1BsFJvtybdO43v3POLcO4l7ALF9teLTYfmI9eYlbHOjqL3k9+9I0F0DMe/OtdnX2FjjCYoWl0j3rRRbIekjEfpsEM0wdsfljot56hKVjHSDwR3UfoNoXOMG4Eo3iSEPCA5fGQTeE+cSecwN1IEgNeFkdnOBx8Pgzm6RuScnsJjZRdtIZiK8iO3IMqcNhW6igXRWxVZECtYYP2zWdw3IHDjweNlO3aO3EbWEnoiMaw8P4RMpkoStUa0oUCBKkMqVJFQTSE0YAPV1++BeMxE/ZNcjjgWUa3Z0lfWz3sckXgXOGxGo0jJ4iQJAlFokQ094IpTETCuPZ6iM4sG8Jz8zwuLWZw/juPCwtpHJqi6M4Ier/G8GpiGrcGLmIu5IWy+QNcdh2iLEOt11Eo5PFzawsSpb495jGGyDhZXXBmLoX+YFKXnwgkjB4STm4F3IwD6+trkEkkSyWUKV1zn4jHdWGlWOwQtq6J06TdRyqZUjqSPPKpGERRQKVaxZpYRKlchqqqmA/6oSgbEHM53Byx61UxrcMWk85JN3toX02AW/AjV8ihQoNI5/N6HxVFQZpPYbuxg+VgAFfaQ2ld4n9gpXs4mczg16aqp5LMUiVzKCKV2nzYgB+XO6e8tzBCwjT8thfIZpLYqKuI5wWUKhXUazVduNO8NlT69T8Jl7RduA2srojmXk1qaTag5fM5TZJlrSAWNbo2mlQua0VB0MinffP5tLPP3mkk1P6b0M5GIVPfMjyPtVQSWepbJpWCmObxmeX0v+bxSRqGfdGYASVq7IZtkFBfjzmCjVNEvzPUOEn0m5x2hRpH7KEG8yWsn7GY7/8G/Wh9X1LiEPoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/1501f24b50307cb4a919a6ff8cb0e0b5/799d3/splash.png&quot;
+        srcset=&quot;/static/1501f24b50307cb4a919a6ff8cb0e0b5/00d96/splash.png 148w,
+/static/1501f24b50307cb4a919a6ff8cb0e0b5/0b23c/splash.png 295w,
+/static/1501f24b50307cb4a919a6ff8cb0e0b5/799d3/splash.png 590w,
+/static/1501f24b50307cb4a919a6ff8cb0e0b5/2a3d6/splash.png 885w,
+/static/1501f24b50307cb4a919a6ff8cb0e0b5/ae92f/splash.png 1180w,
+/static/1501f24b50307cb4a919a6ff8cb0e0b5/72623/splash.png 4000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Dondza Changana é um aplicativo que permite aprender algumas palavras em Changana através de imagens ilustrativas, audição da pronúncia das palavras descritas e o significado na língua portuguesa.
+Neste post vou fazer uma analise da App presente e a proposição do Redesign.&lt;/p&gt;
+&lt;h2&gt;Pagina inicial&lt;/h2&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4898a55d6a7fa4bfb0ef22d893db84f8/72623/main-page.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsSAAALEgHS3X78AAACqElEQVQoz22S20/TUBzHy6ZyCyoYExXQxEti9MUELw/eYmJijOAlPvriu/8JT76jxGvUKCIgYXajW9fRbd3GoOt62dYBG8va9Zy27MZEEz3rhs5g8s1Jc/L7nO/39/sVw1zc/0Xw2FvcPvbJNj5pf14XNjbR+WK6981s1/gkNsPUCxql7US8bQdv/+g56uYGvdIxkh8g4x1OttPJ9rj57mk/NuW3YGdsn0e4ubjSPh9H300MnXjs+izNyulIJsVkcsHVLLO2HlxdZ3P51xHWNhVowNxeD381nO6npD5SQBHq8DyHzS09oOIZxyvi2aOtWkU3zBVF1U3z1/eaP5G2/XHuJYXb0bVr4fRQUO5BVzi7C6X4xt5xhVUxkvR9gRACAPOqWtBAdWPDzUv2befYQa+InC8wqcvh9JVw+kZkZbcFj7gYmRfpyDLUdQD1AhKAm8WiW0hsx3ZxqPQAKQxQ4omFxBl/sp8S6z3PLT30cS+fjj55fB+xqmHy2Zyi6z83q6SU2o7dmC0eQ1ZN4WwddiwPu0JZLrrsdwMrtw40DYCyaRB/Y1vwEUo8RScOU+IgJR3yisi8y82P4IFCPpNZlXVDh7qhAAh0vVYqecRkE66v11mHz/qTJxekPo+ANolONIsRVyid5EIB0iwVNQhTuTxq+0e1QootsRF/mk5cYuRzgdT5oIxeGQqmuj3CLQddNQyjXAVo1hCYEBY0rYJix8WW2E5uv0c4viChzAOUtIeId6Bt4+xdYjEvRqM0XiqVFABkRdV0fatStqbdOrD6E7GmGj+Jg73njsqLXtr1uViuFCDMqirQjVqlTOyE27bVhPHYMIqtKiY0oKoYBdUsqEDJV6FGcrx9OvCvc4tsVi8XZ3wTNPMuEP5g6b2lSSYySvhsX0PYPP8b4sBKl38ob2wAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/4898a55d6a7fa4bfb0ef22d893db84f8/799d3/main-page.png&quot;
+        srcset=&quot;/static/4898a55d6a7fa4bfb0ef22d893db84f8/00d96/main-page.png 148w,
+/static/4898a55d6a7fa4bfb0ef22d893db84f8/0b23c/main-page.png 295w,
+/static/4898a55d6a7fa4bfb0ef22d893db84f8/799d3/main-page.png 590w,
+/static/4898a55d6a7fa4bfb0ef22d893db84f8/2a3d6/main-page.png 885w,
+/static/4898a55d6a7fa4bfb0ef22d893db84f8/ae92f/main-page.png 1180w,
+/static/4898a55d6a7fa4bfb0ef22d893db84f8/72623/main-page.png 4000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Uma das coisas que está boa na página inicial do Dondza é a simplicidade, abre logo os serviços da Aplicação, não mostra formulários desnecessários não pede nenhum dado. Neste quesito a equipe do Dondza esta de parabéns. porque eu penso que:&lt;/p&gt;
+&lt;p&gt;“Se a sua Aplicação pede os meus dados na primeira tela bem isso só mostra que estás mais preocupado em ter meus dados do que resolver o meu problema”.&lt;/p&gt;
+&lt;p&gt;Mas existem algumas Excepções a esta regra, mais sobre isso no próximo post. A página do Dondza tinha muitas inconsistências, o texto não estava centralizado as imagens eram inconsistentes com a descrição de um campo.
+Padronizar todas imagens é extremamente importante para que a interface e experiência da sua aplicação não sofra.&lt;/p&gt;
+&lt;h2&gt;Tela das categorias&lt;/h2&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f99a7126cf8efe1e97abab43d568915e/72623/categories.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsSAAALEgHS3X78AAACcklEQVQoz4WTyWtTURSHbxrbiNLYKLSIFhs7gUOhIMSFhOrCAV256sL/oCCuBEF04VI0Fat10QbSii7aBkxKwLykGV5e2mZO3subMrSJWmzSRaVCpibx3AxWRevlx+VwOB9nuhchC/NPWaPIHEHaD2hqAU3pJdP6lmk9GPIZo2J2sQ38ECSxMK3WaMtfYBaZ/LJ5Z4eDl1lohS2qJHmFjT1kZY6S4uE5B0IE3W5jb0fSXQ4OmWkJwYCnDkuXWGT0PfQwmVyB396JffteF7e9s5kvPF6lAWba7ezwalzpEjud/DEH1+0SFHYO4AMAG7zjEbFarZbKlWrz1O1XYQHDR+wcwJd8yVvh1I3gusqb6HeLUEUDDmO4+BtchnsihGEa4JuhlNqXvOCJXwmsDa3ER/zJa4H1VhuGNWEBQtOptUWdxjQzHnQRhVIRwzhzbVo9LuGUS4CC60YfJcLdVoOf+hgINczNjo6cvXNdNXp5iDDOg0fjpVFjsGYafYz8IWmt7GcBDkLfaifVquGr6ot9XfInjx5g2MfUYII5SQqD7tgJkofMPRRWp5Or9/w8iGHDwnvdmxfvdNr798YmJzSNsiUYpiEaWoVqB9xiLyWcW4512FlJDdaEcM9ROpDgIxGvmwt6onSwWsq/ZuKNsgfcMQC6SeH8SvzMcmzQLR538gdhYb+sqlzGUy5XKo1pNzMzsOF+CufspUQlJZymRLmNldn24OLu7tdMlvm8kcxk9+Cfj1HSFNgt1uYLw6uqwZVKLpfbzGSyW1v5Ugk8L0M82udjSP//wvaB4VeZAmNkwJf+QiRSS8m0NZECge39tHHX6f8B8OJMBYqscWEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/f99a7126cf8efe1e97abab43d568915e/799d3/categories.png&quot;
+        srcset=&quot;/static/f99a7126cf8efe1e97abab43d568915e/00d96/categories.png 148w,
+/static/f99a7126cf8efe1e97abab43d568915e/0b23c/categories.png 295w,
+/static/f99a7126cf8efe1e97abab43d568915e/799d3/categories.png 590w,
+/static/f99a7126cf8efe1e97abab43d568915e/2a3d6/categories.png 885w,
+/static/f99a7126cf8efe1e97abab43d568915e/ae92f/categories.png 1180w,
+/static/f99a7126cf8efe1e97abab43d568915e/72623/categories.png 4000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;A parte da categoria seleccionada, por exemplo “animais” não estava apresentável violava as regras do design de aplicações começando pelos botões de navegação que violam o material design “ícones estranhos” , nesta proposta de Redesign os ícones são cinzentos e do material icons e estão no centro da tela assim o utilizador acede a eles facilmente.
+Para aceder a versão audio da palavra o utilizador tinha de clicar na imagem, o que não é intuitivo o ideal seria colocar um botão com ícone de volume na parte de baixo da tela, é preciso fazer com que os botões da sua App sejam intuitivos que não levem o utilizador a pensar como diz o guru Steve Krug.
+Mover o botão de share da primeira tela para esta melhoraria a apresentação da sua aplicação.&lt;/p&gt;
+&lt;p&gt;Animações
+As animações de transição estavam mal implementadas, ao clicar no botão de next a aplicação apresentava uma animação de transição que não estava em sintonia com a outra animação ao clicar o botão de back, todas animações de transição fluem para o mesmo lado o que complica o utilizador.
+Seria ideal colocar as animações do next a partir da direita para esquerda e as de back da esquerda.&lt;/p&gt;
+&lt;h2&gt;Modularidade&lt;/h2&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c5a8fa6495245a45311fbdcd85d2c2ac/72623/modularization.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsSAAALEgHS3X78AAACh0lEQVQoz32T3U/TYBTGu2EgKMYYI2A0IYFETUz01sQ79QK88s5EQRJBr0zgwggk8wKUoDfiB8xt/dravm8X+TAigrpNYWPossC6tbCt7SgbJPpnePqBgkbfPDk5fdtfzjlPTgkiqvxPEZkYfE7c7Sd6H7h6PO4eD8Tae4P7ez37hscJ+MIdU6pja5C49pIuuPyYrX74su7+cE3/yMGBkQbPk7qBx5DX9Q3XPAI4Irck1dbMZnVMIT7JZqkduSMKMS9d84UCJPWUpJ+R9KgVIYebqz6OAODksno+XWqIF5qTxROJYmO8AHn9Yr4pqRIfst00eivwHM/jHcGZQXw7jZzKVzKbF1eM1lXj8qpxIb0Bj20gqVwblTspYSaMw+GwKIrYEi+KM2HxBoUIxxW74V1tuyKKG17NZW6zoqwoi2pJ3tg0trb1ckWrbFd0vYMRCdunqphpm6OooyowbD7TxWBZkr6sZFKZ7EpOTmdzKSmnra93sBZsFVd2W2V34bbgblZcU5SEkl9TtYKmFfTSulaqaFoHG3bgY4lCy7IKsWlJbVoybWtOqocW8tB2N4PLmm58/6FtbadKhmSU0xvloqbfBNhlzQzAma/aqWVTZ7/pp82oNSaKAHfRKDr7TsAIY+Qj/SQVIEOh2anJdgbbhinHE8VzKf3IYr4+XoB4eCF/NJ4/AJXnpVs0muSCFMsyDMPaJxic4oLXKcFp21yyz7Bk9sCOBdbMJjwt8CGOHxv3jrwYG33lC/H8G4H/DTv7uFe/4CmBCwoCVPZ6vT6/n+W46b/hP2TDd2j0HgmiILxGaALjCYwgn0NCp7Mk/5D1Y+TaKDwYoPsCzECA6ffTIMiHAvQlEv8ERMYEeDYGALkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/c5a8fa6495245a45311fbdcd85d2c2ac/799d3/modularization.png&quot;
+        srcset=&quot;/static/c5a8fa6495245a45311fbdcd85d2c2ac/00d96/modularization.png 148w,
+/static/c5a8fa6495245a45311fbdcd85d2c2ac/0b23c/modularization.png 295w,
+/static/c5a8fa6495245a45311fbdcd85d2c2ac/799d3/modularization.png 590w,
+/static/c5a8fa6495245a45311fbdcd85d2c2ac/2a3d6/modularization.png 885w,
+/static/c5a8fa6495245a45311fbdcd85d2c2ac/ae92f/modularization.png 1180w,
+/static/c5a8fa6495245a45311fbdcd85d2c2ac/72623/modularization.png 4000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Quando estás a criar uma aplicação para android o tamanho pode ser uma das razões que fazem com que o utilizador não baixe a sua App.
+Por isso que eu acho que apps grandes devem ser modulares, neste caso o Dondza devia ser dividido em módulos, isso permite que o utilizador possa baixar a sua App e que possa fazer as actualizações sem dificuldades porque se a sua App tem 23 MB como Dondza fica difícil para o utilizador devido a falta de dados para baixar da PlayStore e de memoria para instalar um APK de 23 MB right away, mas se o APK tem 5 MB e a App esta dividida em 3 módulos ou tem 3 pacotes adicionais que podem ser baixados in App ai o utilizador pode escolher os pacotes que deseja baixar consequentemente poupar memoria e dados.&lt;/p&gt;
+&lt;h2&gt;Overall&lt;/h2&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/33871828bdb0627253c231f2751250a0/72623/overall.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAIAAABr+ngCAAAACXBIWXMAAAsSAAALEgHS3X78AAACpUlEQVQoz32T22vTUBzHT+O66YSJq+5BESYIMm8v+qTiPyAKEx/cH+Crf8AU5oPPKnvaiyIiExfnVmFd11zabF1T1q63XNts2aWXtGmTNEsvE3HxZGVDxHn48uOcw+/D95zvSQDAWYAxUC6chQKHgjtoCEFJFxpE0CD4QvTOLPbNhntmwj3+BAIbCB7Apn5K8IR4EMi4sAOS4OBywL96aSk7GGQuBpm+QOoUlvYQTO/3CEApZCrk8sUBCDB34/K9uDxACeeXRHDgfwxjvrFSLhvj8ttcQWELRTZfkksKmt14Kau3xt+D1x8A7Du7KA5FpGu0dCGcPYS7SD7EsPT4iFriTau5rij1er3dsFqGYdu2d8538x0KOud0dW4OGYI7QfIIwSGBTEjerElpVa3omlbXNFir1aparf6w7SSJPZqcBRA7tyTejsl3YvKN6BqcXI7kjpOcm+TRaGLi7ZuslNNMU1LKqq5Dc03Tfu7ZWzz7eNrvOHsoEWJDtDQYzl2hJaj+kHCSEtFlemLsWVZkTcvKK4qm66ZplooFq9VSC/kRL+44eyjhKi1djzownJyhhNOU0Isz5MZ2U1NrNa0Gh+ZUXddFnmvu7hpK6YmXcJwRgu0mOSg3wXUTXCcwN8bMS1ImSpaVom7uwMA0w2i32+lEzGo2hcTq8NQcAH9+GIfhOU+VIde2LHOnY23s21f3xy/bXsECDz7NHA3jLLW+uRYPOohhbJQrMC7DMKq1GoRjJPFw0nskDN8sIIgr/s9KpVKr17crqgajNgzov2fbGXxh+OP0/45NS7JdN6xyuVFWWmq5UVFaMIBiMW9ao/jywNfgP+COEIx5Sq2ORZLPI8kXkRSso5HUKzp9n4i7fbEu2EMKR8KO5lPAl/xbCxmA8/u/IPMbI6xTrjLHgfsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/33871828bdb0627253c231f2751250a0/799d3/overall.png&quot;
+        srcset=&quot;/static/33871828bdb0627253c231f2751250a0/00d96/overall.png 148w,
+/static/33871828bdb0627253c231f2751250a0/0b23c/overall.png 295w,
+/static/33871828bdb0627253c231f2751250a0/799d3/overall.png 590w,
+/static/33871828bdb0627253c231f2751250a0/2a3d6/overall.png 885w,
+/static/33871828bdb0627253c231f2751250a0/ae92f/overall.png 1180w,
+/static/33871828bdb0627253c231f2751250a0/72623/overall.png 4000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;Num overall o que pode melhorar a App: Padronizar as animações, usar cartoons/desenhos ou imagens reais, dividir a App em módulos para diminuir o tamanho da aplicação na Store , centralizar o texto na tela inicial e mover os botões de share para a categoria seleccionada.
+Stay tune, o próximo post terá um link para baixar alguns wireframes para que possas usar no desenvolvimento da aplicação.
+O que achas que pode ser melhorado na presente app, qual é a sua opinião sobre o redesign?
+Obrigado, por ter lido o artigo subscreva a publicação para mais artigos de desenvolvimento android.&lt;/p&gt;</content:encoded></item></channel></rss>

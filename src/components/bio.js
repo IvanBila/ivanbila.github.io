@@ -40,7 +40,7 @@ function Bio() {
                 Ivan Bila
               </a>{" "}
               <br />
-              Musings and personal findings
+              Ramblings and personal findings
               {` `}
             </p>
           </div>

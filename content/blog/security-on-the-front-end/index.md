@@ -110,13 +110,13 @@ Seemingly this form looks okay, but there is a security vulnerability, after sub
 browser stores the request url and all the input fields containing a name in it will be in the url and hence in
 the users browser's history and url bar here is how it looks like:
 
-![browser url bar](./browser-url.png)
+![browser url bar](images/browser-url.png)
 
 Accordingly the url will the in users history:
-![history url](./history-url.png)
+![history url](images/history-url.png)
 
 If you have an access log here's what your server log will look like:
-![server log](./server-log.png)
+![server log](images/server-log.png)
 
 Given the vulnerabilities pointed above it's important for us developers to always use post requests for sensitive data,
 browsers tend to fallback to get requests if the method is not specified, that means we have to remain vigilant and

@@ -50,13 +50,13 @@ Another disadvantage of opening a browser/app for signing-in/up is the loss of t
 
 Google has come out with some exciting features to speed up the sign flow using, for the web they created something called one tap sign-up or auto sign-in which allows seamless sign-in and sign-up flows without interrupting them with a sign-on or sign-up screen.
 
-![auto sign in](./auto-sign-in.png)
+![auto sign in](images/auto-sign-in.png)
 
-![auto sign in](./auto-sign-up.png)
+![auto sign in](images/auto-sign-up.png)
 
 On Android, Google allows users to sign-in or sign-up without having to leave the application, by showing a modal of the list of accounts that the user setup in that device and wants to use in your application.
 
-![android sign in](./android-sign-in.png)
+![android sign in](images/android-sign-in.png)
 
 ### Don't ask them to invite their friends nor rate you
 
@@ -74,9 +74,9 @@ Long texts can hinder your user’s experience as in he or she might be using a 
 
 Here are couple of examples of bad language use that resulted in confusion, misinformation:
 
-![apple](./apple.JPG)
+![apple](images/apple.JPG)
 
-![cancel a download](./cancel.jpeg)
+![cancel a download](images/cancel.jpeg)
 
 There are a lot more other things you can do to improve user experience but I decided to focus only on these which I think when overlooked can damage your application user experience.
 

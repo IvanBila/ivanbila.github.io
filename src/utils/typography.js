@@ -52,6 +52,7 @@ const typography = new Typography({
     },
     pre: {
       'min-width': '100%',
+      'border-radius': '4px',
     },
     code: {
       overflow: 'initial',

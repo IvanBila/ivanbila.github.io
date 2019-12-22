@@ -1,5 +1,6 @@
 import Typography from 'typography'
 import '../../content/assets/fonts/fonts.css'
+import '../../content/assets/css/style.css'
 
 export const fonts = {
   thin: 'Inter Thin',

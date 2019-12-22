@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ramblings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.dev</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 21 Dec 2019 18:43:37 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ramblings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.dev</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 Dec 2019 12:03:30 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
 the use of external…]]></description><link>https://ivanbila.dev/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.dev/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
 the use of external code through libraries or frameworks such as jQuery, ReactJS, and VueJS, Lodash, not setting up
 HTTPS to encrypt the data exchanged between the server and the client, use of old or deprecated libraries/frameworks.
@@ -218,32 +218,62 @@ NOTES:
 - XSS
 - owasp top 10
 - .env
---&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a…]]></description><link>https://ivanbila.dev/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.dev/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application; he/she may not need to take a UX course to learn.&lt;/p&gt;
-&lt;p&gt;However, when passed unnoticed can damage the application’s experience; on the other hand, if you spend some time and correct them, it can improve the application’s user experience significantly.&lt;/p&gt;
+--&gt;</content:encoded></item><item><title><![CDATA[How developers can improve ux]]></title><description><![CDATA[There are a few things that developers can do that can improve the overall user experience in an application, he/she may
+ not need to take a…]]></description><link>https://ivanbila.dev/how-developers-can-improve-ux/</link><guid isPermaLink="false">https://ivanbila.dev/how-developers-can-improve-ux/</guid><pubDate>Sat, 27 Apr 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;There are a few things that developers can do that can improve the overall user experience in an application, he/she may
+not need to take a UX course to learn.&lt;/p&gt;
+&lt;p&gt;However, when passed unnoticed can damage the application’s experience, on the other hand, if you spend some time and
+correct them, it can improve the APP’s user experience significantly.
+And we will start with,&lt;/p&gt;
 &lt;h3&gt;Prove the value of your app&lt;/h3&gt;
-&lt;p&gt;Imagine being asked for your ID copy/credit card before entering a shop? How would you feel? That’s how users feel when you ask for their data before they can even use your app, what I’m saying is we should Let the user do something in our apps without requiring him to sign up. It is not enough to put a splash screen or a short tutorial on how the app works to establish whether your application is worth it or not.&lt;/p&gt;
+&lt;p&gt;Imagine being asked for your ID copy/credit card before entering a shop? How would you feel? That’s how users feel when
+you ask for their data before they can even use your app, what I’m saying is we should Let the user do something in our
+apps without requiring him/her to sign up(this is not absolute, depending on the context this can either be possible or not).
+It is not enough to put a splash screen or a short tutorial on how the app works to establish whether your application is worth it or not.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;“If you ask me for my data before offering any value, that means you’re more concerned with my data than with solving my problem.” Rushing User&lt;/p&gt;
+&lt;p&gt;“If you ask me for my data before offering any value, that means you’re more concerned with my data than with solving
+my problem.” Rushing User&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I think the statement above sums it up. It would be best if you didn’t ask for a user to sign-in or give in (his) data before even showing him why your app deserves (his) attention or data. I know some apps need to know about the user before him using it, but I think you can always figure a way to give value before you ask for it.&lt;/p&gt;
+&lt;p&gt;I think the statement above sums it up. It would be best if you didn’t ask for a user to sign-in or give in (his) data
+before even showing him/her why your app deserves (his) attention or data. I know some apps need to know about the user
+before him/her using it, but I think you can always figure a way to give value before you ask for it.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Give value to your users before you ask for it.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3&gt;Prefer OAuth over traditional email-password&lt;/h3&gt;
-&lt;p&gt;When a user signs up using traditional email-password, he has to memorize the password for your specific application or even worse in some cases he might re-use a password (unless he uses a password management/generator app).&lt;/p&gt;
-&lt;p&gt;Some users tend to re-use or create weak passwords for most applications they use, to avoid laborious work of memorizing or saving in a password manager.&lt;/p&gt;
-&lt;p&gt;Having to memorize things is a pain, laborious and time consuming, usually users have many things to keep track of (tasks, family names, phone numbers), so it’s improbable that they’ll memorize your apps’ password, they have zillions of apps, you want to make your app easy to use without the hassle of remembering passwords and emails. To prevent this, you can use OAuth.&lt;/p&gt;
-&lt;p&gt;With OAuth, the user doesn’t need to memorize a password or username(in short it allows passwordless sign-in/up), signing-in or signing-up is only a “tap/click away,” meaning he only has to allow your application to access his/her data.&lt;/p&gt;
-&lt;p&gt;This flow tends to be less laborious for the user because he/she doesn’t have to memorize a password and then verify if the email was filled correctly. Using the OAuth flow implies that you don’t have to implement the logic for resetting the password(unless you have users signed-in in using email-password) that the user is likely to forget over and over again until he/she stops using your service.&lt;/p&gt;
-&lt;p&gt;By using OAuth not only you have the convenience of signing in the user in without requiring a password you also have access to the information(first name, last name, age and more) that the user has already filled in his/her account.&lt;/p&gt;
-&lt;p&gt;Whether you should use Google, Twitter, Facebook, Linkedin or GitHub OAuth provider can depend based on your needs, however, more often than not, you’ll use more than one OAuth provider.&lt;/p&gt;
-&lt;p&gt;Given that Facebook and Google are the providers with the most users, I’ll compare both and say why and when I’d use one over the other.&lt;/p&gt;
-&lt;p&gt;Google and Facebook allow you to get almost the same information for a given user, but using one or the other might have different user experience implications to your application.&lt;/p&gt;
-&lt;p&gt;Usually, the flow is the same/close, and you click to register or sign-in then you get redirected to a page where you can either accept, declined or accept but customize(I can only see this feature on Facebook) what information the app can get from your account.&lt;/p&gt;
-&lt;p&gt;On mobile most specifically Android, when you sign in or sign up with Facebook, it usually opens a web browser tab which can be expensive for the user.&lt;/p&gt;
-&lt;p&gt;Opening the browser or external apps uses RAM and processing power, which is not what you want your app to do, because most devices have low RAM, and processing power is scarce, even if they have good processing power it’s very likely that they opened dozen other apps besides yours.&lt;/p&gt;
-&lt;p&gt;Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is taken to a different place where he might find distractions, and who knows whether he’ll return?&lt;/p&gt;
-&lt;p&gt;Google has come out with some exciting features to speed up the sign flow using, for the web they created something called one tap sign-up or auto sign-in which allows seamless sign-in and sign-up flows without interrupting them with a sign-on or sign-up screen.&lt;/p&gt;
+&lt;p&gt;When a user signs up using traditional email-password, he/she has to memorize the password for your specific application or
+even worse in some cases he might re-use a password (unless he uses a password management/generator tool).&lt;/p&gt;
+&lt;p&gt;Some users tend to re-use or create weak passwords for most applications they use, to avoid laborious work of memorizing
+or saving in a password manager.&lt;/p&gt;
+&lt;p&gt;Having to memorize things is a pain, laborious, time consuming and not reliable, usually users have many things to keep
+track of (tasks, family names, phone numbers), so it’s improbable that they’ll memorize your Apps’ password, they have
+zillions of apps, you want to make your app easy to use without the hassle of remembering passwords and emails.
+To prevent this, you can use OAuth.&lt;/p&gt;
+&lt;p&gt;With OAuth, the user doesn’t need to memorize a password or username(in short it allows password-less sign-in/up),
+signing-in or signing-up is only a “tap/click away,” meaning he only has to allow your application to access his/her data.&lt;/p&gt;
+&lt;p&gt;This flow tends to be less laborious for the user because he/she doesn’t have to memorize a password and then verify if
+the email was filled correctly. Using the OAuth flow also implies that you don’t have to implement the logic for resetting
+the password(unless you have users signed-in in using email-password) that the user is likely to forget over and over
+again until he/she stops using your service.&lt;/p&gt;
+&lt;p&gt;By using OAuth not only you have the convenience of signing in the user in without requiring a password you also have
+access to the information(first name, last name, age and more) that the user has already filled in his/her account.&lt;/p&gt;
+&lt;p&gt;Whether you should use Google, Twitter, Facebook, Linkedin or GitHub OAuth provider can depend based on your needs,
+however, more often than not, you’ll use more than one OAuth provider.&lt;/p&gt;
+&lt;p&gt;Given that Facebook and Google are the providers with the most users, I’ll compare both and say why and when I’d use one
+over the other.&lt;/p&gt;
+&lt;p&gt;Google and Facebook allow you to get almost the same information for a given user, but using one or the other might have
+different user experience implications to your application.&lt;/p&gt;
+&lt;p&gt;Usually, the flow is the same/close, and you click to register or sign-in then you get redirected to a page where you can
+either accept, declined or accept but customize(I can only see this feature on Facebook) what information the app can get
+from your account.&lt;/p&gt;
+&lt;p&gt;On mobile, most specifically Android, when you sign in or sign up with Facebook, it usually opens a web browser tab which
+can be expensive for the user. Opening the browser or external apps uses RAM and processing power, which is not what you
+want your app to do, because most devices have low RAM, and processing power is scarce, even if they have good processing
+power it’s very likely that they opened dozen other apps besides yours.&lt;/p&gt;
+&lt;p&gt;Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is
+taken to a different place where he might find distractions, and who knows whether he’ll return?&lt;/p&gt;
+&lt;p&gt;Google has come out with some exciting features to speed up the sign flow using, for the web they created something called
+one tap sign-up or auto sign-in(this feature is only available upon request due to security vulnerabilities) which allows
+seamless sign-in and sign-up flows without interrupting them with a sign-on or sign-up screen, as seen below.&lt;/p&gt;
 &lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -264,7 +294,7 @@ NOTES:
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;auto sign in&quot;
+        alt=&quot;One tap sign in&quot;
         title=&quot;&quot;
         src=&quot;/static/377cdfea2aef6bacdff9bec166b0ac3a/799d3/auto-sign-in.png&quot;
         srcset=&quot;/static/377cdfea2aef6bacdff9bec166b0ac3a/00d96/auto-sign-in.png 148w,
@@ -298,7 +328,7 @@ NOTES:
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;auto sign in&quot;
+        alt=&quot;One tap sign up&quot;
         title=&quot;&quot;
         src=&quot;/static/5ae9c3a373c4688216468522483c81f4/799d3/auto-sign-up.png&quot;
         srcset=&quot;/static/5ae9c3a373c4688216468522483c81f4/00d96/auto-sign-up.png 148w,
@@ -312,7 +342,8 @@ NOTES:
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;p&gt;On Android, Google allows users to sign-in or sign-up without having to leave the application, by showing a modal of the list of accounts that the user setup in that device and wants to use in your application.&lt;/p&gt;
+&lt;p&gt;On Android, Google allows users to sign-in or sign-up without having to leave the application, by showing a modal of the
+list of accounts that the user setup in that device and wants to use in your application.&lt;/p&gt;
 &lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -333,7 +364,7 @@ NOTES:
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;android sign in&quot;
+        alt=&quot;android oauth sign in&quot;
         title=&quot;&quot;
         src=&quot;/static/349c66ef26150f2f4cc37127aafaccf2/799d3/android-sign-in.png&quot;
         srcset=&quot;/static/349c66ef26150f2f4cc37127aafaccf2/00d96/android-sign-in.png 148w,
@@ -348,12 +379,21 @@ NOTES:
   &lt;/a&gt;
     &lt;/p&gt;
 &lt;h3&gt;Don’t ask them to invite their friends nor rate you&lt;/h3&gt;
-&lt;p&gt;Seriously, I don’t think users invite other people to use an app. No one does that. It’s odd and weird. If I want my friend to use this X app, I tell him to download and explain the benefits and tell him how cool I’m because I’m using it or how it has changed, improved or helped me doing Y thing. Word of mouth is the kind of invitation or recommendation that people want, not receiving a message or an email saying user X invited you to use this app, how is the app supposed to solve my problem if it’s already creating a new one by spamming me?&lt;/p&gt;
+&lt;p&gt;Seriously, I don’t think users invite other people to use an app. No one does that. It’s odd and weird. If I want my
+friend to use this X app, I tell him to download and explain the benefits and tell him how cool I’m because I’m using
+it or how it has changed, improved or helped me doing Y thing. Word of mouth is the kind of invitation or recommendation
+that people want, not receiving a message or an email saying user X invited you to use this app, how is the app supposed
+to solve my problem if it’s already creating a new one by spamming me?&lt;/p&gt;
 &lt;h3&gt;Use appropriate language&lt;/h3&gt;
-&lt;p&gt;Unlike other extremely formal fields like architecture and law, in software, no one will come and suspend your app because the language is not grammatically correct(there are some edge cases where the language has to follow strictly the rules of grammar and so forth), or it used words that do not exist in the dictionary.&lt;/p&gt;
-&lt;p&gt;When building your app prefer a language that is easy to grasp and in the context. (It doesn’t have to be grammatically correct, though this is not an appeal to ignore the grammar entirely, there are tiny things you can do or change in your language to make it easier to understand to your specific users).&lt;/p&gt;
+&lt;p&gt;Unlike other extremely formal fields like architecture and law, in software, no one will come and suspend your app because
+the language is not grammatically correct(there are some edge cases where the language has to follow strictly the rules
+of grammar and so forth), or it used words that do not exist in the dictionary.&lt;/p&gt;
+&lt;p&gt;When building your app prefer a language that is easy to grasp and in the context. (It doesn’t have to be grammatically
+correct, though this is not an appeal to ignore the grammar entirely, there are tiny things you can do or change in your
+language to make it easier to understand to your specific users).&lt;/p&gt;
 &lt;p&gt;The inadequate use of language can cause doubt, uncertainty, hesitation, ambiguity, misinformation.&lt;/p&gt;
-&lt;p&gt;Long texts can hinder your user’s experience as in he or she might be using a mobile device which does not have a large screen.&lt;/p&gt;
+&lt;p&gt;Long texts can hinder your user’s experience as in he or she might be using a mobile device which does not have a large
+screen.&lt;/p&gt;
 &lt;p&gt;Here are couple of examples of bad language use that resulted in confusion, misinformation:&lt;/p&gt;
 &lt;p&gt;
   &lt;a
@@ -426,9 +466,15 @@ NOTES:
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;p&gt;There are a lot more other things you can do to improve user experience but I decided to focus only on these which I think when overlooked can damage your application user experience.&lt;/p&gt;
-&lt;p&gt;I hope you found something that can either be applied in your current project or upcoming projects and that you learned as much as I did writing this post, may your next/current project have the best user experience possible.&lt;/p&gt;
-&lt;p&gt;Thanks, and see you next time.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O que podes aprender com o Redesign do Dondza]]></title><description><![CDATA[Dondza Changana é um aplicativo que permite aprender algumas palavras em Changana através de imagens ilustrativas, audição da pronúncia das…]]></description><link>https://ivanbila.dev/o-que-podes-aprender-com-o-redesign-do-dondza/</link><guid isPermaLink="false">https://ivanbila.dev/o-que-podes-aprender-com-o-redesign-do-dondza/</guid><pubDate>Sun, 25 Sep 2016 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;
+&lt;!--
+### Improve your App&apos;s performance
+
+How fast our application &quot;loads&quot; can greatly affect if a user is going to use your app, in order to achieve an 
+--&gt;
+&lt;p&gt;There are a lot more other things you can do to improve user experience but I decided to focus only on these which I
+think when overlooked can damage your application user experience.&lt;/p&gt;
+&lt;p&gt;I hope you found something that can either be applied in your current project or upcoming projects and that you learned
+as much as I did writing this post, may your next/current project have the best user experience possible.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[O que podes aprender com o Redesign do Dondza]]></title><description><![CDATA[Dondza Changana é um aplicativo que permite aprender algumas palavras em Changana através de imagens ilustrativas, audição da pronúncia das…]]></description><link>https://ivanbila.dev/o-que-podes-aprender-com-o-redesign-do-dondza/</link><guid isPermaLink="false">https://ivanbila.dev/o-que-podes-aprender-com-o-redesign-do-dondza/</guid><pubDate>Sun, 25 Sep 2016 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/1501f24b50307cb4a919a6ff8cb0e0b5/72623/splash.png&quot;

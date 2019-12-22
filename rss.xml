@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ramblings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.dev</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 Dec 2019 12:03:30 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ramblings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.dev</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 Dec 2019 18:51:19 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
 the use of external…]]></description><link>https://ivanbila.dev/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.dev/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
 the use of external code through libraries or frameworks such as jQuery, ReactJS, and VueJS, Lodash, not setting up
 HTTPS to encrypt the data exchanged between the server and the client, use of old or deprecated libraries/frameworks.
@@ -6,7 +6,8 @@ The consequences of a breach/exploited vulnerability can be fatal that can inclu
 and in some cases legal liabilities. In this article I will outline some of the things that when neglected can contribute
 to an insecure Front-End.&lt;/p&gt;
 &lt;p&gt;One thing worth mentioning is that there are a lot of ways your Front-End can be attacked or vulnerable, that’s why I
-recommend checking the full O-WASP list where you can have a deep insight has to what vulnerabilities plague web applications.&lt;/p&gt;
+recommend checking the &lt;a href=&quot;https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project&quot;&gt;O-WASP Top Ten&lt;/a&gt;
+where you can have a deep insight has to what vulnerabilities plague web applications.&lt;/p&gt;
 &lt;p&gt;And we’re going to start with the most obvious vulnerability that an app can have if not catered for:&lt;/p&gt;
 &lt;h2&gt;Not Using HTTPS&lt;/h2&gt;
 &lt;p&gt;When you use HTTP all data sent from the client to the server and vice-versa is unencrypted that implies that
@@ -20,20 +21,21 @@ you can either buy from a vendor/provider such as Digi-cert or get the free SSL 
 certificate on top of that you have to renew it every three months.&lt;/p&gt;
 &lt;p&gt;Having HTTPS also allows us to access browser APIS that would not be available if the domain origin does not
 have a valid SSL certificate(these APIS only work in secure origins) such as Service Workers, Push API, and Location, and others
-you can check the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts&quot;&gt;full list&lt;/a&gt;&lt;/p&gt;
+you can check the
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts&quot;&gt;features restricted to secure contexts&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Not having access to Service workers and other APIS means that your application cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.&lt;/p&gt;
 &lt;h2&gt;Taking user input as is(not sanitizing)&lt;/h2&gt;
 &lt;p&gt;Not sanitizing user input extremely dangerous, if you don’t sanitise user input your app might be suggested to SQL or
 XSS. Suppose I’m building an app that allows you to share about development meetups.&lt;/p&gt;
 &lt;p&gt;The app contains this input&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;share_input&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Thought&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If I take the text “inputed” into that field and append to markup without sanitising the user can fill it with the following:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;meetup_title&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Meetup title&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If I take the text inserted into that field and append to markup without sanitising the user can fill it with the following:&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-javascript line-numbers&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; evilScript &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;body&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-evilScript&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;text/javscript&quot;&lt;/span&gt;
+evilScript&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;type &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;
 evilScript&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;src &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js&quot;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;And the browser will execute the following instructions if the input text is appended using innerHtml method, with that the attack perpetrator
-can:&lt;/p&gt;
+&lt;p&gt;And the browser will execute the following instructions if the input text is appended using the &lt;code class=&quot;language-text&quot;&gt;innerHTML&lt;/code&gt; method,
+with that the attack perpetrator can:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Request CSS&lt;/li&gt;
 &lt;li&gt;Request images&lt;/li&gt;
@@ -44,18 +46,19 @@ can:&lt;/p&gt;
 &lt;li&gt;Read all cookies not marked as HTTP ONLY&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;It’s pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
-such situation is to escape the text before appending to the DOM or saving it to the database, or even better you can
-use JavaScript’s built in innerText if you want append what’s typed as text if the content is not supposed to be processed.&lt;/p&gt;
+such situation is to escape the text before appending to the DOM, or even better you can use JavaScript’s built in
+&lt;code class=&quot;language-text&quot;&gt;innerText&lt;/code&gt; if you want append what’s typed as text if the content is not supposed to be processed as markup.&lt;/p&gt;
 &lt;h2&gt;Using deprecated libraries/frameworks with widely know vulnerabilities&lt;/h2&gt;
 &lt;p&gt;Using deprecated libraries with with widely known vulnerabilities it’s almost like asking to be
 hacked(seriously don’t use jquery 1), hoping that hackers will not find out that your website’s
 library or framework has known vulnerabilities is not a good strategy. Making a habit of inspecting
 the libraries’ versions, if you’re using github you can turn on notifications for vulnerabilities
-in libraries or you can use &lt;a href=&quot;https://snyk.io/&quot;&gt;snyk&lt;/a&gt; which has a web and cli app that checks vulnerabilities in
-all dependencies in project’s your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
+in libraries with &lt;a href=&quot;https://github.com/marketplace/dependabot-preview&quot;&gt;dependabot&lt;/a&gt; or you can use
+&lt;a href=&quot;https://snyk.io/&quot;&gt;snyk&lt;/a&gt; which has a web and cli app that checks vulnerabilities in all dependencies
+in project’s your &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;Not inspecting frameworks or libraries before deploying to production or using it&lt;/h2&gt;
 &lt;p&gt;Sometimes the libraries might not be deprecated or have known vulnerabilities but, it always better to be safe than sorry,
-when house builders look for tools to aid them in their work they don’t choose the latest fanciest tools that only a
+when house builders look for tools to aid them in their work they don’t choose the latest “fanciest” tools that only a
 handful of craftsman use, they always in search for tools that stood the test of time, and that’s what I think developers
 should do, use tools that many developers have tried and did not find any tricky or mal-intentioned code, I also think
 that from time to time you should check what code is in your library.&lt;/p&gt;
@@ -72,8 +75,8 @@ credit card number and CVC for issuing a payment to a service your application.&
   &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;number&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;credit_card_cvc&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Credit Card CVC&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;
   &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;button&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;submit&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;pay&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;button&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;form&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a get request the
-browser stores the request url and all the input fields containing a name in it will be in the url and hence in
+&lt;p&gt;Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a GET request the
+browser stores the request URL and all the input fields containing a &lt;code class=&quot;language-text&quot;&gt;name&lt;/code&gt; in it will be in the url and hence in
 the users browser’s history and url bar here is how it looks like:&lt;/p&gt;
 &lt;p&gt;
   &lt;a
@@ -111,8 +114,8 @@ the users browser’s history and url bar here is how it looks like:&lt;/p&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;p&gt;Accordingly the url will the in users history:
-
+&lt;p&gt;Accordingly the url will the in users history:&lt;/p&gt;
+&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/908243f40e93dbc8d49302f945f0c760/79582/history-url.png&quot;
@@ -147,8 +150,8 @@ the users browser’s history and url bar here is how it looks like:&lt;/p&gt;
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;p&gt;If you have an access log here’s what your server log will look like:
-
+&lt;p&gt;If you have an access log here’s what your server log will look like:&lt;/p&gt;
+&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
     href=&quot;/static/ee3cb9f5bb051c887d96dcc8638e3d8a/d8fbf/server-log.png&quot;
@@ -190,8 +193,8 @@ add &lt;code class=&quot;language-text&quot;&gt;method=&amp;quot;POST&amp;quot;&
 &lt;h2&gt;Not adding noopener noreferer to external links&lt;/h2&gt;
 &lt;p&gt;When we add external links with &lt;code class=&quot;language-text&quot;&gt;target=&amp;quot;_blank&amp;quot;&lt;/code&gt; attribute the browser allows the opened tab to run in the same process
 as the opener website(unless configured with a different behaviour), which means that if the newly opened tab has performance
-issues that might affect the opener page, moreover a critical security vulnerability would be the fact that the newly opened&lt;br&gt;
-tab can access the previous page’s properties via &lt;code class=&quot;language-text&quot;&gt;window.opener&lt;/code&gt; with that change, update the DOM.&lt;/p&gt;
+issues that might affect the opener page, moreover a critical security vulnerability would be the fact that the newly opened
+tab can access the previous page’s properties via &lt;code class=&quot;language-text&quot;&gt;window.opener&lt;/code&gt; with that make any changes to the DOM. &lt;/p&gt;
 &lt;h3&gt;Not adding DOCTYPE to force Internet Explorer to use it’s best rendering engine&lt;/h3&gt;
 &lt;p&gt;When your add &lt;code class=&quot;language-text&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; to the HEAD of the html file it let’s the browser know that this page is using the latest version
 of html, there’s nothing new under the sun here, however Internet explorer and Microsoft Edge usually ship with the
@@ -202,9 +205,11 @@ XSS in you application.&lt;/p&gt;
 &lt;p&gt;Unless your API key contains extra protection keeping it in the Javascript code is a mistake and any user who can
 access your site will and can use you API key and if it is linked to any special privileges the user can exploit your
 application as he/she wishes.&lt;/p&gt;
-&lt;h2&gt;Not prefering HTTP only cookies for sensitive data&lt;/h2&gt;
+&lt;h2&gt;Not preferring HTTP only cookies for sensitive data&lt;/h2&gt;
 &lt;p&gt;HTTP ONLY cookies are like the name itself, are only accessible via HTTP, that way evil scripts cannot
-read your users sensitive cookies and use them for their own interests.&lt;/p&gt;
+read your users sensitive cookies and use them for their own interests.
+You can use them store session tokens or anything that would be a vulnerability to the user if an evil
+script reads it.&lt;/p&gt;
 &lt;!---
 ## Preferably do business logic on the backend
 

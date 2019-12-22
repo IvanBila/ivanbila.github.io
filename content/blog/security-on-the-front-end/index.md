@@ -12,7 +12,8 @@ and in some cases legal liabilities. In this article I will outline some of the 
 to an insecure Front-End.
 
 One thing worth mentioning is that there are a lot of ways your Front-End can be attacked or vulnerable, that's why I
-recommend checking the full O-WASP list where you can have a deep insight has to what vulnerabilities plague web applications.
+recommend checking the [O-WASP Top Ten](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
+where you can have a deep insight has to what vulnerabilities plague web applications.
 
 And we're going to start with the most obvious vulnerability that an app can have if not catered for:
 
@@ -32,7 +33,8 @@ certificate on top of that you have to renew it every three months.
 
 Having HTTPS also allows us to access browser APIS that would not be available if the domain origin does not
 have a valid SSL certificate(these APIS only work in secure origins) such as Service Workers, Push API, and Location, and others
-you can check the [full list](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts)
+you can check the
+[features restricted to secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts).
 
 Not having access to Service workers and other APIS means that your application cannot qualify as a PWA, and the worst thing
 is that browsers will label your site as being unsecured which can damage your business reputation and SEO.
@@ -45,19 +47,19 @@ XSS. Suppose I'm building an app that allows you to share about development meet
 The app contains this input
 
 ```html
-<input type="text" name="share_input" placeholder="Thought" />
+<input type="text" name="meetup_title" placeholder="Meetup title" />
 ```
 
-If I take the text "inputed" into that field and append to markup without sanitising the user can fill it with the following:
+If I take the text inserted into that field and append to markup without sanitising the user can fill it with the following:
 
 ```javascript
 let evilScript = document.body.appendChild(document.createElement("script"))
-evilScript.type = "text/javscript"
+evilScript.type = "text/javascript"
 evilScript.src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js"
 ```
 
-And the browser will execute the following instructions if the input text is appended using innerHtml method, with that the attack perpetrator
-can:
+And the browser will execute the following instructions if the input text is appended using the `innerHTML` method,
+with that the attack perpetrator can:
 
   - Request CSS
   - Request images
@@ -68,8 +70,8 @@ can:
   - Read all cookies not marked as HTTP ONLY
 
 It's pretty much game over for you application, the hacker can do as he wishes how he wishes. The best thing to do in
-such situation is to escape the text before appending to the DOM or saving it to the database, or even better you can
-use JavaScript's built in innerText if you want append what's typed as text if the content is not supposed to be processed.
+such situation is to escape the text before appending to the DOM, or even better you can use JavaScript's built in
+`innerText` if you want append what's typed as text if the content is not supposed to be processed as markup.
 
 ## Using deprecated libraries/frameworks with widely know vulnerabilities
 
@@ -77,13 +79,14 @@ Using deprecated libraries with with widely known vulnerabilities it's almost li
 hacked(seriously don't use jquery 1), hoping that hackers will not find out that your website's
 library or framework has known vulnerabilities is not a good strategy. Making a habit of inspecting
 the libraries' versions, if you're using github you can turn on notifications for vulnerabilities
-in libraries or you can use [snyk](https://snyk.io/) which has a web and cli app that checks vulnerabilities in
-all dependencies in project's your `package.json`
+in libraries with [dependabot](https://github.com/marketplace/dependabot-preview) or you can use 
+[snyk](https://snyk.io/) which has a web and cli app that checks vulnerabilities in all dependencies
+in project's your `package.json`
 
 ## Not inspecting frameworks or libraries before deploying to production or using it
 
 Sometimes the libraries might not be deprecated or have known vulnerabilities but, it always better to be safe than sorry,
-when house builders look for tools to aid them in their work they don't choose the latest fanciest tools that only a
+when house builders look for tools to aid them in their work they don't choose the latest "fanciest" tools that only a
 handful of craftsman use, they always in search for tools that stood the test of time, and that's what I think developers
 should do, use tools that many developers have tried and did not find any tricky or mal-intentioned code, I also think
 that from time to time you should check what code is in your library.
@@ -106,16 +109,18 @@ credit card number and CVC for issuing a payment to a service your application.
 </form>
 ```
 
-Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a get request the
-browser stores the request url and all the input fields containing a name in it will be in the url and hence in
+Seemingly this form looks okay, but there is a security vulnerability, after submitting a form using a GET request the
+browser stores the request URL and all the input fields containing a `name` in it will be in the url and hence in
 the users browser's history and url bar here is how it looks like:
 
 ![browser url bar](images/browser-url.png)
 
 Accordingly the url will the in users history:
+
 ![history url](images/history-url.png)
 
 If you have an access log here's what your server log will look like:
+
 ![server log](images/server-log.png)
 
 Given the vulnerabilities pointed above it's important for us developers to always use post requests for sensitive data,
@@ -126,8 +131,8 @@ add `method="POST"` attribute when dealing with forms that contains sensitive da
 
 When we add external links with `target="_blank"` attribute the browser allows the opened tab to run in the same process
 as the opener website(unless configured with a different behaviour), which means that if the newly opened tab has performance
-issues that might affect the opener page, moreover a critical security vulnerability would be the fact that the newly opened\
-tab can access the previous page's properties via `window.opener` with that change, update the DOM.
+issues that might affect the opener page, moreover a critical security vulnerability would be the fact that the newly opened
+tab can access the previous page's properties via `window.opener` with that make any changes to the DOM. 
 
 ### Not adding DOCTYPE to force Internet Explorer to use it's best rendering engine
 
@@ -143,10 +148,12 @@ Unless your API key contains extra protection keeping it in the Javascript code 
 access your site will and can use you API key and if it is linked to any special privileges the user can exploit your
 application as he/she wishes.
 
-## Not prefering HTTP only cookies for sensitive data
+## Not preferring HTTP only cookies for sensitive data
 
 HTTP ONLY cookies are like the name itself, are only accessible via HTTP, that way evil scripts cannot
 read your users sensitive cookies and use them for their own interests.
+You can use them store session tokens or anything that would be a vulnerability to the user if an evil
+script reads it.
 
 <!---
 ## Preferably do business logic on the backend

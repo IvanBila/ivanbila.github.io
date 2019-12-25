@@ -56,7 +56,7 @@ const typography = new Typography({
     },
     code: {
       overflow: 'initial',
-      fontSize: '12pt',
+      fontSize: '13pt',
     }
   })
 })

@@ -8,20 +8,22 @@ draft: false
 Um dos componentes mais usados/comuns em diversas Aplicações Web é o `form` e este pode ser usado
 para diversas finalidades sendo a principal capturar informação sobre o utilizador ou uma determinada entidade.
 
-Um formulário pode ser composto por checkboxes, radiobuttons e `input[type="text"]` e outros components usados
+Um formulário pode ser composto por checkboxes, radiobuttons e `input[type="text"]` e outros componentes/elementos usados
 para capturar dados com a melhor experiência de utilizador possível.
 
 Dado que a forma em que o formulário se apresenta pode influenciar significativamente a experiência dos utilizadores
-é sempre importante escolher o elemento/componente adequado para este feito tendo em conta acessibilidade e usabilidade.
-Antes da criação do atributo `inputmode` para formularios mais especificamente para o elemento input não era possivel
-determinar o comportamento do teclado de um smartphone sendo que esta funcionalidade estava disponivel apenas para aplicações
+é sempre importante escolher o elemento/componente adequado para este feito, tendo em conta acessibilidade e usabilidade.
+
+Antes da criação do atributo `inputmode` para formulários mais especificamente para o elemento `input` não era possível
+determinar o comportamento do teclado de um smartphone sendo que esta funcionalidade estava disponcccvel apenas para aplicações
 nativas.
+
 Actualmente a realidade é diferente e é possivel definir o comportamento de teclado, com isso podemos escolher se o teclado
-apresenta somente numeros, letras, @, numeros com virgula e muito mais usando o attributo `inputmode` com os valores decimal, numeric, tel, search, email e url.
+apresenta somente numeros, letras, @, numeros com vírgula e muito mais, usando o attributo `inputmode` com os valores *decimal*, *numeric*, *tel*, *search*, *email* e *url*.
 
 ### Inputmode decimal
 
-Atraves do `inputmode="decimal"` podemos instruir o teclado a mostrar somente numeros, como mostra o screenshot e o campo de texto(somente disponivel para smartphones com navegador elegivel) abaixo. 
+Atraves do `inputmode="decimal"` podemos instruir o teclado a mostrar somente numeros, como mostra a imagem e o campo de texto(somente disponível para smartphones com navegador elegível) abaixo. 
 
 ```html
 <input type="text" inputmode="decimal" placeholder="Decimal"/>
@@ -36,42 +38,42 @@ Atraves do `inputmode="decimal"` podemos instruir o teclado a mostrar somente nu
 
 ### Numeric
 
-Diferentemente do decimal o `inputmode="numeric"` apresenta somente numeros sem virgula ou ponto, este pode
-ser util para capturar dados como PIN, numero de itens a comprar, numero de casa e mais outros dados, comporta-se da seguinte maneira:
+Diferentemente do decimal o `inputmode="numeric"` apresenta somente números sem vírgula ou ponto, este pode
+ser util para capturar dados como PIN, numero de itens a comprar, número de casa e mais outros dados, comporta-se da seguinte maneira:
 
 ```html
-<input type="text" inputmode="numeric" placeholder="Number of seats"/>
+<input type="text" inputmode="numeric" placeholder="numeric"/>
 ```
 
 ![Input mode numeric image](./images/numeric.jpeg)
 
 <center>
-	<input type="text" inputmode="numeric" placeholder="Number of seats" class="inputmode" style="padding: 10px; margin: 40px"/>
+	<input type="text" inputmode="numeric" placeholder="numeric" class="inputmode" style="padding: 10px; margin: 40px"/>
 </center>
 
 ### Tel
 
 
 ```html
-<input type="text" inputmode="tel" placeholder="Phone number"/>
+<input type="text" inputmode="tel" placeholder="tel"/>
 ```
 
 ![Input mode tel image](./images/tel.jpeg)
 
 <center>
-	<input type="text" inputmode="tel" placeholder="Decimal" class="inputmode" style="padding: 10px; margin: 40px"/>
+	<input type="text" inputmode="tel" placeholder="tel" class="inputmode" style="padding: 10px; margin: 40px"/>
 </center>
 
 ### Search
 
 ```html
-<input type="text" inputmode="search" placeholder="Search Keyword"/>
+<input type="text" inputmode="search" placeholder="search"/>
 ```
 
 ![Input mode search image](./images/search.jpeg)
 
 <center>
-	<input type="text" inputmode="search" placeholder="Search Keyword" class="inputmode" style="padding: 10px; margin: 40px"/>
+	<input type="text" inputmode="search" placeholder="search" class="inputmode" style="padding: 10px; margin: 40px"/>
 </center>
 
 ### Email

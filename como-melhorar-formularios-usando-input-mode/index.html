@@ -8,12 +8,12 @@ para capturar dados com a melhor experiência de utilizador possível.</p>
 <p>Dado que a forma em que o formulário se apresenta pode influenciar significativamente a experiência dos utilizadores
 é sempre importante escolher o elemento/componente adequado para este feito, tendo em conta acessibilidade e usabilidade.</p>
 <p>Antes da criação do atributo <code class="language-text">inputmode</code> para formulários mais especificamente para o elemento <code class="language-text">input</code> não era possível
-determinar o comportamento do teclado de um smartphone sendo que esta funcionalidade estava disponcccvel apenas para aplicações
+determinar o comportamento do teclado de um smartphone sendo que esta funcionalidade estava disponível apenas para aplicações
 nativas.</p>
 <p>Actualmente a realidade é diferente e é possivel definir o comportamento de teclado, com isso podemos escolher se o teclado
-apresenta somente numeros, letras, @, numeros com vírgula e muito mais, usando o attributo <code class="language-text">inputmode</code> com os valores <em>decimal</em>, <em>numeric</em>, <em>tel</em>, <em>search</em>, <em>email</em> e <em>url</em>.</p>
+apresenta somente números, letras, @, números com vírgula e muito mais, usando o attributo <code class="language-text">inputmode</code> com os valores <em>decimal</em>, <em>numeric</em>, <em>tel</em>, <em>search</em>, <em>email</em> e <em>url</em>.</p>
 <h3>Inputmode decimal</h3>
-<p>Atraves do <code class="language-text">inputmode=&quot;decimal&quot;</code> podemos instruir o teclado a mostrar somente numeros, como mostra a imagem e o campo de texto(somente disponível para smartphones com navegador elegível) abaixo. </p>
+<p>Através do <code class="language-text">inputmode=&quot;decimal&quot;</code> podemos instruir o teclado a mostrar somente números, como mostra a imagem e o campo de texto(somente disponível para smartphones com navegador elegível) abaixo. </p>
 <div class="gatsby-highlight" data-language="html"><pre style="counter-reset: linenumber NaN" class="language-html line-numbers"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">inputmode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>decimal<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Decimal<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span></span></pre></div>
 <p>
   <a
@@ -54,7 +54,7 @@ apresenta somente numeros, letras, @, numeros com vírgula e muito mais, usando 
 </center>
 <h3>Numeric</h3>
 <p>Diferentemente do decimal o <code class="language-text">inputmode=&quot;numeric&quot;</code> apresenta somente números sem vírgula ou ponto, este pode
-ser util para capturar dados como PIN, numero de itens a comprar, número de casa e mais outros dados, e comporta-se da seguinte maneira:</p>
+ser util para capturar dados como PIN, número de itens a comprar, número de casa e mais outros dados, e comporta-se da seguinte maneira:</p>
 <div class="gatsby-highlight" data-language="html"><pre style="counter-reset: linenumber NaN" class="language-html line-numbers"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">inputmode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>numeric<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>numeric<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span></span></pre></div>
 <p>
   <a
@@ -94,7 +94,7 @@ ser util para capturar dados como PIN, numero de itens a comprar, número de cas
 	<input type="text" inputmode="numeric" placeholder="numeric" class="inputmode" style="padding: 10px; margin: 40px"/>
 </center>
 <h3>Tel</h3>
-<p><code class="language-text">inputmode=&quot;tel&quot;</code> apresenta algumas semelhanças comparado ao <code class="language-text">numeric</code>, as únicas diferença são os símbolos
+<p><code class="language-text">inputmode=&quot;tel&quot;</code> apresenta algumas semelhanças comparado ao <code class="language-text">numeric</code>, as únicas diferenças são os símbolos
 <code class="language-text">+*#</code> que são específicos de números de telefone, o teclado apresenta-se da seguinte maneira:</p>
 <div class="gatsby-highlight" data-language="html"><pre style="counter-reset: linenumber NaN" class="language-html line-numbers"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">inputmode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tel<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tel<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span></span></pre></div>
 <p>
@@ -178,7 +178,7 @@ teclados disponíveis por padrão.</p>
 </center>
 <h3>Email</h3>
 <p>Através do <code class="language-text">inputmode=&quot;email&quot;</code> o teclado inclui @ e dependendo do dispositivo/teclado padrão até dominíos de alguns emails comuns,
-no IOS13(Safari) o teclado sugere um email do utilizador, e apresenta-se da seguinte maneira:</p>
+no IOS13(Safari) o teclado sugere o email do utilizador, e apresenta-se da seguinte maneira:</p>
 <div class="gatsby-highlight" data-language="html"><pre style="counter-reset: linenumber NaN" class="language-html line-numbers"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">inputmode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Email<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span></span></pre></div>
 <p>
   <a
@@ -219,7 +219,7 @@ no IOS13(Safari) o teclado sugere um email do utilizador, e apresenta-se da segu
 </center>
 <h3>Url</h3>
 <p><code class="language-text">inputmode=&quot;url&quot;</code> é provavelmente a opção com menos casos de uso porém importante, com ele o teclado adiciona / e .com
-(dependendo do dispositivo ou teclado padra pode ate sugerir mais opções).</p>
+(dependendo do dispositivo ou teclado padrão pode até sugerir mais opções).</p>
 <div class="gatsby-highlight" data-language="html"><pre style="counter-reset: linenumber NaN" class="language-html line-numbers"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">inputmode</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>url<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Url<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span></span></pre></div>
 <p>
   <a

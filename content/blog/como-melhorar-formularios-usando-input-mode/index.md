@@ -29,7 +29,7 @@ Atraves do `inputmode="decimal"` podemos instruir o teclado a mostrar somente nu
 <input type="text" inputmode="decimal" placeholder="Decimal"/>
 ```
 
-![Input mode decimal image](./images/decimal.jpeg)
+![Input mode decimal image](./images/decimal.png)
 
 <center>
 	<input type="text" inputmode="decimal" placeholder="Decimal" class="inputmode" style="padding: 10px; margin: 40px"/>
@@ -45,7 +45,7 @@ ser util para capturar dados como PIN, numero de itens a comprar, número de cas
 <input type="text" inputmode="numeric" placeholder="numeric"/>
 ```
 
-![Input mode numeric image](./images/numeric.jpeg)
+![Input mode numeric image](./images/numeric.png)
 
 <center>
 	<input type="text" inputmode="numeric" placeholder="numeric" class="inputmode" style="padding: 10px; margin: 40px"/>
@@ -60,7 +60,7 @@ ser util para capturar dados como PIN, numero de itens a comprar, número de cas
 <input type="text" inputmode="tel" placeholder="tel"/>
 ```
 
-![Input mode tel image](./images/tel.jpeg)
+![Input mode tel image](./images/tel.png)
 
 <center>
 	<input type="text" inputmode="tel" placeholder="tel" class="inputmode" style="padding: 10px; margin: 40px"/>
@@ -76,7 +76,7 @@ teclados disponíveis por padrão.
 <input type="text" inputmode="search" placeholder="search"/>
 ```
 
-![Input mode search image](./images/search.jpeg)
+![Input mode search image](./images/search.png)
 
 <center>
 	<input type="text" inputmode="search" placeholder="search" class="inputmode" style="padding: 10px; margin: 40px"/>
@@ -91,7 +91,7 @@ no IOS13(Safari) o teclado sugere um email do utilizador, e apresenta-se da segu
 <input type="text" inputmode="email" placeholder="Email"/>
 ```
 
-![Input mode search email](./images/email.jpeg)
+![Input mode search email](./images/email.png)
 
 <center>
 	<input type="text" inputmode="email" placeholder="Email" class="inputmode" style="padding: 10px; margin: 40px"/>
@@ -107,7 +107,7 @@ no IOS13(Safari) o teclado sugere um email do utilizador, e apresenta-se da segu
 <input type="text" inputmode="url" placeholder="Url"/>
 ```
 
-![Input mode url](./images/url.jpeg)
+![Input mode url](./images/url.png)
 
 <center>
 	<input type="text" inputmode="url" placeholder="Url" class="inputmode" style="padding: 10px; margin: 40px"/>

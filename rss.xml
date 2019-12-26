@@ -1,4 +1,263 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ramblings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.dev</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 22 Dec 2019 18:51:19 GMT</lastBuildDate><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Ramblings]]></title><description><![CDATA[Development musings]]></description><link>https://ivanbila.dev</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 26 Dec 2019 12:23:57 GMT</lastBuildDate><item><title><![CDATA[Como melhorar formularios usando Input Mode]]></title><description><![CDATA[Um dos componentes mais usados/comuns em diversas aplicações Web é o  e este pode ser usado
+para diversas finalidades sendo a principal…]]></description><link>https://ivanbila.dev/como-melhorar-formularios-usando-input-mode/</link><guid isPermaLink="false">https://ivanbila.dev/como-melhorar-formularios-usando-input-mode/</guid><pubDate>Tue, 24 Dec 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Um dos componentes mais usados/comuns em diversas aplicações Web é o &lt;code class=&quot;language-text&quot;&gt;form&lt;/code&gt; e este pode ser usado
+para diversas finalidades sendo a principal capturar informação sobre o utilizador ou uma determinada entidade.&lt;/p&gt;
+&lt;p&gt;Um formulário pode ser composto por checkboxes, radiobuttons e &lt;code class=&quot;language-text&quot;&gt;input[type=&amp;quot;text&amp;quot;]&lt;/code&gt; e outros componentes/elementos usados
+para capturar dados com a melhor experiência de utilizador possível.&lt;/p&gt;
+&lt;p&gt;Dado que a forma em que o formulário se apresenta pode influenciar significativamente a experiência dos utilizadores
+é sempre importante escolher o elemento/componente adequado para este feito, tendo em conta acessibilidade e usabilidade.&lt;/p&gt;
+&lt;p&gt;Antes da criação do atributo &lt;code class=&quot;language-text&quot;&gt;inputmode&lt;/code&gt; para formulários mais especificamente para o elemento &lt;code class=&quot;language-text&quot;&gt;input&lt;/code&gt; não era possível
+determinar o comportamento do teclado de um smartphone sendo que esta funcionalidade estava disponcccvel apenas para aplicações
+nativas.&lt;/p&gt;
+&lt;p&gt;Actualmente a realidade é diferente e é possivel definir o comportamento de teclado, com isso podemos escolher se o teclado
+apresenta somente numeros, letras, @, numeros com vírgula e muito mais, usando o attributo &lt;code class=&quot;language-text&quot;&gt;inputmode&lt;/code&gt; com os valores &lt;em&gt;decimal&lt;/em&gt;, &lt;em&gt;numeric&lt;/em&gt;, &lt;em&gt;tel&lt;/em&gt;, &lt;em&gt;search&lt;/em&gt;, &lt;em&gt;email&lt;/em&gt; e &lt;em&gt;url&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;Inputmode decimal&lt;/h3&gt;
+&lt;p&gt;Atraves do &lt;code class=&quot;language-text&quot;&gt;inputmode=&amp;quot;decimal&amp;quot;&lt;/code&gt; podemos instruir o teclado a mostrar somente numeros, como mostra a imagem e o campo de texto(somente disponível para smartphones com navegador elegível) abaixo. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;inputmode&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;decimal&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Decimal&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dca652b26778bf7997c98f59dcb5a40e/2a7f3/decimal.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 126.4%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB7oSypaTloGI//8QAGRAAAwEBAQAAAAAAAAAAAAAAAAEREDEC/9oACAEBAAEFAoTaUqxNRd9cP//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CT//EABwQAAMAAwADAAAAAAAAAAAAAAABESExUXGhsf/aAAgBAQABPyF5HghKIr4Vwrgqb9GFb0iZRoPoLR//2gAMAwEAAgADAAAAEPwNgv/EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QH//EABYRAAMAAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPxBw/8QAHhABAAIBBAMAAAAAAAAAAAAAAQARMRAhQWFRcaH/2gAIAQEAAT8QsbQ+9HUGkExyqDlhrjeIoDcA7S7FA6Tol4ufcTPGKf/Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Input mode decimal image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/dca652b26778bf7997c98f59dcb5a40e/88218/decimal.jpg&quot;
+        srcset=&quot;/static/dca652b26778bf7997c98f59dcb5a40e/7237a/decimal.jpg 148w,
+/static/dca652b26778bf7997c98f59dcb5a40e/0cfdf/decimal.jpg 295w,
+/static/dca652b26778bf7997c98f59dcb5a40e/88218/decimal.jpg 590w,
+/static/dca652b26778bf7997c98f59dcb5a40e/2a7f3/decimal.jpg 750w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;center&gt;
+	&lt;input type=&quot;text&quot; inputmode=&quot;decimal&quot; placeholder=&quot;Decimal&quot; class=&quot;inputmode&quot; style=&quot;padding: 10px; margin: 40px&quot;/&gt;
+&lt;/center&gt;
+&lt;h3&gt;Numeric&lt;/h3&gt;
+&lt;p&gt;Diferentemente do decimal o &lt;code class=&quot;language-text&quot;&gt;inputmode=&amp;quot;numeric&amp;quot;&lt;/code&gt; apresenta somente números sem vírgula ou ponto, este pode
+ser util para capturar dados como PIN, numero de itens a comprar, número de casa e mais outros dados, e comporta-se da seguinte maneira:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;inputmode&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;numeric&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;numeric&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7b65c07702fbf07b2ab9e92c79002a83/2a7f3/numeric.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 128.13333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDAgX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB7oxGZFy40GQD/8QAGRAAAgMBAAAAAAAAAAAAAAAAABEBEDEC/9oACAEBAAEFArYx3GRvWH//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ak//xAAeEAACAQQDAQAAAAAAAAAAAAAAAXERITFRYZGhsf/aAAgBAQABPyFq5Tj0WCBAgVW/TcjKi67MB9BYP//aAAwDAQACAAMAAAAQzMiC/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHhABAAIBBAMAAAAAAAAAAAAAAQARITFRYXFBkaH/2gAIAQEAAT8QVTVnc6/aFAMtult20G5HUGaroYgQUocniZRZXmk+omvAAAT/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Input mode numeric image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/7b65c07702fbf07b2ab9e92c79002a83/88218/numeric.jpg&quot;
+        srcset=&quot;/static/7b65c07702fbf07b2ab9e92c79002a83/7237a/numeric.jpg 148w,
+/static/7b65c07702fbf07b2ab9e92c79002a83/0cfdf/numeric.jpg 295w,
+/static/7b65c07702fbf07b2ab9e92c79002a83/88218/numeric.jpg 590w,
+/static/7b65c07702fbf07b2ab9e92c79002a83/2a7f3/numeric.jpg 750w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;center&gt;
+	&lt;input type=&quot;text&quot; inputmode=&quot;numeric&quot; placeholder=&quot;numeric&quot; class=&quot;inputmode&quot; style=&quot;padding: 10px; margin: 40px&quot;/&gt;
+&lt;/center&gt;
+&lt;h3&gt;Tel&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;inputmode=&amp;quot;tel&amp;quot;&lt;/code&gt; apresenta algumas semelhanças comparado ao &lt;code class=&quot;language-text&quot;&gt;numeric&lt;/code&gt;, as únicas diferença são os símbolos
+&lt;code class=&quot;language-text&quot;&gt;+*#&lt;/code&gt; que são específicos de números de telefone, o teclado apresenta-se da seguinte maneira:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;inputmode&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;tel&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;tel&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6fe57820ac2db9b34000dae7a4ef9fb2/2a7f3/tel.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 128.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAaABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMBAgX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB91xiWSLuwsEB/8QAGhAAAgMBAQAAAAAAAAAAAAAAAAEQETECEv/aAAgBAQABBQKbZ6ZblYt6w//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABcQAAMBAAAAAAAAAAAAAAAAAAEgMDH/2gAIAQEABj8CTDD/xAAfEAACAQMFAQAAAAAAAAAAAAAAAWERITFBUXGRobH/2gAIAQEAAT8hauUj0WCNiaUbKz6LXncZUXXZhPuLB//aAAwDAQACAAMAAAAQ3CqC/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFhEAAwAAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/EHD/xAAcEAEBAQACAwEAAAAAAAAAAAABEQAhMUFhcfD/2gAIAQEAAT8QVbKfZv3WKAcw42wiE8uE5sYKyOjjEClD2jxuQdHpiWnNN2aYZv/Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Input mode tel image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/6fe57820ac2db9b34000dae7a4ef9fb2/88218/tel.jpg&quot;
+        srcset=&quot;/static/6fe57820ac2db9b34000dae7a4ef9fb2/7237a/tel.jpg 148w,
+/static/6fe57820ac2db9b34000dae7a4ef9fb2/0cfdf/tel.jpg 295w,
+/static/6fe57820ac2db9b34000dae7a4ef9fb2/88218/tel.jpg 590w,
+/static/6fe57820ac2db9b34000dae7a4ef9fb2/2a7f3/tel.jpg 750w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;center&gt;
+	&lt;input type=&quot;text&quot; inputmode=&quot;tel&quot; placeholder=&quot;tel&quot; class=&quot;inputmode&quot; style=&quot;padding: 10px; margin: 40px&quot;/&gt;
+&lt;/center&gt;
+&lt;h3&gt;Search&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;inputmode=&amp;quot;search&amp;quot;&lt;/code&gt; altera somente o botão enter/return pelo go/ir, dado que enter/return podem servir para
+quebra de linha(dependendo do dispositivo/aplicção e das configurações), o teclado não foge muito da regra dos
+teclados disponíveis por padrão.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;inputmode&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;search&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;search&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/cfbcb5badf651da1344cf15a5708331e/2a7f3/search.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 134.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAMEBQEC/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAEDBP/aAAwDAQACEAMQAAAB3XgkqIvFe0Qsl0Yf/8QAGxAAAgMAAwAAAAAAAAAAAAAAARIAAhADMkH/2gAIAQEAAQUC148fTcCcfb2xLf/EABYRAAMAAAAAAAAAAAAAAAAAAAAQE//aAAgBAwEBPwF1P//EABcRAAMBAAAAAAAAAAAAAAAAAAAQE2H/2gAIAQIBAT8BcNP/xAAXEAEAAwAAAAAAAAAAAAAAAAABACEw/9oACAEBAAY/As22f//EAB4QAAIBBAMBAAAAAAAAAAAAAAABESExQWEQofDB/9oACAEBAAE/IWqka7FY8pw8oIkYRPQzzdvorjYB5P/aAAwDAQACAAMAAAAQ/CWN/8QAFxEBAAMAAAAAAAAAAAAAAAAAAQAQQf/aAAgBAwEBPxC0mT//xAAWEQEBAQAAAAAAAAAAAAAAAAABABD/2gAIAQIBAT8Q0ST/xAAeEAEBAQABBAMAAAAAAAAAAAABEQAxIVFhcZGx8P/aAAgBAQABPxBW5T3N+7xQDosjkdn4xRYz23Ufe6Hlz9oTnlkKp5tzsDkx5l5vff/Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Input mode search image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/cfbcb5badf651da1344cf15a5708331e/88218/search.jpg&quot;
+        srcset=&quot;/static/cfbcb5badf651da1344cf15a5708331e/7237a/search.jpg 148w,
+/static/cfbcb5badf651da1344cf15a5708331e/0cfdf/search.jpg 295w,
+/static/cfbcb5badf651da1344cf15a5708331e/88218/search.jpg 590w,
+/static/cfbcb5badf651da1344cf15a5708331e/2a7f3/search.jpg 750w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;center&gt;
+	&lt;input type=&quot;text&quot; inputmode=&quot;search&quot; placeholder=&quot;search&quot; class=&quot;inputmode&quot; style=&quot;padding: 10px; margin: 40px&quot;/&gt;
+&lt;/center&gt;
+&lt;h3&gt;Email&lt;/h3&gt;
+&lt;p&gt;Através do &lt;code class=&quot;language-text&quot;&gt;inputmode=&amp;quot;email&amp;quot;&lt;/code&gt; o teclado inclui @ e dependendo do dispositivo/teclado padrão até dominíos de alguns emails comuns,
+no IOS13(Safari) o teclado sugere um email do utilizador, e apresenta-se da seguinte maneira:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;inputmode&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;email&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Email&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b2041c20f70f48fcb73404ae13cee212/2a7f3/email.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 137.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAfe5AlqssWbUVMqz/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAEQEgIDETL/2gAIAQEAAQUCm5dF5eaRr9HT/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAGBAAAgMAAAAAAAAAAAAAAAAAAAEQMIH/2gAIAQEABj8Cpwcf/8QAHhABAAICAQUAAAAAAAAAAAAAAQAREDFBUXGBkfH/2gAIAQEAAT8hbvmeH3DURBucDCVXEqtfqOuyC6s//9oADAMBAAIAAwAAABBsJoH/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAWEQADAAAAAAAAAAAAAAAAAAAAEBH/2gAIAQIBAT8QcP/EAB8QAQADAAIBBQAAAAAAAAAAAAEAESExYUFRccHR8P/aAAgBAQABPxAa6OmpX5fcKC+YIvK7mIC/aU9CaPPey6djt1TnGGaC7rcE4ePjGjbb5Z//2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Input mode search email&quot;
+        title=&quot;&quot;
+        src=&quot;/static/b2041c20f70f48fcb73404ae13cee212/88218/email.jpg&quot;
+        srcset=&quot;/static/b2041c20f70f48fcb73404ae13cee212/7237a/email.jpg 148w,
+/static/b2041c20f70f48fcb73404ae13cee212/0cfdf/email.jpg 295w,
+/static/b2041c20f70f48fcb73404ae13cee212/88218/email.jpg 590w,
+/static/b2041c20f70f48fcb73404ae13cee212/2a7f3/email.jpg 750w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;center&gt;
+	&lt;input type=&quot;text&quot; inputmode=&quot;email&quot; placeholder=&quot;Email&quot; class=&quot;inputmode&quot; style=&quot;padding: 10px; margin: 40px&quot;/&gt;
+&lt;/center&gt;
+&lt;h3&gt;Url&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;inputmode=&amp;quot;url&amp;quot;&lt;/code&gt; é provavelmente a opção com menos casos de uso porém importante, com ele o teclado adiciona / e .com
+(dependendo do dispositivo ou teclado padra pode ate sugerir mais opções).&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;html&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-html line-numbers&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;input&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;inputmode&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;url&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;Url&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;/&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/36a7dee27883ec97655eea0c0caab124/2a7f3/url.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 590px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 133.6%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAfe5AkkClGgpZln/xAAcEAACAgIDAAAAAAAAAAAAAAAAARASAgMRMTL/2gAIAQEAAQUCOIuWLS80jV7fR//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABYQAAMAAAAAAAAAAAAAAAAAABAwgf/aAAgBAQAGPwJMP//EAB0QAAIBBQEBAAAAAAAAAAAAAAABESFRcYGRMaH/2gAIAQEAAT8haqYfR0NuG5UIkYRL4XB7YE3d9P/aAAwDAQACAAMAAAAQf+S9/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFhEAAwAAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/EHD/xAAfEAEAAgEEAwEAAAAAAAAAAAABABEhMUFRkWFxscH/2gAIAQEAAT8QVbQnlqentA0HiUuqhXjpN+nqaPssOWPXYa5MSqylsLe8wqAy+Sh+yf/Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Input mode url&quot;
+        title=&quot;&quot;
+        src=&quot;/static/36a7dee27883ec97655eea0c0caab124/88218/url.jpg&quot;
+        srcset=&quot;/static/36a7dee27883ec97655eea0c0caab124/7237a/url.jpg 148w,
+/static/36a7dee27883ec97655eea0c0caab124/0cfdf/url.jpg 295w,
+/static/36a7dee27883ec97655eea0c0caab124/88218/url.jpg 590w,
+/static/36a7dee27883ec97655eea0c0caab124/2a7f3/url.jpg 750w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;center&gt;
+	&lt;input type=&quot;text&quot; inputmode=&quot;url&quot; placeholder=&quot;Url&quot; class=&quot;inputmode&quot; style=&quot;padding: 10px; margin: 40px&quot;/&gt;
+&lt;/center&gt;
+&lt;p&gt;O &lt;a href=&quot;https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute&quot;&gt;inputmode&lt;/a&gt; pode ser usado em textareas e para esconder o teclado com o valor &lt;code class=&quot;language-text&quot;&gt;inputmode=&amp;quot;none&amp;quot;&lt;/code&gt;.
+Apesar de poder melhorar a experiência do utilizador ao apresentar diferentes modelos/layouts de teclado  o &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;inputmode&lt;/code&gt;&lt;/a&gt; ainda tem fraco &lt;a href=&quot;https://caniuse.com/#feat=input-inputmode&quot;&gt;supporte&lt;/a&gt; funcionando em alguns navegadores modernos o que pode beneficiar apenas uma parte dos utilizadores.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Security on the Front-End]]></title><description><![CDATA[It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
 the use of external…]]></description><link>https://ivanbila.dev/security-on-the-front-end/</link><guid isPermaLink="false">https://ivanbila.dev/security-on-the-front-end/</guid><pubDate>Sat, 17 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It’s getting increasingly likely to have security vulnerabilities on the frontend due to many factors, one of them being
 the use of external code through libraries or frameworks such as jQuery, ReactJS, and VueJS, Lodash, not setting up
 HTTPS to encrypt the data exchanged between the server and the client, use of old or deprecated libraries/frameworks.

@@ -5,7 +5,7 @@ description: ""
 draft: false
 ---
 
-Um dos componentes mais usados/comuns em diversas Aplicações Web é o `form` e este pode ser usado
+Um dos componentes mais usados/comuns em diversas aplicações Web é o `form` e este pode ser usado
 para diversas finalidades sendo a principal capturar informação sobre o utilizador ou uma determinada entidade.
 
 Um formulário pode ser composto por checkboxes, radiobuttons e `input[type="text"]` e outros componentes/elementos usados
@@ -39,7 +39,7 @@ Atraves do `inputmode="decimal"` podemos instruir o teclado a mostrar somente nu
 ### Numeric
 
 Diferentemente do decimal o `inputmode="numeric"` apresenta somente números sem vírgula ou ponto, este pode
-ser util para capturar dados como PIN, numero de itens a comprar, número de casa e mais outros dados, comporta-se da seguinte maneira:
+ser util para capturar dados como PIN, numero de itens a comprar, número de casa e mais outros dados, e comporta-se da seguinte maneira:
 
 ```html
 <input type="text" inputmode="numeric" placeholder="numeric"/>
@@ -53,6 +53,8 @@ ser util para capturar dados como PIN, numero de itens a comprar, número de cas
 
 ### Tel
 
+`inputmode="tel"` apresenta algumas semelhanças comparado ao `numeric`, as únicas diferença são os símbolos
+`+*#` que são específicos de números de telefone, o teclado apresenta-se da seguinte maneira:
 
 ```html
 <input type="text" inputmode="tel" placeholder="tel"/>
@@ -66,6 +68,10 @@ ser util para capturar dados como PIN, numero de itens a comprar, número de cas
 
 ### Search
 
+`inputmode="search"` altera somente o botão enter/return pelo go/ir, dado que enter/return podem servir para
+quebra de linha(dependendo do dispositivo/aplicção e das configurações), o teclado não foge muito da regra dos
+teclados disponíveis por padrão.
+
 ```html
 <input type="text" inputmode="search" placeholder="search"/>
 ```
@@ -77,6 +83,9 @@ ser util para capturar dados como PIN, numero de itens a comprar, número de cas
 </center>
 
 ### Email
+
+Através do `inputmode="email"` o teclado inclui @ e dependendo do dispositivo/teclado padrão até dominíos de alguns emails comuns,
+no IOS13(Safari) o teclado sugere um email do utilizador, e apresenta-se da seguinte maneira:
 
 ```html
 <input type="text" inputmode="email" placeholder="Email"/>
@@ -90,14 +99,19 @@ ser util para capturar dados como PIN, numero de itens a comprar, número de cas
 
 ### Url
 
+`inputmode="url"` é provavelmente a opção com menos casos de uso porém importante, com ele o teclado adiciona / e .com
+(dependendo do dispositivo ou teclado padra pode ate sugerir mais opções).
+
+
 ```html
 <input type="text" inputmode="url" placeholder="Url"/>
 ```
 
-![Input mode search url](./images/url.jpeg)
+![Input mode url](./images/url.jpeg)
 
 <center>
 	<input type="text" inputmode="url" placeholder="Url" class="inputmode" style="padding: 10px; margin: 40px"/>
 </center>
 
-### Conclusão
+O [inputmode](https://html.spec.whatwg.org/multipage/interaction.html#input-modalities:-the-inputmode-attribute) pode ser usado em textareas e para esconder o teclado com o valor `inputmode="none"`.
+Apesar de poder melhorar a experiência do utilizador ao apresentar diferentes modelos/layouts de teclado  o [`inputmode`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode) ainda tem fraco [supporte](https://caniuse.com/#feat=input-inputmode) funcionando em alguns navegadores modernos o que pode beneficiar apenas uma parte dos utilizadores.

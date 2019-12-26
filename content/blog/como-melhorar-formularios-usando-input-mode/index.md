@@ -15,15 +15,15 @@ Dado que a forma em que o formulário se apresenta pode influenciar significativ
 é sempre importante escolher o elemento/componente adequado para este feito, tendo em conta acessibilidade e usabilidade.
 
 Antes da criação do atributo `inputmode` para formulários mais especificamente para o elemento `input` não era possível
-determinar o comportamento do teclado de um smartphone sendo que esta funcionalidade estava disponcccvel apenas para aplicações
+determinar o comportamento do teclado de um smartphone sendo que esta funcionalidade estava disponível apenas para aplicações
 nativas.
 
 Actualmente a realidade é diferente e é possivel definir o comportamento de teclado, com isso podemos escolher se o teclado
-apresenta somente numeros, letras, @, numeros com vírgula e muito mais, usando o attributo `inputmode` com os valores *decimal*, *numeric*, *tel*, *search*, *email* e *url*.
+apresenta somente números, letras, @, números com vírgula e muito mais, usando o attributo `inputmode` com os valores *decimal*, *numeric*, *tel*, *search*, *email* e *url*.
 
 ### Inputmode decimal
 
-Atraves do `inputmode="decimal"` podemos instruir o teclado a mostrar somente numeros, como mostra a imagem e o campo de texto(somente disponível para smartphones com navegador elegível) abaixo. 
+Através do `inputmode="decimal"` podemos instruir o teclado a mostrar somente números, como mostra a imagem e o campo de texto(somente disponível para smartphones com navegador elegível) abaixo. 
 
 ```html
 <input type="text" inputmode="decimal" placeholder="Decimal"/>
@@ -39,7 +39,7 @@ Atraves do `inputmode="decimal"` podemos instruir o teclado a mostrar somente nu
 ### Numeric
 
 Diferentemente do decimal o `inputmode="numeric"` apresenta somente números sem vírgula ou ponto, este pode
-ser util para capturar dados como PIN, numero de itens a comprar, número de casa e mais outros dados, e comporta-se da seguinte maneira:
+ser util para capturar dados como PIN, número de itens a comprar, número de casa e mais outros dados, e comporta-se da seguinte maneira:
 
 ```html
 <input type="text" inputmode="numeric" placeholder="numeric"/>
@@ -53,7 +53,7 @@ ser util para capturar dados como PIN, numero de itens a comprar, número de cas
 
 ### Tel
 
-`inputmode="tel"` apresenta algumas semelhanças comparado ao `numeric`, as únicas diferença são os símbolos
+`inputmode="tel"` apresenta algumas semelhanças comparado ao `numeric`, as únicas diferenças são os símbolos
 `+*#` que são específicos de números de telefone, o teclado apresenta-se da seguinte maneira:
 
 ```html
@@ -85,7 +85,7 @@ teclados disponíveis por padrão.
 ### Email
 
 Através do `inputmode="email"` o teclado inclui @ e dependendo do dispositivo/teclado padrão até dominíos de alguns emails comuns,
-no IOS13(Safari) o teclado sugere um email do utilizador, e apresenta-se da seguinte maneira:
+no IOS13(Safari) o teclado sugere o email do utilizador, e apresenta-se da seguinte maneira:
 
 ```html
 <input type="text" inputmode="email" placeholder="Email"/>
@@ -100,7 +100,7 @@ no IOS13(Safari) o teclado sugere um email do utilizador, e apresenta-se da segu
 ### Url
 
 `inputmode="url"` é provavelmente a opção com menos casos de uso porém importante, com ele o teclado adiciona / e .com
-(dependendo do dispositivo ou teclado padra pode ate sugerir mais opções).
+(dependendo do dispositivo ou teclado padrão pode até sugerir mais opções).
 
 
 ```html

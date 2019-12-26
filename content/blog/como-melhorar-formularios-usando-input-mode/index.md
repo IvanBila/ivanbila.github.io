@@ -1,5 +1,5 @@
 ---
-title: Como melhorar formularios usando Input Mode
+title: Como melhorar formulários usando Input Mode
 date: "2019-12-24"
 description: ""
 draft: false

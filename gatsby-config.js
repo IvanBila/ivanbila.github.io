@@ -116,5 +116,12 @@ module.exports = {
     },
   },
   `gatsby-plugin-netlify-cms`,
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyDefault: 'en',
+        useLangKeyLayout: false,
+      }
+    }
   ],
 }

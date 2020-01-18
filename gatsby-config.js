@@ -92,8 +92,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `ivanbila`
-      }
+        shortname: `ivanbila`,
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -107,38 +107,21 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
-    'gatsby-plugin-offline',
-  {
-    resolve: `gatsby-plugin-nprogress`,
-    options: {
-      color: `tomato`,
-      showSpinner: true,
-    },
-  },
-  `gatsby-plugin-netlify-cms`,
+    "gatsby-plugin-offline",
     {
-      resolve: 'gatsby-plugin-i18n',
+      resolve: `gatsby-plugin-nprogress`,
       options: {
-        langKeyDefault: 'en',
+        color: `tomato`,
+        showSpinner: true,
+      },
+    },
+    `gatsby-plugin-netlify-cms`,
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyDefault: "en",
         useLangKeyLayout: false,
-        markdownRemark: {
-          postPage: 'src/templates/blog-post.js',
-          query: `
-          {
-            allMarkdownRemark {
-              edges {
-                node {
-                  fields {
-                    slug,
-                    langKey
-                  }
-                }
-              }
-            }
-          }
-        `
-        }
-      }
-    }
+      },
+    },
   ],
 }

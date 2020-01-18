@@ -121,6 +121,23 @@ module.exports = {
       options: {
         langKeyDefault: 'en',
         useLangKeyLayout: false,
+        markdownRemark: {
+          postPage: 'src/templates/blog-post.js',
+          query: `
+          {
+            allMarkdownRemark {
+              edges {
+                node {
+                  fields {
+                    slug,
+                    langKey
+                  }
+                }
+              }
+            }
+          }
+        `
+        }
       }
     }
   ],

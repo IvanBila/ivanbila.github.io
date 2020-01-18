@@ -4,3 +4,12 @@
     	margin-left: -60px;
 	}
 }
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: black;
+	}
+	body * {
+		color: white;
+	}
+}

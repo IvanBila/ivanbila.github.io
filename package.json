@@ -8,7 +8,7 @@
     "url": "https://github.com/ivanbila/ivanbila.github.io/issues"
   },
   "dependencies": {
-    "gatsby": "^2.18.10",
+    "gatsby": "^2.23.20",
     "gatsby-cli": "^2.12.14",
     "gatsby-image": "^2.0.37",
     "gatsby-plugin-disqus": "^1.0.3",
@@ -33,7 +33,7 @@
     "gh-pages": "^2.0.1",
     "netlify-cms-app": "^2.9.6",
     "prism-theme-night-owl": "^1.2.0",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.21.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",

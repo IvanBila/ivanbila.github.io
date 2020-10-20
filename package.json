@@ -43,7 +43,7 @@
     "typography": "^0.16.19",
     "typography-theme-wordpress-2016": "^0.16.19",
     "prop-types": "latest",
-    "snyk": "^1.393.0"
+    "snyk": "^1.419.0"
   },
   "devDependencies": {
     "prettier": "^1.17.0"

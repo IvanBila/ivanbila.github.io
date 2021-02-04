@@ -37,7 +37,7 @@ even worse in some cases he might re-use a password (unless he uses a password m
 Some users tend to re-use or create weak passwords for most applications they use, to avoid laborious work of memorizing
 or saving in a password manager.
 
-Having to memorize things is a pain, laborious, time consuming and not reliable, usually users have many things to keep
+Having to memorize things is a pain, laborious, time-consuming and not reliable, usually users have many things to keep
 track of (tasks, family names, phone numbers), so it’s improbable that they’ll memorize your Apps’ password, they have
 zillions of apps, you want to make your app easy to use without the hassle of remembering passwords and emails.
 To prevent this, you can use OAuth.
@@ -53,7 +53,7 @@ again until he/she stops using your service.
 By using OAuth not only you have the convenience of signing in the user in without requiring a password you also have
 access to the information(first name, last name, age and more) that the user has already filled in his/her account.
 
-Whether you should use Google, Twitter, Facebook, Linkedin or GitHub OAuth provider can depend based on your needs,
+Whether you should use Google, Twitter, Facebook, LinkedIn or GitHub OAuth provider can depend based on your needs,
 however, more often than not, you'll use more than one OAuth provider.
 
 Given that Facebook and Google are the providers with the most users, I'll compare both and say why and when I'd use one
@@ -71,7 +71,7 @@ can be expensive for the user. Opening the browser or external apps uses RAM and
 want your app to do, because most devices have low RAM, and processing power is scarce, even if they have good processing
 power it’s very likely that they opened dozen other apps besides yours.
 
-Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is 
+Another disadvantage of opening a browser/app for signing-in/up is the loss of the attention of the user because he is
 taken to a different place where he might find distractions, and who knows whether he'll return?
 
 Google has come out with some exciting features to speed up the sign flow using, for the web they created something called
@@ -85,13 +85,13 @@ seamless sign-in and sign-up flows without interrupting them with a sign-on or s
 On Android, Google allows users to sign-in or sign-up without having to leave the application, by showing a modal of the
 list of accounts that the user setup in that device and wants to use in your application.
 
-![android oauth sign in](images/android-sign-in.png)
+![Android OAuth sign in](images/android-sign-in.png)
 
 ### Don't ask them to invite their friends nor rate you
 
 Seriously, I don’t think users invite other people to use an app. No one does that. It’s odd and weird. If I want my
 friend to use this X app, I tell him to download and explain the benefits and tell him how cool I’m because I’m using
-it or how it has changed, improved or helped me doing Y thing. Word of mouth is the kind of invitation or recommendation
+it or how it has changed, improved or helped me do Y thing. Word of mouth is the kind of invitation or recommendation
 that people want, not receiving a message or an email saying user X invited you to use this app, how is the app supposed
 to solve my problem if it’s already creating a new one by spamming me?
 
@@ -110,20 +110,14 @@ The inadequate use of language can cause doubt, uncertainty, hesitation, ambigui
 Long texts can hinder your user’s experience as in he or she might be using a mobile device which does not have a large
 screen.
 
-Here are couple of examples of bad language use that resulted in confusion, misinformation:
+Here are a couple of examples of bad language use that resulted in confusion, misinformation:
 
 ![apple](images/apple.JPG)
 
 ![cancel a download](images/cancel.jpeg)
 
-<!--
-### Improve your App's performance
-
-How fast our application "loads" can greatly affect if a user is going to use your app, in order to achieve an 
--->
-
-There are a lot more other things you can do to improve user experience but I decided to focus only on these which I
+There are a lot more other things you can do to improve user experience, but I decided to focus only on these which I
 think when overlooked can damage your application user experience.
 
 I hope you found something that can either be applied in your current project or upcoming projects and that you learned
-as much as I did writing this post, may your next/current project have the best user experience possible.
+as much as I did write this article, may your next/current project have the best user experience possible.

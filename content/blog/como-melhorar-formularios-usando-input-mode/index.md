@@ -18,9 +18,9 @@ Antes da criação do atributo `inputmode` para formulários mais especificament
 determinar o comportamento do teclado de um smartphone sendo que esta funcionalidade estava disponível apenas para
 aplicações nativas.
 
-Actualmente a realidade é diferente e é possível definir o comportamento de teclado, com isso podemos escolher se o
+Actualmente a realidade difere e é possível definir o comportamento de teclado, com isso podemos escolher se o
 teclado apresenta somente números, letras, @, números com vírgula e muito mais, usando o atributo `inputmode` com os
-valores  *decimal*, *numeric*, *tel*, *search*, *email* e *url*.
+valores:  *decimal*, *numeric*, *tel*, *search*, *email* e *url*.
 
 ### Inputmode decimal
 
@@ -41,7 +41,7 @@ de texto(somente disponível para smartphones com navegador elegível) abaixo.
 ### Numeric
 
 Diferentemente do decimal o `inputmode="numeric"` apresenta somente números sem vírgula ou ponto, este pode
-ser util para capturar dados como PIN, número de itens a comprar, número de casa e mais outros dados, e comporta-se da
+ser útil para capturar dados como PIN, número de itens a comprar, número de casa e mais outros dados, e comporta-se da
 seguinte maneira:
 
 ```html
@@ -102,7 +102,7 @@ emails comuns, no IOS13(Safari) o teclado sugere o email do utilizador, e aprese
 
 ### Url
 
-`inputmode="url"` é provavelmente a opção com menos casos de uso porém importante, com ele o teclado adiciona / e .com
+`inputmode="url"` é provavelmente a opção com menos casos de uso, porém importante, com ele o teclado adiciona 	`/` e `.com`
 (dependendo do dispositivo ou teclado padrão pode até sugerir mais opções).
 
 

@@ -14,10 +14,14 @@
 	}
 
 	a {
-		color: #bb86fc;
+		color: #ffe77a;
 	}
 
 	a:visited {
-		color: #7319f9;
+		color: #ffe77a;
+	}
+
+	a:hover {
+		color: white;
 	}
 }

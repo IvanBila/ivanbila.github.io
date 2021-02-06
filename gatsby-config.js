@@ -90,12 +90,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `ivanbila`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "Ivan Bila",
@@ -113,14 +107,6 @@ module.exports = {
       options: {
         color: `tomato`,
         showSpinner: true,
-      },
-    },
-    `gatsby-plugin-netlify-cms`,
-    {
-      resolve: "gatsby-plugin-i18n",
-      options: {
-        langKeyDefault: "en",
-        useLangKeyLayout: false,
       },
     },
   ],

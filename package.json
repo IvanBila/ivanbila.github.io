@@ -69,8 +69,5 @@
     "serve": "gatsby serve",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -b master",
     "test": "echo no tests setup",
-    "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect"
-  },
-  "snyk": true
+  }
 }

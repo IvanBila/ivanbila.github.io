@@ -414,3 +414,9 @@ patch:
         patched: '2020-10-20T16:54:04.414Z'
     - snyk > snyk-python-plugin > snyk-poetry-lockfile-parser > @snyk/dep-graph > graphlib > lodash:
         patched: '2021-02-10T20:39:44.612Z'
+    - gatsby > babel-plugin-lodash > lodash:
+        patched: '2021-03-10T22:56:32.895Z'
+    - gatsby > babel-plugin-lodash > @babel/types > lodash:
+        patched: '2021-03-10T22:56:32.895Z'
+    - gatsby > babel-plugin-lodash > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2021-03-10T22:56:32.895Z'

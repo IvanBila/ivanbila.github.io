@@ -414,3 +414,5 @@ patch:
         patched: '2020-10-20T16:54:04.414Z'
     - snyk > snyk-python-plugin > snyk-poetry-lockfile-parser > @snyk/dep-graph > graphlib > lodash:
         patched: '2021-02-10T20:39:44.612Z'
+    - gatsby > @typescript-eslint/eslint-plugin > lodash:
+        patched: '2021-03-13T22:56:00.442Z'

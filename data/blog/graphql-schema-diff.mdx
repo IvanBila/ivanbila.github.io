@@ -1,0 +1,84 @@
+---
+title: 'GraphQL Schema diff'
+date: 2022-03-01T10:32:14Z
+lastmod: '2022-03-01'
+tags: ['graphql', 'schema']
+draft: false
+summary: 'When using GraphQL, you can use the schema diff to determine if a change to the schema will break existing queries.'
+layout: PostSimple
+---
+
+If we use GraphQL it's not uncommon that the schema gets updated, furthermore it's sometimes expected that the updates
+brings new features to the schema, these can be breaking, or non-breaking, but nevertheless change how a query is executed.
+
+[graphql-schema-diff](https://www.npmjs.com/package/graphql-schema-diff) allows us to view schema diffs in a way that's easy to
+digest and actionable, without needing to go through the changelog or viewing large diffs, along with graphql-schema-diff, we'll
+use the `get-graphql-schema` package to get the schema from a GraphQL server.
+
+We can run `npx get-graphql-schema <url>/graphql > schema.graphql` to get the schema in a given domain, and then compare the old
+schema to the new one using:
+
+```sh
+npx graphql-schema-diff schema.graphql schema-v1.graphql
+```
+
+We can also specify other options which can allow us to see the full diffs in an `html` file on the browser using the
+`--create-html-output` option.
+
+The command above should give you a summary of the diffs in the schema, and it groups them by `dangerous` and `breaking changes`,
+you can see below an example of how the output looks like(Magento 2.3 to 2.4 schema changes):
+
+```
+Dangerous changes
+  ⚠ RoutableInterface added to interfaces implemented by BundleProduct.
+  ⚠ An optional field region_id on input type CartAddressInput was added.
+  ⚠ An optional field entered_options on input type CartItemInput was added.
+  ⚠ An optional field parent_sku on input type CartItemInput was added.
+  ⚠ An optional field selected_options on input type CartItemInput was added.
+  ⚠ An optional field cart_item_uid on input type CartItemUpdateInput was added.
+  ⚠ An optional field gift_message on input type CartItemUpdateInput was added.
+  ⚠ An optional field category_uid on input type CategoryFilterInput was added.
+  ⚠ An optional field parent_category_uid on input type CategoryFilterInput was added.
+  ⚠ An optional field parent_id on input type CategoryFilterInput was added.
+  ⚠ An optional field url_path on input type CategoryFilterInput was added.
+  ⚠ RoutableInterface added to interfaces implemented by CategoryTree.
+  ⚠ RoutableInterface added to interfaces implemented by CmsPage.
+  ⚠ RoutableInterface added to interfaces implemented by ConfigurableProduct.
+  ⚠ BYN was added to enum type CurrencyEnum.
+  ⚠ An optional field mobilenumber on input type CustomerInput was added.
+  ⚠ RoutableInterface added to interfaces implemented by DownloadableProduct.
+  ⚠ RoutableInterface added to interfaces implemented by GroupedProduct.
+  ⚠ An optional field approval_status on input type ProductAttributeFilterInput was added.
+  ⚠ An optional field category_uid on input type ProductAttributeFilterInput was added.
+  ⚠ An optional field created_at on input type ProductAttributeFilterInput was added.
+  ⚠ An optional field is_feature_vendor_product on input type ProductAttributeFilterInput was added.
+  ⚠ An optional field news_from_date on input type ProductAttributeFilterInput was added.
+  ⚠ An optional field news_to_date on input type ProductAttributeFilterInput was added.
+  ⚠ An optional field vendor_id_filter on input type ProductAttributeFilterInput was added.
+  ⚠ An optional field vendor_status on input type ProductAttributeFilterInput was added.
+  ⚠ An optional field approval_status on input type ProductFilterInput was added.
+  ⚠ An optional field is_feature_vendor_product on input type ProductFilterInput was added.
+  ⚠ An optional field vendor_id_filter on input type ProductFilterInput was added.
+  ⚠ An optional field vendor_status on input type ProductFilterInput was added.
+  ⚠ An optional field cart_item_uid on input type RemoveItemFromCartInput was added.
+  ⚠ RoutableInterface added to interfaces implemented by SimpleProduct.
+  ⚠ RoutableInterface added to interfaces implemented by VirtualProduct.
+
+BREAKING CHANGES
+  ✖ BundleProduct.grade_school was removed.
+  ✖ CartAddressRegion.code changed type from String! to String.
+  ✖ CartAddressRegion.label changed type from String! to String.
+  ✖ ConfigurableCartItem.customizable_options changed type from [SelectedCustomizableOption]! to [SelectedCustomizableOption].
+  ✖ ConfigurableProduct.grade_school was removed.
+  ✖ BYR was removed from enum type CurrencyEnum.
+  ✖ CustomerOrder.id changed type from Int to ID!.
+  ✖ DownloadableProduct.grade_school was removed.
+  ✖ GroupedProduct.grade_school was removed.
+  ✖ ProductAttributeFilterInput.grade_school was removed.
+  ✖ ProductAttributeFilterInput.publisher_books was removed.
+  ✖ ProductInterface.grade_school was removed.
+  ✖ SimpleProduct.grade_school was removed.
+  ✖ VirtualProduct.grade_school was removed.
+```
+
+I hope this article helps you, find the breaking or dangerous changes and take the appropriate action.

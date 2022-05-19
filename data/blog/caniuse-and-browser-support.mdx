@@ -1,0 +1,31 @@
+---
+title: 'Polyfills and caniuse'
+date: 2022-04-19T10:32:14Z
+lastmod: '2022-04-19'
+tags: ['forms', 'front-end', 'user-experience']
+draft: false
+summary: 'Polyfills and shims contribute to an evergrowing bundle-size, caniuse provides up-to-date browser support data for the web.'
+layout: PostSimple
+---
+
+Polyfills and/or shims contribute to an ever-growing bundle-size which can contribute to a poor performance and affect negatively the user experience, therefore we should strive to have a lean and small as possible bundle.
+
+[Caniuse](https://caniuse.com/webp) provides up-to-date browser support data for the web, when combined with analytics data it allows us to see what percentage of users of our app support a given feature, this information can be useful when defining what features to polyfill, use or discard.
+
+In order to get insights into our user base, we can associate or upload the analytics data into with caniuse, we can do this by accessing the [settings](https://caniuse.com/ciu/settings#usage), and the use the importer to import data from Google Analytics.
+
+![Import Prompt](/static/images/caniuse-and-browser-support/import-prompt.png)
+
+To access the analytics data, we should authenticate to the account and grant permissions as seen below
+
+![Google Sign In](/static/images/caniuse-and-browser-support/google-sign-in-prompt.png)
+
+The service will take sometime downloading the data and once it's done we should see the browser breakdown as seen below:
+
+![Browser report](/static/images/caniuse-and-browser-support/import-statistics.png)
+
+Now that the data is imported we can do proceed and make the queries, and the website support should be on the top right(All Website Data), furthermore we can switch between mobile and desktop and the browser support data should update accordingly.
+
+![ES6 Browser Data](/static/images/caniuse-and-browser-support/browser-data.png)
+
+By combining caniuse and analytics, we can take informed decisions on what features we'll polyfill, use or discard.

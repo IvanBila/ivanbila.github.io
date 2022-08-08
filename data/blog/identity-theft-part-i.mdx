@@ -1,0 +1,84 @@
+---
+title: 'How to perform massive identity theft'
+date: 2022-08-07T11:45:14Z
+lastmod: '2022-03-01'
+tags: ['security']
+draft: false
+summary: "Sharing photos of people\'s documents onlie might sound beneign, but this might turn out to be disatrous, here we will explore how a thread-actor might use OSINT to exploit users"
+layout: PostSimple
+---
+
+First off, I'd like to mention that I'm not a security expert, I like to believe I'm a programmer.
+
+NOTICE: Some steps will be omitted or under specified since I don't want people to use this article for
+malicious intents.
+
+The [usa.gov](https://www.usa.gov/identity-theft) outlines that: Identity theft happens when someone
+steals your personal information to commit fraud.
+
+I often see a handful of Facebook posts or people in general sharing about lost items, dogs and even
+people while this may seem benign it exposes people's data and sensitive information for everyone to
+see in a way that does more damage than helps, therefore here I'll play a role of a possible
+thread-actor looking to loot or exploit the data that's shared by users online, most specifically Facebook.
+
+We'll scrape Mozambican users documents(ID, Passport, Driver's License, Car Documents, Bank Debit
+or Credit card, etc.) which contain sensitive data and attempt to make online payments with the
+debit or credit card then proceed to categorize and exploit.
+
+The first phase of the "hack" is to jump on Facebook and find the search terms that will allow
+us to find these documents, but these search terms will be slightly limited, and we'd have to
+find one set of documents at the time, some "clever" users went ahead and created
+groups, named: Achados e Perdidos, Documentos Perdidos and so forth, in a mixture of groups,
+pages and public posts you can find a plethora of sensitive documents or information that
+shouldn't be available online, here are some of the search terms we can use:
+
+- BI perdido
+- Carta de Condução perdida
+- Documentos achados
+- Documentos Perdidos
+
+And we can also use Facebook's own suggestion system to find the search terms that will allow us to find these documents,
+here's a screenshot of how the suggestions look like:
+
+<center>![Search Suggestion](/static/images/identity-theft-part-i/search-suggestions.png)</center>
+Additionally, we can set the search to only show posts from a given location or use any other filters
+to fine tune it.
+
+Another useful resource as mentioned above is groups there people dump sensitive documents almost
+weekly, and the best part is that if you search for Achados e perdidos for example, Facebook will
+either suggest other groups or show it in the "explore your interest" section, see screenshots below:
+
+<center>![Group recomendation](/static/images/identity-theft-part-i/group-suggestion.jpeg)</center>
+And Facebook itself allows you to check related groups:
+
+<center>![Explore your interest](/static/images/identity-theft-part-i/related-groups.jpg)</center>
+In some posts we'll find a full data dump containing almost all documents as seen in the screenshot below,
+notice that I've blurred the user's name. Below we'll find user's ID, debit card, Vaccination card, Car
+registry documents, and driving license:
+
+<center>![User data](/static/images/identity-theft-part-i/user-data.jpg)</center>
+By downloading an image at a time or a set of images you can build up a large data set of people's documents,
+here's a small set I was able to create in a short period of time:
+<center>![Data set](/static/images/identity-theft-part-i/data-set.jpg)</center>
+But downloading every document manually and then proceeding to sort them would be rather cumbersome or
+tiring, that's why you can use a tool such as [Puppeteer](https://puppeteer.dev/) to automate the process
+of search and downloading the images, and you can even go to the extra mile and use the free [Firebase
+ML](https://firebase.google.com/docs/ml-kit/quickstart) to train a model that will identify documents
+or credit/debit cards and then use it to automatically categorize the images.
+
+And lastly is to create some mechanism to attempt to bill the credit or debit cards that allow internet purchases, we can do this by
+training yet another model for identifying credit or debit cards numbers and store them in a table which we can then in turn use GitHub
+actions to run a script that attempts to bill them, once a week.
+
+You might wonder whether if it's possible to make an online purchase using only the credit card number since this is usually the only
+visible part in the screenshots, yes it is possible the other details are mostly for fraud prevention or getting a discount on the
+payment gateway, [You can learn more here](https://security.stackexchange.com/a/21172/278427).
+
+Now that we've used limited tools and techniques to perform identity theft, you might be wondering what's next? In the upcoming article
+I'll show a different mechanism which does not use OSINT to perform the hack, my goal with these set of articles is to help people understand
+the dangers of sharing documents online in the hopes getting the owner to find it, more often than not someone which not well intended might
+find it first and use it to commit fraud.
+
+I hope that someone in the Facebook team finds this article and gives the proper fix, warning the users attempting to
+post documents online, or even better to blur the document fields or suggest blurring use ML would help greatly both the users
+who are in the platform and the one that are not.

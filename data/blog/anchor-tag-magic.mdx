@@ -1,0 +1,126 @@
+---
+title: 'Anchor tag magic'
+date: 2022-04-22T09:37:20Z
+lastmod: '2022-04-22'
+tags: ['front-end']
+draft: false
+summary: 'I often joke about the anchor (`a`) tag being overpowered and in 
+my opinion one of the most important tags on the html spec'
+layout: PostSimple
+---
+
+According to [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a) the anchor tag,
+creates a hyperlink to web pages, files, email addresses, locations in the same page, or anything else a URL can address.
+
+I often joke about the anchor `a` tag being overpowered and
+in my opinion, one of the most important tags on the HTML spec,
+it can do anything from linking pages, running JavaScript
+and even making phone calls.
+
+The most common use of the `a` tag is to open a link, and here's how we can use it
+to open a link:
+
+Open a simple link, using the same tab:
+
+```html
+<a href="https://google.com">Website</a>
+```
+
+With the `target` attribute we can specify where the link should be displayed, a browsing context which
+can be an iframe, a tab, or a window).
+
+The `target` possible values start with an underscore, it's not clear as to why, but I think it's to avoid conflict,
+as [outlined in this stackoverflow answer](https://stackoverflow.com/a/22290033/6670258).The default value is `_self`
+which means the link will be opened in the same tab or current browsing context, `_blank` will usually open a new
+tab unless the browser configuration specifies a different behavior, and then there's `_parent` and top `_top`
+which check the parent browsing context or fallback to `_self` and the topmost browsing context.
+
+Here are some examples:
+
+```html
+<a href="https://google.com" target="_blank">Website</a>
+```
+
+```html
+<a href="https://google.com" target="_self">Website</a>
+```
+
+Note that links to cross-origins destinations are unsafe and can create a performance issues when used with
+the `target="_blank"` attribute, this is because the [other page may run on the same process](https://web.dev/external-anchors-use-rel-noopener/) as your page.
+
+If the other page is running heavy JavaScript tasks, your page's performance may suffer, or in the second case where the
+other page can access the `window.opener.location` and redirect the user to another page, which could be a security risk,
+since the other origin might create a phishing page similar to your website.
+
+If you're using a modern browser(>= [Chromium 88](https://chromestatus.com/feature/6140064063029248)) this should not
+be an issue since the `rel="noopener"` attribute is implicitly added, but if you're sure, you're using an older browser,
+you should add it manually.
+
+One common use for the `a` tag is to allow users to contact you via email, often found on contact page, however you can also prompt a phone call and
+open a sms app to send a message, here are some examples:
+
+Opens an email client which `ivan@example.com` as the receiver.
+
+```html
+<a href="mailto:ivan@example.com">Send Email</a>
+```
+
+Open the default dialer to make a phone call:
+
+```html
+<a href="tel:+123456789">call</a>
+```
+
+Opens the default messenger to send sms:
+
+```html
+<a href="sms:+123456789">Send SMS</a>
+```
+
+Send an SMS and specify the body:
+
+```html
+<a href="sms:+258841234567?&body=hello world">Send Hello world SMS</a>
+```
+
+Execute JavaScript code:
+
+Browsers have a built-in mechanism to execute JavaScript code typed in the address bar,
+this is called `javascript:` and it's used to execute code in the context of the page.
+While not something that should be used in production, it's a very useful feature to explore
+and test, and possibly mitigate for self XSS.
+The JavaScript code that can be executed is only limited by the address bar limit(which should be around [2,000 characters](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers)),
+however, this can be bypassed by using the address bar itself to load an external script.
+
+Here's an example where we use the address bar to load external an external JavaScript file:
+
+```html
+<a
+  href='javascript:var evilScript = document.body.appendChild(document.createElement("script")); evilScript.type = "text/javascript"; evilScript.src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.esm.js"'
+  >Click me</a
+>
+```
+
+Rename a file when downloaded
+
+```html
+<a href="my_painting.png" download="my_painting.png">Download my painting</a>
+```
+
+Ping an origin:
+
+```html
+<a ping="http://www.example.com/pingback/" href="http://www.example.com/">Ping me</a>
+```
+
+Navigate to a given fragment on the website:
+
+```html
+<a href="#header">Fragment</a>
+```
+
+As we can see the `a` tag is quite powerful, [this site](https://anchors.vercel.app/) outlines a lot of the
+possible uses of the `a` tag.
+
+I hope you learned something new or got a deeper understanding of the `a` tag, and if you did, share it with the community so they too
+can learn about this topic.

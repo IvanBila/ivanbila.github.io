@@ -67,11 +67,6 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                           {title}
                         </Link>
                       </h3>
-                      <div className="flex flex-wrap">
-                        {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
-                        ))}
-                      </div>
                     </div>
                     <div className="prose text-gray-500 max-w-none dark:text-gray-400">
                       {summary}

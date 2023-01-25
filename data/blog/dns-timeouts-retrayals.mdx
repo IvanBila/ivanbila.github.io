@@ -1,0 +1,80 @@
+---
+title: 'DNS, Timeouts & retrayals'
+date: 2023-01-25T09:37:20Z
+lastmod: '2023-01-25'
+tags: ['android']
+draft: false
+summary: 'Mozambique internet service providers (ISPs) are experiencing a DNS resolution issue, specifically with Vodacom'
+layout: PostSimple
+---
+
+Mozambique's internet service providers (ISPs) are experiencing a DNS resolution issue, specifically with Vodacom.
+This issue is commonly identified through error-catching tools such as Firebase Crashlytics or Sentry, with the error
+message "Unable to resolve host 'firebaseremoteconfig.googleapis.com': No address associated with hostname" being the
+most frequent in logs. This issue can occur with any URL, not just 'firebaseremoteconfig.googleapis.com'.
+There are several solutions to overcome this issue. One is for the ISPs to improve their DNS infrastructure, which is
+beyond our control, and we are not aware of when this can happen. Another solution is to use a different DNS server,
+which can be done through the use of 'dns-over-https'.
+On Android, you can achieve this by using the OKHTTP DNS over HTTP addon, which you can install by using:
+
+```bash
+implementation("com.squareup.okhttp3:okhttp-dnsoverhttps:4.9.3")
+```
+
+And then you can proceed to configure the DNS server, in this case we're using Google's DNS server, and the requests are
+sent to `"https://dns.google/dns-query"`, see the configuration bellow:
+
+```kotlin
+val HTTP_CLIENT_TIMEOUT_IN_SECONDS = 200L
+val GOOGLE_PRIMARY_DNS_ADDRESS = "8.8.8.8"
+val GOOGLE_SECONDARY_DNS_ADDRESS = "8.8.4.4"
+
+
+val bootstrapClient = OkHttpClient.Builder()
+    .connectTimeout(HTTP_CLIENT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+    .writeTimeout(HTTP_CLIENT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+    .readTimeout(HTTP_CLIENT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+    .addInterceptor(new RetryInterceptor(3))
+    .build()
+
+
+
+val dns = DnsOverHttps.Builder().client(bootstrapClient)
+    .url("https://dns.google/dns-query".toHttpUrl())
+    .bootstrapDnsHosts(
+        InetAddress.getByName(GOOGLE_PRIMARY_DNS_ADDRESS),
+        InetAddress.getByName(GOOGLE_SECONDARY_DNS_ADDRESS)
+    ).build()
+
+
+
+val client = bootstrapClient.newBuilder().dns(dns).build()
+
+```
+
+By configuring the OKHTTP client to use the Google DNS over HTTPS server as shown in the previous code snippet,
+every request sent using the client object will query the DNS records from the Google DNS server. However, it is
+important to note that in the code snippet, the `read`, `write`, and `connect` timeouts have been increased to
+accommodate for the longer timeout times of the ISPs. To further improve reliability, it is recommended to implement
+a mechanism for retrying failed requests. A common practice is to retry failed requests three times.
+This can be achieved by adding an interceptor to the OKHTTP client that handles retrying failed requests.
+
+```kotlin
+class RetryInterceptor(private val maxRetries: Int) : Interceptor {
+    private var retryCount = 0
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+        var request = chain.request()
+        var response = chain.proceed(request)
+
+        while (!response.isSuccessful && retryCount < maxRetries) {
+            retryCount++
+            response = chain.proceed(request)
+        }
+
+        return response
+    }
+}
+```
+
+I hope this blog post will assist you in improving the user experience in your application and preventing potential bugs. If you have any questions or feedback, please don't hesitate to reach out to me on Twitter at @ivanbila. Your input is valuable, and I would love to hear your thoughts on this matter.

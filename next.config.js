@@ -11,7 +11,6 @@ module.exports = withBundleAnalyzer({
   images: {
     unoptimized: true,
   },
-  basePath: '/ivanbila.github.io',
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|mp4)$/i,
